@@ -7,6 +7,7 @@ A modern UI component library built with **Next.js** and **Tailwind CSS**, offer
 ## 📌 What is zyncUI?
 
 > Instead of just offering low-level components like `<Input />` or `<Button />`, this library provides **complete, production-ready UI blocks** — such as:
+
 - Full Login/Signup pages
 - Hero sections
 - Pricing & FAQ layouts
@@ -50,18 +51,17 @@ Perfect for developers who want to **move fast**, maintain design consistency, a
 
 ## 🧩 Component Categories
 
-| Category         | Description                                         |
-|------------------|-----------------------------------------------------|
-| **Auth**         | Login, Register, Forgot Password                    |
-| **Marketing**    | Hero, Features, Testimonials, Pricing, FAQ          |
-| **Dashboard**    | Layouts, Sidebars, Headers, Cards                   |
-| **UI Elements**  | Modals, Tables, Tabs, Accordions, Toasts            |
-| **Forms**        | Full form sections, Form groups, Multi-step wizards |
-| **E-commerce**   | Product cards, Checkout summary, Order history      |
-| **States**       | Empty state, Error pages (404/500), Loaders         |
+| Category        | Description                                         |
+| --------------- | --------------------------------------------------- |
+| **Auth**        | Login, Register, Forgot Password                    |
+| **Marketing**   | Hero, Features, Testimonials, Pricing, FAQ          |
+| **Dashboard**   | Layouts, Sidebars, Headers, Cards                   |
+| **UI Elements** | Modals, Tables, Tabs, Accordions, Toasts            |
+| **Forms**       | Full form sections, Form groups, Multi-step wizards |
+| **E-commerce**  | Product cards, Checkout summary, Order history      |
+| **States**      | Empty state, Error pages (404/500), Loaders         |
 
 ---
-
 
 ---
 
@@ -84,6 +84,7 @@ Visit the `/docs` route or run the dev server to explore the components interact
 We welcome PRs, feedback, and issues!
 
 > Before contributing:
+
 - Follow our component structure and naming convention
 - Keep props typed and consistent
 - Ensure Tailwind classes are responsive and accessible
@@ -100,6 +101,7 @@ This project is open-source under the [MIT License](LICENSE).
 ## 🧠 Inspiration
 
 Inspired by:
+
 - [shadcn/ui](https://ui.shadcn.com/)
 - [Chakra UI](https://chakra-ui.com/)
 - [Tailwind UI](https://tailwindui.com/)
@@ -110,6 +112,3 @@ Inspired by:
 ## 💬 Feedback?
 
 If you have ideas, issues, or suggestions — open an issue or start a discussion. We’re building this for developers like you.
-
-
-
