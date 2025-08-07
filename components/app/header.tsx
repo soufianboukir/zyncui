@@ -3,7 +3,10 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { SearchInput } from "../ui/search-input";
-import { ThemeToggle } from "../theme-toggle";
+import dynamic from "next/dynamic";
+const ThemeToggle = dynamic(() => import("../theme-toggle").then(res => res.ThemeToggle), {
+  ssr: false,
+});
 import { Twitter } from "lucide-react";
 import { Button } from "../ui/button";
 import { MenutBar } from "../menu-bar";
