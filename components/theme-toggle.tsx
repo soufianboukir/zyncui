@@ -14,6 +14,8 @@ export function ThemeProvider({
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
 
+  console.log({ theme });
+
   const toggleTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
   };
