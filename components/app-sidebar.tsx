@@ -1,5 +1,4 @@
 import * as React from "react";
-// import { GalleryVerticalEnd } from "lucide-react";
 
 import {
   Sidebar,
