@@ -13,7 +13,7 @@ import Link from "next/link";
 import { signOut } from "next-auth/react";
 import { User as UserType } from "next-auth";
 
-export function ProfileMenu({ user }: { user: UserType}) {  
+export function ProfileMenu({ user }: { user: UserType }) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>

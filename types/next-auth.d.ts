@@ -6,7 +6,7 @@ declare module "next-auth" {
       name: string;
       email: string;
       avatarUrl: string;
-      username: string
+      username: string;
     };
   }
 
@@ -15,10 +15,10 @@ declare module "next-auth" {
     name: string;
     email: string;
     avatarUrl?: string;
-    username: string
+    username: string;
   }
 
-  interface Profile{
+  interface Profile {
     picture: string;
     avatar_url: string;
   }

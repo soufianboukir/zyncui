@@ -1,22 +1,18 @@
-import nodemailer from 'nodemailer'
+import nodemailer from "nodemailer";
 
+export async function sendRegistrationEmail({ toEmail, name }: { toEmail: string; name: string }) {
+  const transporter = nodemailer.createTransport({
+    host: process.env.EMAIL_HOST,
+    port: Number(process.env.EMAIL_PORT),
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
+    },
+  });
 
-export async function sendRegistrationEmail({
-    toEmail,
-    name,
-    }: { toEmail: string, name: string}) {
-    const transporter = nodemailer.createTransport({
-        host: process.env.EMAIL_HOST,
-        port: Number(process.env.EMAIL_PORT),
-        auth: {
-            user: process.env.EMAIL_USER,
-            pass: process.env.EMAIL_PASS,
-        },
-    })
+  const subject = `Welcome to zyncUI, ${name}!`;
 
-    const subject = `Welcome to zyncUI, ${name}!`
-
-    const html = `<div style="font-family: Arial, sans-serif; padding: 20px; color: #000;">
+  const html = `<div style="font-family: Arial, sans-serif; padding: 20px; color: #000;">
             <div style="max-width: 600px; margin: 0 auto;">
                 <h2 style="font-size: 22px; margin-bottom: 20px;">Welcome to zyncUI</h2>
 
@@ -45,13 +41,12 @@ export async function sendRegistrationEmail({
                 - zyncUI Team
                 </p>
             </div>
-        </div>`
+        </div>`;
 
-
-    await transporter.sendMail({
-        from: process.env.EMAIL_FROM,
-        to: toEmail,
-        subject,
-        html
-    })
+  await transporter.sendMail({
+    from: process.env.EMAIL_FROM,
+    to: toEmail,
+    subject,
+    html,
+  });
 }

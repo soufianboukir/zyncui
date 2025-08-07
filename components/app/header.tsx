@@ -13,9 +13,9 @@ import { useSession } from "next-auth/react";
 export const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleMenu = () => setMenuOpen(prev => !prev);
-  const { data: session, status } = useSession()
+  const { data: session, status } = useSession();
 
-  if( status === 'loading') return null
+  if (status === "loading") return null;
 
   return (
     <div className="dark:border-muted/80 fixed top-0 left-0 z-50 w-full border-b border-gray-200 bg-white dark:bg-black">
@@ -53,13 +53,13 @@ export const Header = () => {
           <Twitter className="h-5 w-5 cursor-pointer text-black/70 dark:text-white/70" />
           <ThemeToggle />
           <SearchInput />
-          {
-            session ? 
-              <ProfileMenu user={session.user}/>
-            : <Button variant={"outline"} className="hidden cursor-pointer md:flex">
-                <Link href={"/login"}>Sign in</Link>
-              </Button>
-          }
+          {session ? (
+            <ProfileMenu user={session.user} />
+          ) : (
+            <Button variant={"outline"} className="hidden cursor-pointer md:flex">
+              <Link href={"/login"}>Sign in</Link>
+            </Button>
+          )}
           <div className="md:hidden">
             <MenutBar toggleMenu={toggleMenu} menuOpen={menuOpen} />
           </div>
