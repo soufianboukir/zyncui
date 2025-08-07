@@ -1,156 +1,121 @@
 import * as React from "react";
+import { ChevronRight, LayoutGrid, Rocket, StretchHorizontal } from "lucide-react";
 
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import {
   Sidebar,
   SidebarContent,
   SidebarGroup,
-  // SidebarHeader,
+  SidebarGroupContent,
+  SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
   SidebarRail,
 } from "@/components/ui/sidebar";
+import Link from "next/link";
 
-// This is sample data.
 const data = {
+  // versions: ["1.0.1", "1.1.0-alpha", "2.0.0-beta1"],
   navMain: [
     {
       title: "Getting Started",
+      icone: <Rocket className="mr-2 text-black/80 dark:text-white/80" />,
       url: "#",
+      flech: (
+        <ChevronRight className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-z-90" />
+      ),
       items: [
         {
           title: "Installation",
           url: "#",
         },
         {
-          title: "Section",
+          title: "Project Structure",
           url: "#",
         },
       ],
     },
     {
-      title: "Building Your Application",
+      title: "Sections",
+      icone: <StretchHorizontal className="mr-2 text-black/80 dark:text-white/80" />,
       url: "#",
+      flech: (
+        <ChevronRight className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-90" />
+      ),
       items: [
         {
-          title: "Routing",
+          title: "Navbar",
           url: "#",
         },
         {
-          title: "Data Fetching",
+          title: "Hero",
           url: "#",
           isActive: true,
         },
         {
-          title: "Rendering",
+          title: "Bento grid",
           url: "#",
         },
         {
-          title: "Caching",
+          title: "Carousel",
           url: "#",
         },
         {
-          title: "Styling",
+          title: "FAQ",
           url: "#",
         },
         {
-          title: "Optimizing",
+          title: "Feature",
           url: "#",
         },
         {
-          title: "Configuring",
+          title: "Gallery",
           url: "#",
         },
         {
-          title: "Testing",
+          title: "Items",
           url: "#",
         },
         {
-          title: "Authentication",
+          title: "Logos",
           url: "#",
         },
         {
-          title: "Deploying",
+          title: "Pricing",
           url: "#",
         },
         {
-          title: "Upgrading",
+          title: "Social Proof",
           url: "#",
         },
         {
-          title: "Examples",
+          title: "Stats",
+          url: "#",
+        },
+        {
+          title: "Tabs",
+          url: "#",
+        },
+        {
+          title: "Testimonials",
+          url: "#",
+        },
+        {
+          title: "CTA",
+          url: "#",
+        },
+        {
+          title: "Footer",
           url: "#",
         },
       ],
     },
     {
-      title: "API Reference",
+      title: "Templates",
+      icone: <LayoutGrid className="mr-2 text-black/80 dark:text-white/80" />,
       url: "#",
-      items: [
-        {
-          title: "Components",
-          url: "#",
-        },
-        {
-          title: "File Conventions",
-          url: "#",
-        },
-        {
-          title: "Functions",
-          url: "#",
-        },
-        {
-          title: "next.config.js Options",
-          url: "#",
-        },
-        {
-          title: "CLI",
-          url: "#",
-        },
-        {
-          title: "Edge Runtime",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Architecture",
-      url: "#",
-      items: [
-        {
-          title: "Accessibility",
-          url: "#",
-        },
-        {
-          title: "Fast Refresh",
-          url: "#",
-        },
-        {
-          title: "Next.js Compiler",
-          url: "#",
-        },
-        {
-          title: "Supported Browsers",
-          url: "#",
-        },
-        {
-          title: "Turbopack",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Community",
-      url: "#",
-      items: [
-        {
-          title: "Contribution Guide",
-          url: "#",
-        },
-      ],
+      items: [],
     },
   ],
 };
@@ -158,48 +123,42 @@ const data = {
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar {...props} className="pt-17">
-      {/* <SidebarHeader>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton size="lg" asChild>
-              <a href="#">
-                <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
-                  <GalleryVerticalEnd className="size-4" />
-                </div>
-                <div className="flex flex-col gap-0.5 leading-none">
-                  <span className="font-medium">Documentation</span>
-                  <span className="">v1.0.0</span>
-                </div>
-              </a>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        </SidebarMenu>
-      </SidebarHeader> */}
-      <SidebarContent>
-        <SidebarGroup>
-          <SidebarMenu>
-            {data.navMain.map(item => (
-              <SidebarMenuItem key={item.title}>
-                <SidebarMenuButton asChild>
-                  <a href={item.url} className="font-medium">
-                    {item.title}
-                  </a>
-                </SidebarMenuButton>
-                {item.items?.length ? (
-                  <SidebarMenuSub>
+      <SidebarContent className="gap-0">
+        {/* We create a collapsible SidebarGroup for each parent. */}
+        {data.navMain.map(item => (
+          <Collapsible
+            key={item.title}
+            title={item.title}
+            defaultOpen
+            className="group/collapsible"
+          >
+            <SidebarGroup>
+              <SidebarGroupLabel
+                asChild
+                className="group/label text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground text-sm"
+              >
+                <CollapsibleTrigger>
+                  {item?.icone}
+                  {item.title}
+                  {item.flech}
+                </CollapsibleTrigger>
+              </SidebarGroupLabel>
+              <CollapsibleContent>
+                <SidebarGroupContent>
+                  <SidebarMenu>
                     {item.items.map(item => (
-                      <SidebarMenuSubItem key={item.title}>
-                        <SidebarMenuSubButton asChild isActive={item.isActive}>
-                          <a href={item.url}>{item.title}</a>
-                        </SidebarMenuSubButton>
-                      </SidebarMenuSubItem>
+                      <SidebarMenuItem key={item.title}>
+                        <SidebarMenuButton asChild isActive={item.isActive}>
+                          <Link href={item.url}>{item.title}</Link>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
                     ))}
-                  </SidebarMenuSub>
-                ) : null}
-              </SidebarMenuItem>
-            ))}
-          </SidebarMenu>
-        </SidebarGroup>
+                  </SidebarMenu>
+                </SidebarGroupContent>
+              </CollapsibleContent>
+            </SidebarGroup>
+          </Collapsible>
+        ))}
       </SidebarContent>
       <SidebarRail />
     </Sidebar>
