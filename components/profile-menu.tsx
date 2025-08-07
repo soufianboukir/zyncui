@@ -10,20 +10,22 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { CreditCard, LifeBuoy, LogOut, MessageSquareShare, Settings, User } from "lucide-react";
 import Link from "next/link";
+import { signOut } from "next-auth/react";
+import { User as UserType } from "next-auth";
 
-export function ProfileMenu() {
+export function ProfileMenu({ user }: { user: UserType}) {  
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Avatar className="cursor-pointer">
-          <AvatarImage src={"/assets/gumball.jpeg"} />
-          <AvatarFallback>SB</AvatarFallback>
+          <AvatarImage src={user.avatarUrl} />
+          <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="mt-4" align="end">
         <DropdownMenuLabel>
-          <p>soufian.boukir@gmail.com</p>
-          <span className="text-sm text-black/80 dark:text-white/80">soufian.boukir</span>
+          <p>{user.email}</p>
+          <span className="text-sm text-black/80 dark:text-white/80">{user.username}</span>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
@@ -56,7 +58,7 @@ export function ProfileMenu() {
               <MessageSquareShare /> Feedback
             </DropdownMenuItem>
           </Link>
-          <DropdownMenuItem className="cursor-pointer">
+          <DropdownMenuItem className="cursor-pointer" onClick={() => signOut()}>
             <LogOut /> Logout
           </DropdownMenuItem>
         </DropdownMenuGroup>
