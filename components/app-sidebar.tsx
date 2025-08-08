@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ChevronRight, LayoutGrid, Rocket, StretchHorizontal } from "lucide-react";
+import { ChevronRight, LayoutGrid, Lock, Rocket, StretchHorizontal } from "lucide-react";
 
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import {
@@ -107,6 +107,24 @@ const data = {
         },
         {
           title: "Footer",
+          url: "#",
+        },
+      ],
+    },
+    {
+      title: "Authentication",
+      icone: <Lock className="mr-2 text-black/80 dark:text-white/80" />,
+      url: "#",
+      flech: (
+        <ChevronRight className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-90" />
+      ),
+      items: [
+        {
+          title: "Logins",
+          url: "#",
+        },
+        {
+          title: "Sign Up",
           url: "#",
         },
       ],
