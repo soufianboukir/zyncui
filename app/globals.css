@@ -3,11 +3,10 @@
 
 @custom-variant dark (&:is(.dark *));
 
-:root{
-  --sidebar-width: 18rem;   /* adjust to match your sidebar width (w-72 == 18rem) */
-  --footer-height: 4rem;    /* adjust for footer height */
+:root {
+  --sidebar-width: 18rem; /* adjust to match your sidebar width (w-72 == 18rem) */
+  --footer-height: 4rem; /* adjust for footer height */
 }
-
 
 @theme inline {
   --color-background: var(--background);

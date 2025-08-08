@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { AppSidebar } from "@/components/app-sidebar";
 import {
@@ -17,35 +17,30 @@ export default function SideBar({
   children: React.ReactNode;
 }>) {
   const currentPath = usePathname();
-  
+
   const formatPathSegment = (segment: string) => {
     if (!segment) return;
     return segment
-      .split('-')
+      .split("-")
       .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' ');
+      .join(" ");
   };
 
   const generateBreadcrumbs = () => {
     if (!currentPath) return null;
-    
-    const segments = currentPath.split('/').filter(segment => segment !== '');
-    
-  
+
+    const segments = currentPath.split("/").filter(segment => segment !== "");
+
     return segments.map((segment, index) => {
-      const path = `/${segments.slice(0, index + 1).join('/')}`;
+      const path = `/${segments.slice(0, index + 1).join("/")}`;
       const isLast = index === segments.length - 1;
-      
+
       return (
         <BreadcrumbItem key={path}>
           {isLast ? (
-            <span className="font-medium text-foreground">
-              {formatPathSegment(segment)}
-            </span>
+            <span className="text-foreground font-medium">{formatPathSegment(segment)}</span>
           ) : (
-              <span>
-                {formatPathSegment(segment)}
-              </span>
+            <span>{formatPathSegment(segment)}</span>
           )}
           {!isLast && <BreadcrumbSeparator />}
         </BreadcrumbItem>
@@ -61,9 +56,7 @@ export default function SideBar({
           <SidebarTrigger className="-ml-1" />
           <Separator orientation="vertical" className="mr-2 h-4" />
           <Breadcrumb>
-            <BreadcrumbList>
-              {generateBreadcrumbs()}
-            </BreadcrumbList>
+            <BreadcrumbList>{generateBreadcrumbs()}</BreadcrumbList>
           </Breadcrumb>
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4">{children}</div>
