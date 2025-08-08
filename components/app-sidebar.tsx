@@ -27,8 +27,8 @@ const data = {
       ),
       items: [
         {
-          title: "Installation",
-          url: "#",
+          title: "Introduction",
+          url: "/docs/introduction",
         },
         {
           title: "Project Structure",
@@ -44,6 +44,14 @@ const data = {
         <ChevronRight className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-90" />
       ),
       items: [
+        {
+          title: "Navbar",
+          url: "#",
+        },
+        {
+          title: "Navbar",
+          url: "#",
+        },
         {
           title: "Navbar",
           url: "#",
@@ -124,7 +132,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar {...props} className="pt-17">
       <SidebarContent className="gap-0">
-        {/* We create a collapsible SidebarGroup for each parent. */}
         {data.navMain.map(item => (
           <Collapsible
             key={item.title}

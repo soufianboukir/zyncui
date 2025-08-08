@@ -1,20 +1,58 @@
+'use client'
+
 import { AppSidebar } from "@/components/app-sidebar";
 import {
   Breadcrumb,
   BreadcrumbItem,
-  BreadcrumbLink,
   BreadcrumbList,
-  BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Separator } from "@/components/ui/separator";
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { usePathname } from "next/navigation";
 
 export default function SideBar({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const currentPath = usePathname();
+  
+  const formatPathSegment = (segment: string) => {
+    if (!segment) return;
+    return segment
+      .split('-')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  };
+
+  const generateBreadcrumbs = () => {
+    if (!currentPath) return null;
+    
+    const segments = currentPath.split('/').filter(segment => segment !== '');
+    
+  
+    return segments.map((segment, index) => {
+      const path = `/${segments.slice(0, index + 1).join('/')}`;
+      const isLast = index === segments.length - 1;
+      
+      return (
+        <BreadcrumbItem key={path}>
+          {isLast ? (
+            <span className="font-medium text-foreground">
+              {formatPathSegment(segment)}
+            </span>
+          ) : (
+              <span>
+                {formatPathSegment(segment)}
+              </span>
+          )}
+          {!isLast && <BreadcrumbSeparator />}
+        </BreadcrumbItem>
+      );
+    });
+  };
+
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -24,13 +62,7 @@ export default function SideBar({
           <Separator orientation="vertical" className="mr-2 h-4" />
           <Breadcrumb>
             <BreadcrumbList>
-              <BreadcrumbItem className="hidden md:block">
-                <BreadcrumbLink href="#">Building Your Application</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator className="hidden md:block" />
-              <BreadcrumbItem>
-                <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-              </BreadcrumbItem>
+              {generateBreadcrumbs()}
             </BreadcrumbList>
           </Breadcrumb>
         </header>

@@ -1,5 +1,6 @@
 "use client";
 
+import { Footer } from "@/components/app/footer";
 import { ProfileMenu } from "@/components/profile-menu";
 import { Button } from "@/components/ui/button";
 import { useSession } from "next-auth/react";
@@ -38,6 +39,9 @@ export default function RootLayout({
         </div>
       </header>
       {children}
+      <div className="max-w-7xl mx-auto">
+        <Footer />
+      </div>
     </div>
   );
 }
