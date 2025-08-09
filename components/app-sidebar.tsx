@@ -31,8 +31,8 @@ const data = {
           url: "/docs/introduction",
         },
         {
-          title: "Project Structure",
-          url: "#",
+          title: "Installation",
+          url: "/docs/installation",
         },
       ],
     },
