@@ -107,7 +107,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               </SidebarGroupLabel>
               <CollapsibleContent>
                 <SidebarGroupContent className="ml-8">
-                  <SidebarMenu className="flex flex-col gap-2 mt-2">
+                  <SidebarMenu className="mt-2 flex flex-col gap-2">
                     {item.items.map(item => (
                       <SidebarMenuItem key={item.title}>
                         <Link
