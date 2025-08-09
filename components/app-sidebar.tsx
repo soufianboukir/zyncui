@@ -9,14 +9,12 @@ import {
   SidebarGroupContent,
   SidebarGroupLabel,
   SidebarMenu,
-  SidebarMenuButton,
   SidebarMenuItem,
   SidebarRail,
 } from "@/components/ui/sidebar";
 import Link from "next/link";
 
 const data = {
-  // versions: ["1.0.1", "1.1.0-alpha", "2.0.0-beta1"],
   navMain: [
     {
       title: "Getting Started",
@@ -34,6 +32,10 @@ const data = {
           title: "Installation",
           url: "/docs/installation",
         },
+        {
+          title: "Project structure",
+          url: "/docs/project-structure",
+        },
       ],
     },
     {
@@ -45,76 +47,11 @@ const data = {
       ),
       items: [
         {
-          title: "Navbar",
-          url: "#",
-        },
-        {
-          title: "Navbar",
-          url: "#",
-        },
-        {
-          title: "Navbar",
-          url: "#",
-        },
-        {
           title: "Hero",
           url: "#",
-          isActive: true,
         },
         {
-          title: "Bento grid",
-          url: "#",
-        },
-        {
-          title: "Carousel",
-          url: "#",
-        },
-        {
-          title: "FAQ",
-          url: "#",
-        },
-        {
-          title: "Feature",
-          url: "#",
-        },
-        {
-          title: "Gallery",
-          url: "#",
-        },
-        {
-          title: "Items",
-          url: "#",
-        },
-        {
-          title: "Logos",
-          url: "#",
-        },
-        {
-          title: "Pricing",
-          url: "#",
-        },
-        {
-          title: "Social Proof",
-          url: "#",
-        },
-        {
-          title: "Stats",
-          url: "#",
-        },
-        {
-          title: "Tabs",
-          url: "#",
-        },
-        {
-          title: "Testimonials",
-          url: "#",
-        },
-        {
-          title: "CTA",
-          url: "#",
-        },
-        {
-          title: "Footer",
+          title: "NavBar",
           url: "#",
         },
       ],
@@ -128,11 +65,11 @@ const data = {
       ),
       items: [
         {
-          title: "Logins",
+          title: "login forms",
           url: "#",
         },
         {
-          title: "Sign Up",
+          title: "sign up forms",
           url: "#",
         },
       ],
@@ -160,7 +97,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <SidebarGroup>
               <SidebarGroupLabel
                 asChild
-                className="group/label text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground text-sm"
+                className="group/label text-sidebar-foreground cursor-pointer text-sm"
               >
                 <CollapsibleTrigger>
                   {item?.icone}
@@ -169,13 +106,16 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 </CollapsibleTrigger>
               </SidebarGroupLabel>
               <CollapsibleContent>
-                <SidebarGroupContent>
-                  <SidebarMenu>
+                <SidebarGroupContent className="ml-8">
+                  <SidebarMenu className="mt-2 flex flex-col gap-2">
                     {item.items.map(item => (
                       <SidebarMenuItem key={item.title}>
-                        <SidebarMenuButton asChild isActive={item.isActive}>
-                          <Link href={item.url}>{item.title}</Link>
-                        </SidebarMenuButton>
+                        <Link
+                          href={item.url}
+                          className="text-black/70 duration-150 hover:text-black dark:text-white/70 dark:hover:text-white"
+                        >
+                          {item.title}
+                        </Link>
                       </SidebarMenuItem>
                     ))}
                   </SidebarMenu>
