@@ -29,12 +29,15 @@ export const Header = () => {
           </Link>
           <div className="hidden items-center gap-6 md:flex">
             <Link
-              href={"/installation"}
+              href={"/docs/installation"}
               className="duration-150 hover:text-black dark:hover:text-white"
             >
               Installation
             </Link>
-            <Link href={"/docs"} className="duration-150 hover:text-black dark:hover:text-white">
+            <Link
+              href={"/docs/introduction"}
+              className="duration-150 hover:text-black dark:hover:text-white"
+            >
               Docs
             </Link>
             <Link href={"/blocks"} className="duration-150 hover:text-black dark:hover:text-white">
