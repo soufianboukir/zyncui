@@ -8,49 +8,58 @@ import Link from "next/link";
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { Loader } from "lucide-react";
-// import { z } from "zod";
+import { z } from "zod";
+
+const loginSchema = z.object({
+  email: z
+    .string()
+    .min(1, { message: "Email is required" })
+    .email({ message: "Please enter a valid email address" }),
+  password: z
+    .string()
+    .min(1, { message: "Password is required" })
+    .min(6, { message: "Password must be at least 6 characters long" }),
+});
 
 export const LoginForm1 = () => {
-  // const [errors, setErrors] = useState<{ email: string; password: string }>({
-  //   email: "",
-  //   password: "",
-  // });
+  const [formData, setFormData] = useState<{ email: string; password: string }>({
+    email: "",
+    password: "",
+  });
+
+  const [errors, setErrors] = useState<{ email: string; password: string }>({
+    email: "",
+    password: "",
+  });
+
   const [loading, setLoading] = useState<{ login: boolean; google: boolean; github: boolean }>({
     login: false,
     google: false,
     github: false,
   });
 
-  // const loginSchema = z.object({
-  //   email: z.string().email({ message: "Invalid email address" }),
-  //   password: z.string().min(6, { message: "Password must be at least 6 characters" }),
-  // });
+  const handleChange = (e: React.FormEvent<HTMLFormElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
 
-  // type LoginForm = z.infer<typeof loginSchema>;
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // const formData = new FormData(e.currentTarget);
+    const validateFormData = loginSchema.safeParse({
+      email: formData.email,
+      password: formData.password,
+    });
 
-    // const data = {
-    //   email: formData.get("email"),
-    //   password: formData.get("password"),
-    // };
-
-    // const result = loginSchema.safeParse(data);
-
-    // if (!result.success) {
-    //   const { email, password } = result.error.format();
-    //   console.log("Errors", result.error.format());
-    //   console.log("Email error:", email);
-    //   console.log("password error:", password);
-    //   email && setErrors(prev => ({ ...prev, email: email.errors }));
-    //   password && setErrors(prev => ({ ...prev, password: password.errors }));
-    //   return;
-    // }
+    setErrors({ email: "", password: "" });
+    if (!validateFormData.success) {
+      const { email, password } = validateFormData.error.flatten().fieldErrors;
+      setErrors({ email, password });
+      return;
+    }
 
     setLoading(prev => ({ ...prev, login: true }));
+
     setTimeout(() => {
       setLoading(prev => ({ ...prev, login: false }));
     }, 2000);
@@ -74,10 +83,51 @@ export const LoginForm1 = () => {
         <CardTitle className="text-center text-[23px] font-extrabold">Welcome Back</CardTitle>
         <CardContent>
           <form onSubmit={handleSubmit} className="mb-[15px] flex w-full flex-col gap-2.5">
-            <Input type="email" placeholder="m@example.com" className="px-3.5 py-3" />
-            {/* {errors.email && <p className="text-red-600">{errors.email}</p>} */}
-            <Input type="password" placeholder="********" className="px-3.5 py-3" />
-            {/* {errors.password && <p className="text-red-600">{errors.password}</p>} */}
+            <Input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={e => {
+                handleChange(e);
+              }}
+              placeholder="m@example.com"
+              className={`px-3.5 py-3 ${errors.email && "border-red-400 bg-red-500/10"}`}
+            />
+            {errors.email && (
+              <p className="mt-2 flex items-center text-sm text-red-400">
+                <svg className="mr-1.5 h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fillRule="evenodd"
+                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                {errors.email}
+              </p>
+            )}
+
+            <Input
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={e => {
+                handleChange(e);
+              }}
+              placeholder="********"
+              className={`px-3.5 py-3 ${errors.password && "border-red-400 bg-red-500/10"}`}
+            />
+            {errors.password && (
+              <p className="mt-2 flex items-center text-sm text-red-400">
+                <svg className="mr-1.5 h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fillRule="evenodd"
+                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                {errors.password}
+              </p>
+            )}
 
             <p className="m-0 text-end text-[#747474] underline decoration-[#747474] dark:text-white">
               <span className="cursor-pointer text-[9px] font-bold hover:text-black dark:hover:text-white">
@@ -85,7 +135,12 @@ export const LoginForm1 = () => {
               </span>
             </p>
 
-            <Button type="submit" variant="outline" className="cursor-pointer">
+            <Button
+              type="submit"
+              variant="outline"
+              disabled={loading.login}
+              className="cursor-pointer"
+            >
               Log in
             </Button>
           </form>
