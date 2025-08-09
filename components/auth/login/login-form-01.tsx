@@ -11,14 +11,10 @@ import { Loader } from "lucide-react";
 import { z } from "zod";
 
 const loginSchema = z.object({
-  email: z
-    .string()
-    .min(1, { message: "Email is required" })
-    .email({ message: "Please enter a valid email address" }),
-  password: z
-    .string()
-    .min(1, { message: "Password is required" })
-    .min(6, { message: "Password must be at least 6 characters long" }),
+  email: z.string().min(1, { message: "Email is required" }),
+  // .email({ message: "Please enter a valid email address" }),
+  password: z.string().min(1, { message: "Password is required" }),
+  // .min(6, { message: "Password must be at least 6 characters long" }),
 });
 
 export const LoginForm1 = () => {
@@ -27,7 +23,7 @@ export const LoginForm1 = () => {
     password: "",
   });
 
-  const [errors, setErrors] = useState<{ email: string; password: string }>({
+  const [errors, setErrors] = useState<{ email?: string; password?: string }>({
     email: "",
     password: "",
   });
@@ -38,10 +34,10 @@ export const LoginForm1 = () => {
     github: false,
   });
 
-  const handleChange = (e: React.FormEvent<HTMLFormElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
+  // const handleChange = (e: React.FormEvent<HTMLFormElement>) => {
+  //   const { name, value } = e.target;
+  //   setFormData(prev => ({ ...prev, [name]: value }));
+  // };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -54,7 +50,7 @@ export const LoginForm1 = () => {
     setErrors({ email: "", password: "" });
     if (!validateFormData.success) {
       const { email, password } = validateFormData.error.flatten().fieldErrors;
-      setErrors({ email, password });
+      setErrors({ email: email?.[0], password: password?.[0] });
       return;
     }
 
@@ -88,7 +84,7 @@ export const LoginForm1 = () => {
               name="email"
               value={formData.email}
               onChange={e => {
-                handleChange(e);
+                setFormData(prev => ({ ...prev, email: e.target.value }));
               }}
               placeholder="m@example.com"
               className={`px-3.5 py-3 ${errors.email && "border-red-400 bg-red-500/10"}`}
@@ -111,7 +107,7 @@ export const LoginForm1 = () => {
               name="password"
               value={formData.password}
               onChange={e => {
-                handleChange(e);
+                setFormData(prev => ({ ...prev, password: e.target.value }));
               }}
               placeholder="********"
               className={`px-3.5 py-3 ${errors.password && "border-red-400 bg-red-500/10"}`}

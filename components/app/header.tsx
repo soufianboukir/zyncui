@@ -29,12 +29,15 @@ export const Header = () => {
           </Link>
           <div className="hidden items-center gap-6 md:flex">
             <Link
-              href={"/installation"}
+              href={"/docs/installation"}
               className="duration-150 hover:text-black dark:hover:text-white"
             >
               Installation
             </Link>
-            <Link href={"/docs"} className="duration-150 hover:text-black dark:hover:text-white">
+            <Link
+              href={"/docs/introduction"}
+              className="duration-150 hover:text-black dark:hover:text-white"
+            >
               Docs
             </Link>
             <Link href={"/blocks"} className="duration-150 hover:text-black dark:hover:text-white">
@@ -56,16 +59,16 @@ export const Header = () => {
           <Twitter className="h-5 w-5 cursor-pointer text-black/70 dark:text-white/70" />
           <ThemeToggle />
           <SearchInput />
-          {session ? (
-            <ProfileMenu user={session.user} />
-          ) : (
-            <Button variant={"outline"} className="hidden cursor-pointer md:flex">
-              <Link href={"/login"}>Sign in</Link>
-            </Button>
-          )}
           <div className="md:hidden">
             <MenutBar toggleMenu={toggleMenu} menuOpen={menuOpen} />
           </div>
+          {session ? (
+            <ProfileMenu user={session.user} />
+          ) : (
+            <Button variant={"outline"} className="cursor-pointer">
+              <Link href={"/login"}>Sign in</Link>
+            </Button>
+          )}
         </div>
       </div>
     </div>
