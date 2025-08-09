@@ -1,24 +1,9 @@
 "use client";
 
 import CodeBlock from "@/components/code-block";
+import { nextJsSnippets, reactJsSnippets } from "@/constants/installation/steps";
+
 export default function IntroductionPage() {
-  const componentCode = `npx create-next-app@latest my-project`;
-  const nextInstallationSteps = `
-TypeScript? → Yes (recommended)
-ESLint? → Yes
-Tailwind CSS? → Yes
-Src directory? → Your choice
-App Router (recommended) → Yes
-Import alias? → Default (@/*)`;
-
-  const devServer = `cd my-project
-npm run dev`;
-
-  const example = `import LoginPage from "components/login-form-01";
-
-export default function Page() {
-  return <LoginPage />;
-}`;
   return (
     <main className="font-medium">
       <div className="space-y-10">
@@ -60,18 +45,18 @@ export default function Page() {
               <span>
                 Use the official Next.js starter with TypeScript (optional, but recommended):
               </span>
-              <CodeBlock code={componentCode} language="tsx" />
+              <CodeBlock code={nextJsSnippets.createApp} language="tsx" copy />
 
               <div className="mt-3">
                 <h1 className="text-lg">2. You&apos;ll be asked:</h1>
-                <CodeBlock code={nextInstallationSteps} language="tsx" />
+                <CodeBlock code={nextJsSnippets.installationSteps} language="tsx" />
               </div>
 
               <div className="mt-3">
                 <h1 className="text-lg">3. Verify Installation</h1>
                 <p>If the command finished without errors, your Next.js project is ready.</p>
                 <span>Run the development server:</span>
-                <CodeBlock code={devServer} language="tsx" />
+                <CodeBlock code={nextJsSnippets.devServer} language="tsx" copy />
               </div>
 
               <div className="mt-3">
@@ -80,7 +65,7 @@ export default function Page() {
                   Now that your Next.js project is running, you can start adding our prebuilt pages
                   and components.
                 </p>
-                <CodeBlock code={example} language="tsx" />
+                <CodeBlock code={nextJsSnippets.example} language="tsx" copy />
               </div>
             </div>
           </div>
@@ -108,49 +93,23 @@ export default function Page() {
 
               <div className="mt-3">
                 <h1 className="text-lg">2. Select Project Options:</h1>
-                <CodeBlock
-                  code={`? Project name: my-project
-        ? Select a framework: › React
-        ? Select a variant: › TypeScript`}
-                  language="bash"
-                />
+                <CodeBlock code={reactJsSnippets.projectOptions} language="bash" />
               </div>
 
               <div className="mt-3">
                 <h1 className="text-lg">3. Install Tailwind CSS</h1>
                 <span>Follow the Tailwind setup for Vite projects:</span>
-                <CodeBlock
-                  code={`npm install -D tailwindcss postcss autoprefixer
-        npx tailwindcss init -p`}
-                  language="bash"
-                />
+                <CodeBlock code={reactJsSnippets.tailwindInstallation} language="bash" />
               </div>
 
               <div className="mt-3">
                 <h1 className="text-lg">4. Configure Tailwind</h1>
-                <CodeBlock
-                  code={`// tailwind.config.js
-        export default {
-          content: [
-            "./index.html",
-            "./src/**/*.{js,ts,jsx,tsx}",
-          ],
-          theme: { extend: {} },
-          plugins: [],
-        }`}
-                  language="tsx"
-                />
+                <CodeBlock code={reactJsSnippets.tailwindConfig} language="tsx" />
               </div>
 
               <div className="mt-3">
                 <h1 className="text-lg">5. Add Tailwind Directives</h1>
-                <CodeBlock
-                  code={`/* src/index.css */
-        @tailwind base;
-        @tailwind components;
-        @tailwind utilities;`}
-                  language="css"
-                />
+                <CodeBlock code={reactJsSnippets.tailwindDirectives} language="css" />
               </div>
 
               <div className="mt-3">
@@ -161,14 +120,7 @@ export default function Page() {
 
               <div className="mt-3">
                 <h1 className="text-lg">7. Start Using Prebuilt Pages</h1>
-                <CodeBlock
-                  code={`import LoginPage from "your-library/pages/LoginPage";
-
-        export default function App() {
-          return <LoginPage />;
-        }`}
-                  language="tsx"
-                />
+                <CodeBlock code={nextJsSnippets.example} language="tsx" />
               </div>
             </div>
           </div>

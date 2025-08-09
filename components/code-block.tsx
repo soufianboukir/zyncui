@@ -6,7 +6,15 @@ import { atomDark, prism } from "react-syntax-highlighter/dist/esm/styles/prism"
 import { useState } from "react";
 import { Copy, CopyCheck } from "lucide-react";
 
-export default function CodeBlock({ code, language }: { code: string; language: string }) {
+export default function CodeBlock({
+  code,
+  language,
+  copy,
+}: {
+  code: string;
+  language: string;
+  copy?: boolean;
+}) {
   const { theme } = useTheme();
   const [copied, setCopied] = useState(false);
 
@@ -21,26 +29,40 @@ export default function CodeBlock({ code, language }: { code: string; language: 
   };
 
   return (
-    <div className="group relative">
-      <button
-        onClick={handleCopy}
-        className="absolute top-2 right-2 cursor-pointer rounded bg-white/90 p-1.5 text-xs text-black dark:bg-white/10 dark:text-white/90"
-      >
-        {copied ? <CopyCheck className="h-4 w-4 text-green-600" /> : <Copy className="h-4 w-4" />}
-      </button>
+    <div className="group relative mt-3 w-[420px] sm:w-[100%] md:w-[100%]">
+      {copy ? (
+        <button
+          onClick={handleCopy}
+          className="absolute top-2 right-2 z-10 cursor-pointer rounded bg-white/90 p-1.5 text-xs text-black transition-opacity hover:opacity-80 dark:bg-white/10 dark:text-white/90"
+          aria-label="Copy code"
+        >
+          {copied ? (
+            <CopyCheck className="h-3.5 w-3.5 text-green-600" />
+          ) : (
+            <Copy className="h-3.5 w-3.5" />
+          )}
+        </button>
+      ) : null}
 
-      <SyntaxHighlighter
-        language={language}
-        style={theme === "dark" ? atomDark : prism}
-        customStyle={{
-          borderRadius: "0.5rem",
-          padding: "1.5rem",
-          fontSize: "0.9rem",
-          maxHeight: "300px",
-        }}
-      >
-        {code}
-      </SyntaxHighlighter>
+      <div className="overflow-x-auto rounded-lg">
+        <SyntaxHighlighter
+          language={language}
+          style={theme === "dark" ? atomDark : prism}
+          customStyle={{
+            borderRadius: "0.5rem",
+            padding: "1rem",
+            fontSize: "0.9rem",
+            maxHeight: "600px",
+            margin: 0,
+            overflowX: "auto",
+            whiteSpace: "pre-wrap",
+            wordWrap: "break-word",
+          }}
+          wrapLongLines={true}
+        >
+          {code}
+        </SyntaxHighlighter>
+      </div>
     </div>
   );
 }

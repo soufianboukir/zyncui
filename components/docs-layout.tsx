@@ -49,10 +49,10 @@ export default function DocsLayout({ children, sections }: DocsLayoutProps) {
 
   return (
     <div className="flex min-h-screen">
-      <main className="prose dark:prose-invert flex w-full max-w-4xl justify-start md:max-w-5xl">
+      <main className="prose dark:prose-invert flex w-full justify-start md:max-w-5xl md:pl-10">
         {children}
       </main>
-      <nav className="fixed top-34 right-20 hidden flex-col border-gray-200 p-4 2xl:flex dark:border-gray-700">
+      <nav className="fixed top-34 right-14 hidden flex-col border-gray-200 p-4 2xl:flex dark:border-gray-700">
         <p className="mb-3 font-medium">On this page</p>
         {sections.map(({ id, label }) => (
           <Link
@@ -63,10 +63,10 @@ export default function DocsLayout({ children, sections }: DocsLayoutProps) {
             duration={500}
             offset={-100}
             onSetActive={to => setActiveId(to)}
-            className={`cursor-pointer rounded px-5 py-0.5 transition-colors ${
+            className={`cursor-pointer rounded py-0.5 pl-4 transition-colors ${
               activeId === id
-                ? "text-black dark:text-white"
-                : "text-black/60 hover:text-black dark:text-white/60 dark:hover:text-white"
+                ? "rounded-none border-l-2 border-l-blue-500 text-black dark:text-white"
+                : "rounded-none border-l-2 border-l-white text-black/60 hover:text-black dark:border-l-black dark:text-white/60 dark:hover:text-white"
             }`}
           >
             {label}
