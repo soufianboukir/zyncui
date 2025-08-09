@@ -137,7 +137,7 @@ export const LoginForm1 = () => {
           <p className="m-0 text-xs text-[#747474] dark:text-white">
             Dont have an account?
             <span className="ml-1 cursor-pointer text-xs font-extrabold text-black underline decoration-black dark:text-white dark:decoration-white">
-              Sign up
+              <Link href="#">Sign up</Link>
             </span>
           </p>
 
@@ -161,7 +161,6 @@ export const LoginForm1 = () => {
 
             <Button
               type="button"
-              variant="outline"
               className="flex w-full cursor-pointer items-center justify-center gap-2 py-4"
               onClick={handleGithubOAuth}
               disabled={loading.github}
