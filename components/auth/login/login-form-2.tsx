@@ -4,8 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Loader } from "lucide-react";
-import { signIn } from "next-auth/react";
+import { AlertCircle, CircleAlert, Loader } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -29,14 +28,14 @@ export const LoginForm2 = () => {
 
   const [loading, setLoading] = useState<{
     login: boolean;
-    twiter: boolean;
+    x: boolean;
     google: boolean;
     github: boolean;
   }>({
     login: false,
     google: false,
     github: false,
-    twiter: false,
+    x: false,
   });
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -63,20 +62,27 @@ export const LoginForm2 = () => {
 
   async function handleGoogleOAuth() {
     setLoading(prev => ({ ...prev, google: true }));
-    await signIn("google", { callbackUrl: "/" });
-    setLoading(prev => ({ ...prev, google: false }));
+
+    setTimeout(() => {
+      setLoading(prev => ({ ...prev, google: false }));
+    }, 3000);
+    // your OAuth logic with google here
   }
 
   async function handleGithubOAuth() {
     setLoading(prev => ({ ...prev, github: true }));
-    await signIn("github", { callbackUrl: "/" });
-    setLoading(prev => ({ ...prev, github: false }));
+    setTimeout(() => {
+      setLoading(prev => ({ ...prev, github: false }));
+    }, 3000);
+    // your OAuth github with google here
   }
 
   async function handleXOAuth() {
-    // setLoading(prev => ({ ...prev, meta: true }));
-    // // await signIn("github", { callbackUrl: "/" });
-    // setLoading(prev => ({ ...prev, meta: false }));
+    setLoading(prev => ({ ...prev, x: true }));
+    setTimeout(() => {
+      setLoading(prev => ({ ...prev, x: false }));
+    }, 3000);
+    // your OAuth x with google here
   }
 
   return (
@@ -86,13 +92,13 @@ export const LoginForm2 = () => {
           <CardHeader>
             <CardTitle className="text-center text-[23px] font-extrabold">Welcome back</CardTitle>
             <CardDescription className="text-center">
-              Login or create account with Google or Github
+              Continue with your best provider
             </CardDescription>
           </CardHeader>
 
           <CardContent>
             <form onSubmit={handleSubmit} className="flex flex-col gap-7">
-              <div className="flex flex-col gap-2.5">
+              <div className="flex flex-col gap-2">
                 <Label>Email</Label>
                 <Input
                   id="email"
@@ -106,24 +112,18 @@ export const LoginForm2 = () => {
                   className={`px-3.5 py-3 ${errors.email && "border-red-400 bg-red-500/10"}`}
                 />
                 {errors.email && (
-                  <p className="mt-2 flex items-center text-sm text-red-400">
-                    <svg className="mr-1.5 h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
-                      <path
-                        fillRule="evenodd"
-                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
+                  <p className="flex items-center text-sm text-red-400">
+                    <CircleAlert className="mr-2 h-4 w-4" />
                     {errors.email}
                   </p>
                 )}
               </div>
 
-              <div className="flex flex-col gap-2.5">
+              <div className="flex flex-col gap-2">
                 <div className="m-0 flex justify-between p-0">
                   <Label>Password</Label>
                   <Label className="m-0 text-end underline">
-                    <span className="cursor-pointer text-sm font-bold">Forgot your password?</span>
+                    <span className="cursor-pointer text-sm font-bold">Forgot password?</span>
                   </Label>
                 </div>
                 <Input
@@ -135,28 +135,17 @@ export const LoginForm2 = () => {
                   }}
                   value={formData.password}
                   placeholder="********"
-                  className={`px-3.5 py-3 ${errors.email && "border-red-400 bg-red-500/10"}`}
+                  className={`px-3.5 py-3 ${errors.email && "border-1 border-red-400 bg-red-500/10"}`}
                 />
                 {errors.password && (
-                  <p className="mt-2 flex items-center text-sm text-red-400">
-                    <svg className="mr-1.5 h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
-                      <path
-                        fillRule="evenodd"
-                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
+                  <p className="flex items-center text-sm text-red-400">
+                    <AlertCircle className="mr-2 h-4 w-4" />
                     {errors.password}
                   </p>
                 )}
               </div>
-              <Button
-                type="submit"
-                variant="outline"
-                className="cursor-pointer"
-                disabled={loading.login}
-              >
-                Login
+              <Button type="submit" className="cursor-pointer" disabled={loading.login}>
+                {loading.login ? <Loader className="animate-spin" /> : "Login"}
               </Button>
             </form>
 
@@ -177,13 +166,7 @@ export const LoginForm2 = () => {
                   <Loader className="animate-spin" />
                 ) : (
                   <>
-                    <Image
-                      className="bg-white"
-                      src="/icons/github.svg"
-                      alt="github icon"
-                      width={20}
-                      height={20}
-                    />
+                    <Image src="/icons/github.svg" alt="github icon" width={20} height={20} />
                   </>
                 )}
               </Button>
@@ -207,13 +190,13 @@ export const LoginForm2 = () => {
                 type="button"
                 className="cursor-pointer border bg-white"
                 onClick={handleXOAuth}
-                disabled={loading.twiter}
+                disabled={loading.x}
               >
-                {loading.twiter ? (
+                {loading.x ? (
                   <Loader className="animate-spin" />
                 ) : (
                   <>
-                    <Image src="/icons/twiter.png" alt="meta icon" width={20} height={20} />
+                    <Image src="/icons/x.png" alt="x icon" width={20} height={20} />
                   </>
                 )}
               </Button>
