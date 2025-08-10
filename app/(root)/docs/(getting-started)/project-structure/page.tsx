@@ -1,10 +1,11 @@
 "use client";
 
 import CodeBlock from "@/components/code-block";
+import { Badge } from "@/components/ui/badge";
 
 export default function ProjectStructurePage() {
   return (
-    <main className="font-medium">
+    <main className="text-lg">
       <div className="space-y-10">
         <section id="overview" className="space-y-4">
           <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
@@ -89,8 +90,10 @@ export default function ProjectStructurePage() {
           />
           <p className="mt-3 text-gray-700 dark:text-gray-300">
             This is a typical folder layout for React projects created with Vite. The{" "}
-            <code className="rounded bg-gray-200 px-1 dark:bg-white/15">src</code> folder holds your
-            main source code including components, pages, styles, and utilities.
+            <code>
+              <Badge variant={"secondary"}>src</Badge>
+            </code>{" "}
+            folder holds your main source code including components, pages, styles, and utilities.
           </p>
         </section>
 
@@ -98,27 +101,29 @@ export default function ProjectStructurePage() {
           <h1 className="text-2xl font-semibold">Finding Components</h1>
           <p>
             All reusable UI elements are stored in the{" "}
-            <code className="rounded bg-gray-200 px-1 py-0.5 dark:bg-white/15">components</code>{" "}
+            <code>
+              <Badge variant={"secondary"}>components</Badge>
+            </code>{" "}
             folder — either at the root level (Next.js) or inside <code>src/</code> (React).
           </p>
           <ul className="list-inside list-disc">
             <li>
               <strong>Buttons</strong> →{" "}
-              <code className="rounded bg-gray-200 px-1 dark:bg-white/15">
-                components/ui/button.tsx
+              <code>
+                <Badge variant={"secondary"}>components/ui/button.tsx</Badge>
               </code>
             </li>
             <li>
               <strong>Login Page</strong> →{" "}
-              <code className="rounded bg-gray-200 px-1 dark:bg-white/15">
-                components/login-form-1.tsx
+              <code>
+                <Badge variant={"secondary"}>components/login-form-1.tsx</Badge>
               </code>{" "}
               (can be imported into any page).
             </li>
             <li>
               <strong>Navigation Bar</strong> →{" "}
-              <code className="rounded bg-gray-200 px-1 dark:bg-white/15">
-                components/navbar.tsx
+              <code>
+                <Badge variant={"secondary"}>components/navbar.tsx</Badge>
               </code>
             </li>
           </ul>
@@ -133,10 +138,12 @@ export default function ProjectStructurePage() {
           <p>
             Now that you understand the project structure, start customizing components and adding
             new pages. For styling, edit{" "}
-            <code className="rounded bg-gray-200 px-1 dark:bg-white/15">tailwind.config.js</code>{" "}
+            <code>
+              <Badge variant={"secondary"}>tailwind.config.js</Badge>
+            </code>{" "}
             and{" "}
-            <code className="rounded bg-gray-200 px-1 dark:bg-white/15">
-              src/styles/globals.css
+            <code>
+              <Badge variant={"secondary"}>src/styles/globals.css</Badge>
             </code>
             .
           </p>

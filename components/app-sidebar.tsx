@@ -66,11 +66,11 @@ const data = {
       items: [
         {
           title: "login forms",
-          url: "#",
+          url: "/docs/blocks/login",
         },
         {
           title: "sign up forms",
-          url: "#",
+          url: "/docks/blocks/signup",
         },
       ],
     },
