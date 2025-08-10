@@ -5,10 +5,7 @@ import {
   Dialog,
   DialogClose,
   DialogContent,
-  DialogDescription,
   DialogFooter,
-  DialogHeader,
-  DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
@@ -87,25 +84,18 @@ export const LoginForm3 = () => {
     <div className={cn("flex h-screen flex-col items-center justify-center gap-6")}>
       <Card className="min-w-sm md:min-w-md">
         <div className="text-center">
-          {/**dialog login usin email and password */}
           <Dialog>
-            <CardHeader className="mb-1 text-center">
-              <CardTitle className="text-xl">Welcome back</CardTitle>
-              <CardDescription>Login or create account with Google or Github</CardDescription>
-            </CardHeader>
             <form onSubmit={handleSubmit}>
               <DialogTrigger asChild>
                 <Button variant="outline" className="cursor-pointer border-0 hover:bg-white">
-                  Open Login
+                  Sign in
                 </Button>
               </DialogTrigger>
               <DialogContent className="sm:max-w-[425px]">
-                <DialogHeader>
-                  <DialogTitle className="text-center text-2xl font-extrabold">Login</DialogTitle>
-                  <DialogDescription className="text-md text-center">
-                    Continue with your best provider
-                  </DialogDescription>
-                </DialogHeader>
+                <CardHeader className="mb-1 text-center">
+                  <CardTitle className="text-xl">Welcome back</CardTitle>
+                  <CardDescription>Login or create account with Google or Github</CardDescription>
+                </CardHeader>
                 <div className="grid gap-4">
                   <div className="grid gap-3">
                     <Label htmlFor="email">Email</Label>
@@ -147,6 +137,51 @@ export const LoginForm3 = () => {
                     )}
                   </div>
                 </div>
+
+                <CardContent>
+                  <div className="flex flex-col gap-4">
+                    <Button
+                      variant="outline"
+                      className="flex w-full cursor-pointer items-center justify-center gap-2 py-4"
+                      onClick={handleGoogleOAuth}
+                      disabled={loading.google}
+                      type="button"
+                    >
+                      {loading.google ? (
+                        <Loader className="animate-spin" />
+                      ) : (
+                        <>
+                          <Image src={"/icons/google.webp"} width={20} height={20} alt="google icon" />{" "}
+                          Continue with google
+                        </>
+                      )}
+                    </Button>
+
+                    <Button
+                      variant="outline"
+                      className="flex w-full cursor-pointer items-center justify-center gap-2 bg-black py-4 text-white hover:bg-black/85 hover:text-white dark:bg-white dark:text-black dark:hover:bg-white/85"
+                      onClick={handleGithubOAuth}
+                      disabled={loading.github}
+                      type="button"
+                    >
+                      {loading.github ? (
+                        <Loader className="animate-spin" />
+                      ) : (
+                        <>
+                          <Image
+                            src={"/icons/github.svg"}
+                            width={20}
+                            height={20}
+                            alt="github icon"
+                            className="invert dark:invert-0"
+                          />{" "}
+                          Continue with github
+                        </>
+                      )}
+                    </Button>
+                  </div>
+                </CardContent>
+
                 <DialogFooter>
                   <DialogClose asChild>
                     <Button variant="outline">Cancel</Button>
@@ -158,52 +193,7 @@ export const LoginForm3 = () => {
               </DialogContent>
             </form>
           </Dialog>
-        </div>
-
-        {/*login for github or google*/}
-        <CardContent>
-          <div className="flex flex-col gap-4">
-            <Button
-              variant="outline"
-              className="flex w-full cursor-pointer items-center justify-center gap-2 py-4"
-              onClick={handleGoogleOAuth}
-              disabled={loading.google}
-              type="button"
-            >
-              {loading.google ? (
-                <Loader className="animate-spin" />
-              ) : (
-                <>
-                  <Image src={"/icons/google.webp"} width={20} height={20} alt="google icon" />{" "}
-                  Continue with google
-                </>
-              )}
-            </Button>
-
-            <Button
-              variant="outline"
-              className="flex w-full cursor-pointer items-center justify-center gap-2 bg-black py-4 text-white hover:bg-black/85 hover:text-white dark:bg-white dark:text-black dark:hover:bg-white/85"
-              onClick={handleGithubOAuth}
-              disabled={loading.github}
-              type="button"
-            >
-              {loading.github ? (
-                <Loader className="animate-spin" />
-              ) : (
-                <>
-                  <Image
-                    src={"/icons/github.svg"}
-                    width={20}
-                    height={20}
-                    alt="github icon"
-                    className="invert dark:invert-0"
-                  />{" "}
-                  Continue with github
-                </>
-              )}
-            </Button>
-          </div>
-        </CardContent>
+        </div>        
       </Card>
     </div>
   );

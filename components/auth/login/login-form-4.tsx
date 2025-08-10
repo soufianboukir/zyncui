@@ -106,10 +106,10 @@ export const LoginForm4 = () => {
         <CardContent>
           {/**form login */}
           <form onSubmit={handleSubmit} className="flex w-full flex-col gap-8 pb-7">
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-1">
               <div className="relative">
                 <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                  <Mail className="text-base-content/40 h-5 w-5" />
+                  <Mail className="text-base-content/40 h-5 w-5 dark:text-white/50 text-black/50" />
                 </div>
                 <Input
                   id="email"
@@ -131,10 +131,10 @@ export const LoginForm4 = () => {
               )}
             </div>
 
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-1">
               <div className="relative">
                 <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                  <Lock className="text-base-content/40 h-5 w-5" />
+                  <Lock className="text-base-content/40 h-5 w-5 dark:text-white/50 text-black/50" />
                 </div>
                 <Input
                   id="password"
@@ -149,13 +149,14 @@ export const LoginForm4 = () => {
                 />
                 <button
                   type="button"
-                  className="absolute inset-y-0 right-0 flex items-center pr-3"
+                  className={`absolute inset-y-0 right-0 flex items-center pr-3 text-black dark:text-white cursor-pointer`}
+                  disabled={formData.password === ''}
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? (
-                    <EyeOff className="text-base-content/40 h-5 w-5" />
+                    <EyeOff className="h-5 w-5" />
                   ) : (
-                    <Eye className="text-base-content/40 h-5 w-5" />
+                    <Eye className="h-5 w-5" />
                   )}
                 </button>
               </div>
@@ -167,7 +168,7 @@ export const LoginForm4 = () => {
                   </p>
                 )}
                 <Label className="m-0 flex justify-end underline">
-                  <span className="cursor-pointer text-[13px] font-bold">Forgot password</span>
+                  <span className="cursor-pointer text-[13px] font-bold">Forgot password?</span>
                 </Label>
               </div>
             </div>
