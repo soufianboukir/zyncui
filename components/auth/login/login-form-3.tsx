@@ -151,7 +151,12 @@ export const LoginForm3 = () => {
                         <Loader className="animate-spin" />
                       ) : (
                         <>
-                          <Image src={"/icons/google.webp"} width={20} height={20} alt="google icon" />{" "}
+                          <Image
+                            src={"/icons/google.webp"}
+                            width={20}
+                            height={20}
+                            alt="google icon"
+                          />{" "}
                           Continue with google
                         </>
                       )}
@@ -193,7 +198,7 @@ export const LoginForm3 = () => {
               </DialogContent>
             </form>
           </Dialog>
-        </div>        
+        </div>
       </Card>
     </div>
   );

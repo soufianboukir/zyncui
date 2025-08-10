@@ -109,7 +109,7 @@ export const LoginForm4 = () => {
             <div className="flex flex-col gap-1">
               <div className="relative">
                 <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                  <Mail className="text-base-content/40 h-5 w-5 dark:text-white/50 text-black/50" />
+                  <Mail className="text-base-content/40 h-5 w-5 text-black/50 dark:text-white/50" />
                 </div>
                 <Input
                   id="email"
@@ -134,7 +134,7 @@ export const LoginForm4 = () => {
             <div className="flex flex-col gap-1">
               <div className="relative">
                 <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                  <Lock className="text-base-content/40 h-5 w-5 dark:text-white/50 text-black/50" />
+                  <Lock className="text-base-content/40 h-5 w-5 text-black/50 dark:text-white/50" />
                 </div>
                 <Input
                   id="password"
@@ -149,15 +149,11 @@ export const LoginForm4 = () => {
                 />
                 <button
                   type="button"
-                  className={`absolute inset-y-0 right-0 flex items-center pr-3 text-black dark:text-white cursor-pointer`}
-                  disabled={formData.password === ''}
+                  className={`absolute inset-y-0 right-0 flex cursor-pointer items-center pr-3 text-black dark:text-white`}
+                  disabled={formData.password === ""}
                   onClick={() => setShowPassword(!showPassword)}
                 >
-                  {showPassword ? (
-                    <EyeOff className="h-5 w-5" />
-                  ) : (
-                    <Eye className="h-5 w-5" />
-                  )}
+                  {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
                 </button>
               </div>
               <div>

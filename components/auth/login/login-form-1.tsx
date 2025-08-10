@@ -109,7 +109,7 @@ export const LoginForm1 = () => {
                 className={`px-3.5 py-3 ${errors.password && "border-red-400 bg-red-500/10"}`}
               />
               {errors.password && (
-                <p className="flex items-center text-sm font-medium text-red-400 mt-1">
+                <p className="mt-1 flex items-center text-sm font-medium text-red-400">
                   <CircleAlert className="mr-2 h-4 w-4" />
                   {errors.password}
                 </p>
