@@ -3,7 +3,7 @@ import React from "react";
 
 export const Footer = () => {
   return (
-    <footer className="border-t border-black/10 dark:border-white/10">
+    <footer className="mx-auto max-w-[1600px] border-t border-black/10 dark:border-white/10">
       <div className="mx-auto flex flex-col items-center gap-10 px-10 py-12 text-center md:flex-row md:items-start md:justify-between md:text-left">
         <div className="md:w-[25%]">
           <Link

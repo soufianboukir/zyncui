@@ -2,7 +2,7 @@ import faqs from "@/constants/faqs";
 
 export default function IntroductionPage() {
   return (
-    <main className="font-medium">
+    <main className="text-lg">
       <div className="space-y-10">
         <section id="introduction" className="space-y-6">
           <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
