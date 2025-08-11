@@ -21,8 +21,8 @@ export const Header = () => {
   if (status === "loading") return null;
 
   return (
-    <div className="dark:border-muted/80 fixed top-0 left-0 z-50 w-full border-b border-gray-200 bg-white dark:bg-black">
-      <div className="flex items-center justify-between px-6 py-4 font-sans text-black/80 lg:px-[5%] dark:text-white/80">
+    <div className="fixed top-0 left-0 z-50 w-full border-b border-gray-200 bg-white dark:border-muted/80 dark:bg-black">
+      <div className="mx-auto flex max-w-[1600px] px-4 lg:px-10 items-center justify-between py-4 font-sans text-black/80 dark:text-white/80">
         <div className="flex items-center gap-10">
           <Link className="flex cursor-pointer items-center gap-1" href={"/"}>
             <span className="text-xl font-semibold text-black dark:text-white">zyncUI</span>
