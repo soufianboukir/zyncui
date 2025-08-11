@@ -24,7 +24,7 @@ export const PreviewWithCodeTabs: React.FC<PreviewWithCodeTabsProps> = ({
   tabLabels = { preview: "Preview", code: "Code" },
 }) => {
   return (
-    <Tabs defaultValue="preview" className="mt-6 w-full max-w-5xl mx-auto">
+    <Tabs defaultValue="preview" className="mx-auto mt-6 w-full max-w-5xl">
       <div className="mb-2 flex items-center justify-between">
         <TabsList className="bg-muted rounded-md p-1">
           <TabsTrigger
@@ -55,7 +55,6 @@ export const PreviewWithCodeTabs: React.FC<PreviewWithCodeTabsProps> = ({
       </TabsContent>
 
       <TabsContent value="code" className="">
-        
         <CodeBlock code={code} copy language={codeLanguage} />
       </TabsContent>
     </Tabs>
