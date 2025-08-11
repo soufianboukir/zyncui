@@ -36,11 +36,7 @@ export default function CodeBlock({
           aria-label="Copy code"
           className="absolute top-3 right-3 z-40 cursor-pointer rounded bg-white p-2 text-sm text-black shadow-md transition-opacity hover:opacity-90 dark:bg-gray-700 dark:text-white"
         >
-          {copied ? (
-            <CopyCheck className="h-4 w-4 text-green-500" />
-          ) : (
-            <Copy className="h-4 w-4" />
-          )}
+          {copied ? <CopyCheck className="h-4 w-4 text-green-500" /> : <Copy className="h-4 w-4" />}
         </button>
       )}
 

@@ -85,7 +85,7 @@ const data = {
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
-    <Sidebar {...props} className="pt-17 sticky">
+    <Sidebar {...props} className="sticky pt-17">
       <SidebarContent className="gap-0">
         {data.navMain.map(item => (
           <Collapsible

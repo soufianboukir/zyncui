@@ -130,10 +130,7 @@ function SidebarProvider({
               ...style,
             } as React.CSSProperties
           }
-          className={cn(
-            "group/sidebar-wrapper flex min-h-svh w-full",
-            className,
-          )}
+          className={cn("group/sidebar-wrapper flex min-h-svh w-full", className)}
           {...props}
         >
           {children}
@@ -161,10 +158,7 @@ function Sidebar({
     return (
       <div
         data-slot="sidebar"
-        className={cn(
-          "text-sidebar-foreground flex w-(--sidebar-width) flex-col",
-          className,
-        )}
+        className={cn("text-sidebar-foreground flex w-(--sidebar-width) flex-col", className)}
         {...props}
       >
         {children}

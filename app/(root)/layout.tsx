@@ -7,7 +7,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="pt-16 max-w-[1600px] mx-auto">
+    <div className="mx-auto max-w-[1600px] pt-16">
       <SideBar>
         <Header />
         {children}
