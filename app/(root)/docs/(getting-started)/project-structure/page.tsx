@@ -5,35 +5,37 @@ import { Badge } from "@/components/ui/badge";
 
 export default function ProjectStructurePage() {
   return (
-    <main className="text-lg">
-      <div className="space-y-10">
-        <section id="overview" className="space-y-4">
-          <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
+    <main className="px-4 sm:px-6 lg:px-8 py-4 sm:py-6 max-w-4xl mx-auto">
+      <div className="space-y-6 sm:space-y-8 lg:space-y-10">
+        <section id="overview" className="space-y-2 sm:space-y-3 lg:space-y-4">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
             Project Structure
           </h1>
-          <p>
+          <p className="text-sm sm:text-base lg:text-lg leading-relaxed text-gray-700 dark:text-gray-300">
             Understanding the folder structure will help you quickly locate components, pages, and
             configuration files. Below are recommended layouts for Next.js 13+ (App Router) and
             React (Vite) projects.
           </p>
         </section>
 
-        <section id="nextjs-structure" className="space-y-6">
-          <h1 className="text-2xl font-semibold">
-            Folder Layout: Next.js 13+ (App Router) Style (no src/ wrapper)
-          </h1>
-          <CodeBlock
-            language="bash"
-            code={`my-project/
-├── app/                   # App Router pages (Next.js)
+        <section id="nextjs-structure" className="space-y-3 sm:space-y-4 lg:space-y-6">
+          <h2 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-semibold text-gray-900 dark:text-gray-100">
+            Next.js 13+ (App Router) Structure
+          </h2>
+          <div className="overflow-x-auto -mx-4 sm:mx-0">
+            <div className="px-4 sm:px-0">
+              <CodeBlock
+                language="bash"
+                code={`my-project/
+├── app/                   # App Router pages
 │   ├── layout.tsx         # Root layout
 │   ├── page.tsx           # Homepage
 │
-├── components/            # Reusable UI components
-│   ├── ui/                # Buttons, inputs, modals...
+├── components/            # Reusable components
+│   ├── ui/                # Base UI elements
 │   │   ├── button.tsx
 │   │   └── input.tsx
-│   ├── login-form-1.tsx  # Login form component
+│   ├── login-form-1.tsx  # Login component
 │   └── navbar.tsx
 │
 ├── lib/                   # Utilities & constants
@@ -42,7 +44,7 @@ export default function ProjectStructurePage() {
 ├── types/                 # TypeScript definitions
 │   └── index.d.ts
 │
-├── public/                # Static assets (images, icons, fonts)
+├── public/                # Static assets
 │   ├── favicon.ico
 │   └── logo.png
 │
@@ -50,30 +52,35 @@ export default function ProjectStructurePage() {
 ├── next.config.js         # Next.js config
 ├── tsconfig.json          # TypeScript config
 └── package.json           # Dependencies & scripts`}
-          />
-          <p className="mt-3 text-gray-700 dark:text-gray-300">
-            This structure ensures a clean separation of concerns, making it easier to maintain and
-            scale your Next.js project.
+              />
+            </div>
+          </div>
+          <p className="text-xs sm:text-sm lg:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
+            Clean separation of concerns for maintainable and scalable Next.js projects.
           </p>
         </section>
 
-        <section id="react-structure" className="space-y-6">
-          <h1 className="text-2xl font-semibold">Folder Layout: React (Vite) Style</h1>
-          <CodeBlock
-            language="bash"
-            code={`my-project/
-├── public/                # Static assets (images, icons, fonts)
+        <section id="react-structure" className="space-y-3 sm:space-y-4 lg:space-y-6">
+          <h2 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-semibold text-gray-900 dark:text-gray-100">
+            React (Vite) Structure
+          </h2>
+          <div className="overflow-x-auto -mx-4 sm:mx-0">
+            <div className="px-4 sm:px-0">
+              <CodeBlock
+                language="bash"
+                code={`my-project/
+├── public/                # Static assets
 │   └── logo.png
 │
 ├── src/
-│   ├── components/        # Reusable UI components
-│   │   ├── ui/            # Buttons, inputs, modals...
+│   ├── components/        # Reusable components
+│   │   ├── ui/            # Base UI elements
 │   │   │   ├── button.tsx
 │   │   │   └── input.tsx
-│   │   ├── login-form-1.tsx  # Login form component
+│   │   ├── login-form-1.tsx
 │   │   └── navbar.tsx
 │   │
-│   ├── pages/             # Page-level components
+│   ├── pages/             # Page components
 │   │   ├── Home.tsx
 │   │   └── About.tsx
 │   │
@@ -87,72 +94,73 @@ export default function ProjectStructurePage() {
 ├── package.json
 ├── tsconfig.json
 └── vite.config.ts`}
-          />
-          <p className="mt-3 text-gray-700 dark:text-gray-300">
-            This is a typical folder layout for React projects created with Vite. The{" "}
-            <code>
-              <Badge variant={"secondary"}>src</Badge>
-            </code>{" "}
-            folder holds your main source code including components, pages, styles, and utilities.
+              />
+            </div>
+          </div>
+          <p className="text-xs sm:text-sm lg:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
+            Standard Vite React structure with source code in{" "}
+            <Badge variant="secondary" className="text-xs">src/</Badge>
           </p>
         </section>
 
-        <section id="components" className="space-y-4">
-          <h1 className="text-2xl font-semibold">Finding Components</h1>
-          <p>
-            All reusable UI elements are stored in the{" "}
-            <code>
-              <Badge variant={"secondary"}>components</Badge>
-            </code>{" "}
-            folder — either at the root level (Next.js) or inside <code>src/</code> (React).
+        <section id="components" className="space-y-3 sm:space-y-4">
+          <h2 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-semibold text-gray-900 dark:text-gray-100">
+            Finding Components
+          </h2>
+          <p className="text-xs sm:text-sm lg:text-base leading-relaxed text-gray-700 dark:text-gray-300">
+            All reusable UI elements are in the{" "}
+            <Badge variant="secondary" className="text-xs">components/</Badge>{" "}
+            folder.
           </p>
-          <ul className="list-inside list-disc">
-            <li>
-              <strong>Buttons</strong> →{" "}
-              <code>
-                <Badge variant={"secondary"}>components/ui/button.tsx</Badge>
-              </code>
-            </li>
-            <li>
-              <strong>Login Page</strong> →{" "}
-              <code>
-                <Badge variant={"secondary"}>components/login-form-1.tsx</Badge>
-              </code>{" "}
-              (can be imported into any page).
-            </li>
-            <li>
-              <strong>Navigation Bar</strong> →{" "}
-              <code>
-                <Badge variant={"secondary"}>components/navbar.tsx</Badge>
-              </code>
-            </li>
-          </ul>
-          <p className="text-gray-700 dark:text-gray-300">
-            You can customize these components by editing their files or creating new ones in the
-            same folder.
+          <div className="space-y-2">
+            <div className="flex flex-col xs:flex-row xs:items-center gap-1 xs:gap-2">
+              <span className="text-xs sm:text-sm font-medium min-w-0">Buttons:</span>
+              <Badge variant="secondary" className="text-xs break-all">
+                components/ui/button.tsx
+              </Badge>
+            </div>
+            <div className="flex flex-col xs:flex-row xs:items-center gap-1 xs:gap-2">
+              <span className="text-xs sm:text-sm font-medium min-w-0">Login Page:</span>
+              <Badge variant="secondary" className="text-xs break-all">
+                components/login-form-1.tsx
+              </Badge>
+            </div>
+            <div className="flex flex-col xs:flex-row xs:items-center gap-1 xs:gap-2">
+              <span className="text-xs sm:text-sm font-medium min-w-0">Navigation:</span>
+              <Badge variant="secondary" className="text-xs break-all">
+                components/navbar.tsx
+              </Badge>
+            </div>
+          </div>
+          <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+            Customize by editing existing files or creating new ones in the same folder.
           </p>
         </section>
 
-        <section id="next-steps" className="space-y-4">
-          <h1 className="text-2xl font-semibold">Next Steps</h1>
-          <p>
-            Now that you understand the project structure, start customizing components and adding
-            new pages. For styling, edit{" "}
-            <code>
-              <Badge variant={"secondary"}>tailwind.config.js</Badge>
-            </code>{" "}
+        <section id="next-steps" className="space-y-3 sm:space-y-4">
+          <h2 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-semibold text-gray-900 dark:text-gray-100">
+            Next Steps
+          </h2>
+          <p className="text-xs sm:text-sm lg:text-base leading-relaxed text-gray-700 dark:text-gray-300">
+            Now that you understand the structure, start customizing components and adding pages. 
+            For styling, edit{" "}
+            <Badge variant="secondary" className="text-xs break-all">
+              tailwind.config.js
+            </Badge>{" "}
             and{" "}
-            <code>
-              <Badge variant={"secondary"}>src/styles/globals.css</Badge>
-            </code>
-            .
+            <Badge variant="secondary" className="text-xs break-all">
+              globals.css
+            </Badge>
           </p>
-          <p>
-            You can also explore the{" "}
-            <a href="/docs/blocks" className="underline">
+          <p className="text-xs sm:text-sm lg:text-base leading-relaxed text-gray-700 dark:text-gray-300">
+            Explore the{" "}
+            <a 
+              href="/docs/blocks" 
+              className="text-blue-600 dark:text-blue-400 underline hover:no-underline transition-colors"
+            >
               Components
             </a>{" "}
-            section for a full list of ready-to-use UI elements.
+            section for ready-to-use UI elements.
           </p>
         </section>
       </div>
