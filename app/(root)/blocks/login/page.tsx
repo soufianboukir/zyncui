@@ -43,8 +43,13 @@ export default function LoginForms() {
             visibility toggles.
           </p>
           <p>
-            The clean, modern design ensures seamless integration with other UI components in your
-            project.
+            Designed with modern UI/UX principles, these components ensure consistency and seamless
+            integration into your projects, reducing development time while maintaining high
+            quality.
+          </p>
+          <p>
+            Whether you need a minimal form or a complex login screen with social authentication
+            options, this library offers flexible solutions tailored to various use cases.
           </p>
         </section>
 
@@ -60,14 +65,15 @@ export default function LoginForms() {
             <h3 className="text-xl font-semibold sm:text-2xl">1. Set up your project</h3>
             <p>
               Before installing the login components, ensure your development environment is
-              configured correctly. Follow the{" "}
+              properly configured. Refer to the{" "}
               <Link
                 href={"/docs/installation"}
                 className="font-semibold text-blue-600 underline dark:text-blue-400"
               >
                 official installation guide
               </Link>{" "}
-              for detailed instructions on setting up React, Tailwind CSS, and other dependencies.
+              for detailed instructions on setting up React, Tailwind CSS, and required
+              dependencies.
             </p>
           </div>
 
@@ -81,14 +87,14 @@ export default function LoginForms() {
               language="shell"
             />
             <p className="mt-2">
-              This command will:
+              This command performs the following:
               <ul className="mt-1 ml-5 list-inside list-disc space-y-1">
                 <li>
-                  Install required dependencies and add them to <code>package.json</code>
+                  Installs required dependencies and updates your <code>package.json</code>.
                 </li>
                 <li>
-                  Add UI components like Button, Input, and Card to your <code>components/ui</code>{" "}
-                  folder
+                  Adds UI components such as <code>Button</code>, <code>Input</code>, and{" "}
+                  <code>Card</code> to your <code>components/ui</code> directory.
                 </li>
               </ul>
             </p>
@@ -99,13 +105,18 @@ export default function LoginForms() {
           id="usage"
           className="prose prose-lg prose-gray dark:prose-invert mx-auto max-w-5xl space-y-16"
         >
+          {/* Login Form 1 */}
           <div className="space-y-6">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
               Login Form 1 - Minimal Single Column
             </h2>
             <p>
-              A simple, clean single-column login form ideal for basic authentication pages. Paste
-              this component code into{" "}
+              A clean and simple single-column login form optimized for straightforward
+              authentication pages. This form is ideal when minimalism and focus on user input are
+              priorities.
+            </p>
+            <p>
+              To integrate, copy the component code into{" "}
               <code>
                 <Badge variant="secondary">@/components/auth/login/login-form-1.tsx</Badge>
               </code>
@@ -118,13 +129,18 @@ export default function LoginForms() {
             <CodeBlock code={login1Example} language="tsx" copy />
           </div>
 
+          {/* Login Form 2 */}
           <div className="space-y-6">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
               Login Form 2 - Split Screen with Illustration
             </h2>
             <p>
-              This variant features a split-screen layout combining the login form with illustrative
-              graphics for a more engaging UI. Copy the code into{" "}
+              This variant combines the login form with engaging illustrative graphics, providing a
+              more visually dynamic experience. It’s well suited for applications aiming for brand
+              impact and user engagement.
+            </p>
+            <p>
+              Implement by copying the code into{" "}
               <code>
                 <Badge variant="secondary">@/components/auth/login/login-form-2.tsx</Badge>
               </code>
@@ -137,13 +153,18 @@ export default function LoginForms() {
             <CodeBlock code={login2Example} language="tsx" copy />
           </div>
 
+          {/* Login Form 3 */}
           <div className="space-y-6">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
               Login Form 3 - Centered with Social Login Options
             </h2>
             <p>
-              A centered form layout that includes options for social authentication, suitable for
-              apps requiring multiple sign-in methods. Place this code into{" "}
+              A centered layout that includes options for social authentication such as Google,
+              Facebook, or Twitter sign-in buttons. This form fits applications needing multiple
+              sign-in methods to improve user convenience.
+            </p>
+            <p>
+              Paste the code into{" "}
               <code>
                 <Badge variant="secondary">@/components/auth/login/login-form-3.tsx</Badge>
               </code>
@@ -156,13 +177,17 @@ export default function LoginForms() {
             <CodeBlock code={login3Example} language="tsx" copy />
           </div>
 
+          {/* Login Form 4 */}
           <div className="space-y-6">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
               Login Form 4 - Compact Inline Form
             </h2>
             <p>
-              A compact, inline login form designed for dashboards or quick sign-ins. Use this
-              component code inside{" "}
+              This compact, inline login form is designed for dashboards or quick access panels
+              where space is limited but functionality is required.
+            </p>
+            <p>
+              Insert this component code into{" "}
               <code>
                 <Badge variant="secondary">@/components/auth/login/login-form-4.tsx</Badge>
               </code>
