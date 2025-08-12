@@ -49,7 +49,7 @@ export default function DocsLayout({ children, sections }: DocsLayoutProps) {
 
   return (
     <div className="flex min-h-screen justify-between">
-      <main className="prose dark:prose-invert flex w-full items-center justify-center pl-10 sm:max-w-[100%] md:max-w-xl lg:max-w-5xl">
+      <main className="prose dark:prose-invert flex w-full items-center justify-center sm:max-w-[100%] md:max-w-xl lg:max-w-5xl">
         {children}
       </main>
       <nav className="sticky top-30 hidden h-[100vh] flex-col border-gray-200 p-4 2xl:flex dark:border-gray-700">

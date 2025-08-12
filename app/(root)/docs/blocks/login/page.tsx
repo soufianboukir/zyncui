@@ -1,88 +1,179 @@
+"use client";
+
 import CodeBlock from "@/components/code-block";
 import Link from "next/link";
 import { LoginForm1 } from "@/components/auth/login/login-form-1";
-import { login1Code } from "@/constants/auth/login";
+import {
+  login1Code,
+  login1Example,
+  login2Code,
+  login2Example,
+  login3Code,
+  login3Example,
+  login4Code,
+  login4Example,
+} from "@/constants/auth/login";
 import { PreviewWithCodeTabs } from "@/components/preview-with-code-tabs";
+import { Badge } from "@/components/ui/badge";
+import { LoginForm2 } from "@/components/auth/login/login-form-2";
+import { LoginForm3 } from "@/components/auth/login/login-form-3";
+import { LoginForm4 } from "@/components/auth/login/login-form-4";
 
 export default function LoginForms() {
   return (
-    <main className="mx-auto w-full max-w-7xl px-4 py-6 text-base sm:px-6 sm:text-lg lg:px-8">
-      <div className="space-y-8 sm:space-y-10">
-        <section id="login-description" className="space-y-4">
-          <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl dark:text-gray-100">
-            Login
+    <main className="mx-auto w-full max-w-7xl py-6 text-base sm:px-6 sm:text-lg lg:px-8">
+      <div className="space-y-20 sm:space-y-24">
+        <section
+          id="login-description"
+          className="prose prose-lg prose-gray dark:prose-invert mx-auto max-w-7xl space-y-5"
+        >
+          <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100">
+            Login Component Library
           </h1>
-          <div className="prose prose-sm sm:prose-base prose-gray dark:prose-invert max-w-none text-black/80 dark:text-white/80">
+          <p>
+            A sleek and fully responsive login form component built with{" "}
+            <span className="font-semibold text-blue-600 dark:text-blue-400">React</span> and{" "}
+            <span className="font-semibold text-teal-600 dark:text-teal-400">Tailwind CSS</span>.
+            This library provides multiple layout variations to suit different authentication needs.
+          </p>
+          <p>
+            Each variant emphasizes{" "}
+            <span className="font-semibold">clarity, accessibility, and ease of use</span> across
+            devices, featuring built-in form validation, customizable inputs, and password
+            visibility toggles.
+          </p>
+          <p>
+            The clean, modern design ensures seamless integration with other UI components in your
+            project.
+          </p>
+        </section>
+
+        <section
+          id="installation"
+          className="prose prose-lg prose-gray dark:prose-invert mx-auto max-w-6xl space-y-8"
+        >
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
+            Installation
+          </h2>
+
+          <div>
+            <h3 className="text-xl font-semibold sm:text-2xl">1. Set up your project</h3>
             <p>
-              A sleek and fully responsive login form component built with React and Tailwind CSS.
+              Before installing the login components, ensure your development environment is
+              configured correctly. Follow the{" "}
+              <Link
+                href={"/docs/installation"}
+                className="font-semibold text-blue-600 underline dark:text-blue-400"
+              >
+                official installation guide
+              </Link>{" "}
+              for detailed instructions on setting up React, Tailwind CSS, and other dependencies.
             </p>
-            <br />
-            <p>
-              Designed for modern authentication flows, this component includes multiple layout
-              variations—from minimal single-column forms to split-screen designs with imagery or
-              illustrations. Each variant focuses on user experience, ensuring clarity,
-              accessibility, and ease of use across devices.
-            </p>
-            <br />
-            <p>
-              With built-in form validation, customizable input fields, and support for password
-              visibility toggles, the login form can be seamlessly adapted to match your
-              brand&apos;s style. The clean design language ensures it fits perfectly with other
-              components in your library while maintaining visual harmony and usability standards.
+          </div>
+
+          <div>
+            <h3 className="text-xl font-semibold sm:text-2xl">
+              2. Install components and dependencies
+            </h3>
+            <CodeBlock
+              code={`npx shadcn@latest add button input card\nnpm install zod`}
+              copy
+              language="shell"
+            />
+            <p className="mt-2">
+              This command will:
+              <ul className="mt-1 ml-5 list-inside list-disc space-y-1">
+                <li>
+                  Install required dependencies and add them to <code>package.json</code>
+                </li>
+                <li>
+                  Add UI components like Button, Input, and Card to your <code>components/ui</code>{" "}
+                  folder
+                </li>
+              </ul>
             </p>
           </div>
         </section>
 
-        <section id="installation" className="space-y-6">
-          <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl dark:text-gray-100">
-            Installation
-          </h1>
+        <section
+          id="usage"
+          className="prose prose-lg prose-gray dark:prose-invert mx-auto max-w-5xl space-y-16"
+        >
+          <div className="space-y-6">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
+              Login Form 1 - Minimal Single Column
+            </h2>
+            <p>
+              A simple, clean single-column login form ideal for basic authentication pages. Paste
+              this component code into{" "}
+              <code>
+                <Badge variant="secondary">@/components/auth/login/login-form-1.tsx</Badge>
+              </code>
+              .
+            </p>
+            <PreviewWithCodeTabs preview={<LoginForm1 />} code={login1Code} onlyPro />
+            <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
+              Usage Example
+            </h3>
+            <CodeBlock code={login1Example} language="tsx" copy />
+          </div>
 
           <div className="space-y-6">
-            <div>
-              <h2 className="mb-3 text-lg font-semibold sm:text-xl">1. Set up your project</h2>
-              <p className="text-sm sm:text-base">
-                Before installing this component, make sure your development environment is ready.
-                Follow the{" "}
-                <Link
-                  href={"/docs/installation"}
-                  className="font-bold text-blue-600 underline dark:text-blue-400"
-                >
-                  installation guide
-                </Link>{" "}
-                to configure your project.
-              </p>
-            </div>
-
-            <div>
-              <h2 className="mb-3 text-lg font-semibold sm:text-xl">
-                2. Install components and dependencies
-              </h2>
-              <div className="w-full overflow-hidden">
-                <CodeBlock
-                  code={`npx shadcn@latest add button input card
-npm install zod`}
-                  copy
-                  language="shell"
-                />
-              </div>
-            </div>
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
+              Login Form 2 - Split Screen with Illustration
+            </h2>
+            <p>
+              This variant features a split-screen layout combining the login form with illustrative
+              graphics for a more engaging UI. Copy the code into{" "}
+              <code>
+                <Badge variant="secondary">@/components/auth/login/login-form-2.tsx</Badge>
+              </code>
+              .
+            </p>
+            <PreviewWithCodeTabs preview={<LoginForm2 />} code={login2Code} onlyPro />
+            <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
+              Usage Example
+            </h3>
+            <CodeBlock code={login2Example} language="tsx" copy />
           </div>
 
-          <div className="mt-6">
-            <h3 className="mb-2 text-base font-medium sm:text-lg">This command will:</h3>
-            <ul className="ml-3 list-inside list-disc space-y-1 text-sm sm:text-base">
-              <li>install necessary dependencies and add them to package.json</li>
-              <li>add components required by this block to work to components/ui</li>
-            </ul>
+          <div className="space-y-6">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
+              Login Form 3 - Centered with Social Login Options
+            </h2>
+            <p>
+              A centered form layout that includes options for social authentication, suitable for
+              apps requiring multiple sign-in methods. Place this code into{" "}
+              <code>
+                <Badge variant="secondary">@/components/auth/login/login-form-3.tsx</Badge>
+              </code>
+              .
+            </p>
+            <PreviewWithCodeTabs preview={<LoginForm3 />} code={login3Code} onlyPro />
+            <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
+              Usage Example
+            </h3>
+            <CodeBlock code={login3Example} language="tsx" copy />
           </div>
-        </section>
 
-        <section id="usage">
-          <h1 className="mb-6 text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl dark:text-gray-100">
-            Usage
-          </h1>
-          <PreviewWithCodeTabs preview={<LoginForm1 />} code={login1Code} onlyPro />
+          <div className="space-y-6">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
+              Login Form 4 - Compact Inline Form
+            </h2>
+            <p>
+              A compact, inline login form designed for dashboards or quick sign-ins. Use this
+              component code inside{" "}
+              <code>
+                <Badge variant="secondary">@/components/auth/login/login-form-4.tsx</Badge>
+              </code>
+              .
+            </p>
+            <PreviewWithCodeTabs preview={<LoginForm4 />} code={login4Code} onlyPro />
+            <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
+              Usage Example
+            </h3>
+            <CodeBlock code={login4Example} language="tsx" copy />
+          </div>
         </section>
       </div>
     </main>
