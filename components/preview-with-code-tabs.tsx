@@ -48,13 +48,17 @@ export const PreviewWithCodeTabs: React.FC<PreviewWithCodeTabsProps> = ({
         )}
       </div>
 
-      <TabsContent value="preview" className="bg-muted/30 mt-2 rounded-lg border">
-        <div className="flex max-h-[600px] items-center justify-center overflow-auto">
-          {preview}
-        </div>
+      <TabsContent
+        value="preview"
+        className="bg-muted/30 mt-2 rounded-lg border"
+      >
+      <div className="flex max-h-[600px] items-center justify-center overflow-x-auto p-4 hide-scrollbar">
+        {preview}
+      </div>
       </TabsContent>
 
-      <TabsContent value="code" className="">
+
+      <TabsContent value="code">
         <CodeBlock code={code} copy language={codeLanguage} />
       </TabsContent>
     </Tabs>
