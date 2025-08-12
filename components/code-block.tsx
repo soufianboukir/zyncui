@@ -29,7 +29,7 @@ export default function CodeBlock({
   };
 
   return (
-    <div className="group relative mt-4">
+    <div className="group relative mt-4 w-full max-w-full overflow-x-auto">
       {copy && (
         <button
           onClick={handleCopy}
