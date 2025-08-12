@@ -5,13 +5,13 @@ import { Badge } from "@/components/ui/badge";
 
 export default function ProjectStructurePage() {
   return (
-    <main className="px-4 sm:px-6 lg:px-8 py-4 sm:py-6 max-w-4xl mx-auto">
+    <main className="mx-auto max-w-4xl px-4 py-4 sm:px-6 sm:py-6 lg:px-8">
       <div className="space-y-6 sm:space-y-8 lg:space-y-10">
         <section id="overview" className="space-y-2 sm:space-y-3 lg:space-y-4">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
+          <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl lg:text-4xl dark:text-gray-100">
             Project Structure
           </h1>
-          <p className="text-sm sm:text-base lg:text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+          <p className="text-sm leading-relaxed text-gray-700 sm:text-base lg:text-lg dark:text-gray-300">
             Understanding the folder structure will help you quickly locate components, pages, and
             configuration files. Below are recommended layouts for Next.js 13+ (App Router) and
             React (Vite) projects.
@@ -19,10 +19,10 @@ export default function ProjectStructurePage() {
         </section>
 
         <section id="nextjs-structure" className="space-y-3 sm:space-y-4 lg:space-y-6">
-          <h2 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-semibold text-gray-900 dark:text-gray-100">
+          <h2 className="text-lg font-semibold text-gray-900 sm:text-xl lg:text-2xl xl:text-3xl dark:text-gray-100">
             Next.js 13+ (App Router) Structure
           </h2>
-          <div className="overflow-x-auto -mx-4 sm:mx-0">
+          <div className="-mx-4 overflow-x-auto sm:mx-0">
             <div className="px-4 sm:px-0">
               <CodeBlock
                 language="bash"
@@ -55,16 +55,16 @@ export default function ProjectStructurePage() {
               />
             </div>
           </div>
-          <p className="text-xs sm:text-sm lg:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
+          <p className="text-xs leading-relaxed text-gray-600 sm:text-sm lg:text-base dark:text-gray-400">
             Clean separation of concerns for maintainable and scalable Next.js projects.
           </p>
         </section>
 
         <section id="react-structure" className="space-y-3 sm:space-y-4 lg:space-y-6">
-          <h2 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-semibold text-gray-900 dark:text-gray-100">
+          <h2 className="text-lg font-semibold text-gray-900 sm:text-xl lg:text-2xl xl:text-3xl dark:text-gray-100">
             React (Vite) Structure
           </h2>
-          <div className="overflow-x-auto -mx-4 sm:mx-0">
+          <div className="-mx-4 overflow-x-auto sm:mx-0">
             <div className="px-4 sm:px-0">
               <CodeBlock
                 language="bash"
@@ -97,52 +97,56 @@ export default function ProjectStructurePage() {
               />
             </div>
           </div>
-          <p className="text-xs sm:text-sm lg:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
+          <p className="text-xs leading-relaxed text-gray-600 sm:text-sm lg:text-base dark:text-gray-400">
             Standard Vite React structure with source code in{" "}
-            <Badge variant="secondary" className="text-xs">src/</Badge>
+            <Badge variant="secondary" className="text-xs">
+              src/
+            </Badge>
           </p>
         </section>
 
         <section id="components" className="space-y-3 sm:space-y-4">
-          <h2 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-semibold text-gray-900 dark:text-gray-100">
+          <h2 className="text-lg font-semibold text-gray-900 sm:text-xl lg:text-2xl xl:text-3xl dark:text-gray-100">
             Finding Components
           </h2>
-          <p className="text-xs sm:text-sm lg:text-base leading-relaxed text-gray-700 dark:text-gray-300">
+          <p className="text-xs leading-relaxed text-gray-700 sm:text-sm lg:text-base dark:text-gray-300">
             All reusable UI elements are in the{" "}
-            <Badge variant="secondary" className="text-xs">components/</Badge>{" "}
+            <Badge variant="secondary" className="text-xs">
+              components/
+            </Badge>{" "}
             folder.
           </p>
           <div className="space-y-2">
-            <div className="flex flex-col xs:flex-row xs:items-center gap-1 xs:gap-2">
-              <span className="text-xs sm:text-sm font-medium min-w-0">Buttons:</span>
+            <div className="xs:flex-row xs:items-center xs:gap-2 flex flex-col gap-1">
+              <span className="min-w-0 text-xs font-medium sm:text-sm">Buttons:</span>
               <Badge variant="secondary" className="text-xs break-all">
                 components/ui/button.tsx
               </Badge>
             </div>
-            <div className="flex flex-col xs:flex-row xs:items-center gap-1 xs:gap-2">
-              <span className="text-xs sm:text-sm font-medium min-w-0">Login Page:</span>
+            <div className="xs:flex-row xs:items-center xs:gap-2 flex flex-col gap-1">
+              <span className="min-w-0 text-xs font-medium sm:text-sm">Login Page:</span>
               <Badge variant="secondary" className="text-xs break-all">
                 components/login-form-1.tsx
               </Badge>
             </div>
-            <div className="flex flex-col xs:flex-row xs:items-center gap-1 xs:gap-2">
-              <span className="text-xs sm:text-sm font-medium min-w-0">Navigation:</span>
+            <div className="xs:flex-row xs:items-center xs:gap-2 flex flex-col gap-1">
+              <span className="min-w-0 text-xs font-medium sm:text-sm">Navigation:</span>
               <Badge variant="secondary" className="text-xs break-all">
                 components/navbar.tsx
               </Badge>
             </div>
           </div>
-          <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+          <p className="text-xs leading-relaxed text-gray-600 sm:text-sm dark:text-gray-400">
             Customize by editing existing files or creating new ones in the same folder.
           </p>
         </section>
 
         <section id="next-steps" className="space-y-3 sm:space-y-4">
-          <h2 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-semibold text-gray-900 dark:text-gray-100">
+          <h2 className="text-lg font-semibold text-gray-900 sm:text-xl lg:text-2xl xl:text-3xl dark:text-gray-100">
             Next Steps
           </h2>
-          <p className="text-xs sm:text-sm lg:text-base leading-relaxed text-gray-700 dark:text-gray-300">
-            Now that you understand the structure, start customizing components and adding pages. 
+          <p className="text-xs leading-relaxed text-gray-700 sm:text-sm lg:text-base dark:text-gray-300">
+            Now that you understand the structure, start customizing components and adding pages.
             For styling, edit{" "}
             <Badge variant="secondary" className="text-xs break-all">
               tailwind.config.js
@@ -152,11 +156,11 @@ export default function ProjectStructurePage() {
               globals.css
             </Badge>
           </p>
-          <p className="text-xs sm:text-sm lg:text-base leading-relaxed text-gray-700 dark:text-gray-300">
+          <p className="text-xs leading-relaxed text-gray-700 sm:text-sm lg:text-base dark:text-gray-300">
             Explore the{" "}
-            <a 
-              href="/docs/blocks" 
-              className="text-blue-600 dark:text-blue-400 underline hover:no-underline transition-colors"
+            <a
+              href="/docs/blocks"
+              className="text-blue-600 underline transition-colors hover:no-underline dark:text-blue-400"
             >
               Components
             </a>{" "}
