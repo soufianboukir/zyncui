@@ -51,8 +51,8 @@ const data = {
           url: "#",
         },
         {
-          title: "NavBar",
-          url: "#",
+          title: "Sidebar",
+          url: "/docs/blocks/sidebar",
         },
       ],
     },
