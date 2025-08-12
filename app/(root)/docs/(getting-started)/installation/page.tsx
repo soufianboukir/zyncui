@@ -38,9 +38,8 @@ export default function IntroductionPage() {
             </p>
             <br />
 
-            <div>
+            <div className="flex flex-col gap-6">
               <h1 className="text-2xl font-semibold">Steps</h1>
-              <br />
               <h1 className="text-lg font-medium">1. Create a Next.js Project</h1>
               <span>
                 Use the official Next.js starter with TypeScript (optional, but recommended):
