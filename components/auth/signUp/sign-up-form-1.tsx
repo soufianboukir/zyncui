@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { CircleAlert, Eye, EyeOff, Loader } from "lucide-react";
+import { PasswordInput } from "@/components/ui/password-input";
+import { CircleAlert, Loader } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -17,19 +18,32 @@ const loginSchema = z.object({
     .string()
     .min(1, { message: "Password is required" })
     .min(8, { message: "Password must be at least 8 characters long" }),
+  r_password: z.string().min(6, "Please retype your password"),
 });
 
-export const SignUp1 = () => {
-  const [formData, setFormData] = useState<{ fullname: string; email: string; password: string }>({
+export const SignUpForm1 = () => {
+  const [formData, setFormData] = useState<{
+    fullname: string;
+    email: string;
+    password: string;
+    r_password: string;
+  }>({
     fullname: "",
     email: "",
     password: "",
+    r_password: "",
   });
 
-  const [errors, setErrors] = useState<{ fullname?: string; email?: string; password?: string }>({
+  const [errors, setErrors] = useState<{
+    fullname?: string;
+    email?: string;
+    password?: string;
+    r_password?: string;
+  }>({
     fullname: "",
     email: "",
     password: "",
+    r_password: "",
   });
 
   const [loading, setLoading] = useState<{
@@ -42,7 +56,13 @@ export const SignUp1 = () => {
     github: false,
   });
 
-  const [showPassword, setShowPassword] = useState(false);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -51,12 +71,19 @@ export const SignUp1 = () => {
       fullname: formData.fullname,
       email: formData.email,
       password: formData.password,
+      r_password: formData.r_password,
     });
 
-    setErrors({ fullname: "", email: "", password: "" });
+    setErrors({ fullname: "", email: "", password: "", r_password: "" });
     if (!validateFormData.success) {
-      const { fullname, email, password } = validateFormData.error.flatten().fieldErrors;
-      setErrors({ fullname: fullname?.[0], email: email?.[0], password: password?.[0] });
+      const { fullname, email, password, r_password } =
+        validateFormData.error.flatten().fieldErrors;
+      setErrors({
+        fullname: fullname?.[0],
+        email: email?.[0],
+        password: password?.[0],
+        r_password: r_password?.[0],
+      });
       return;
     }
 
@@ -93,7 +120,7 @@ export const SignUp1 = () => {
           {/**header card */}
           <CardHeader className="space-y-5">
             <CardTitle className="text-[30px] font-extrabold">Create Account</CardTitle>
-            <CardDescription className="text-xl text-white">
+            <CardDescription className="text-xl dark:text-white">
               Get started with your account
             </CardDescription>
           </CardHeader>
@@ -101,16 +128,14 @@ export const SignUp1 = () => {
           <CardContent>
             {/**form for create accounte */}
             <form onSubmit={handleSubmit} className="space-y-7">
-              <div className="space-y-3">
-                <Label className="text-muted-foreground text-[16px]">Full name</Label>
+              <div className="space-y-2">
+                <Label className="text-muted-foreground text-[15px]">Full name</Label>
                 <Input
                   type="text"
                   id="fullname"
                   name="fullname"
                   value={formData.fullname}
-                  onChange={e => {
-                    setFormData(prev => ({ ...prev, fullname: e.target.value }));
-                  }}
+                  onChange={handleChange}
                   placeholder="John doe"
                 />
                 {errors.fullname && (
@@ -121,16 +146,14 @@ export const SignUp1 = () => {
                 )}
               </div>
 
-              <div className="space-y-3">
-                <Label className="text-muted-foreground text-[16px]">Email address</Label>
+              <div className="space-y-2">
+                <Label className="text-muted-foreground text-[15px]">Email address</Label>
                 <Input
                   type="email"
                   id="email"
                   name="email"
                   value={formData.email}
-                  onChange={e => {
-                    setFormData(prev => ({ ...prev, email: e.target.value }));
-                  }}
+                  onChange={handleChange}
                   placeholder="m@example.com"
                 />
                 {errors.email && (
@@ -141,34 +164,34 @@ export const SignUp1 = () => {
                 )}
               </div>
 
-              <div className="relative">
-                <Label className="text-muted-foreground mb-3 text-[16px]">Password</Label>
-                <Input
-                  type={showPassword ? "text" : "password"}
-                  id="password"
-                  name="password"
+              <div>
+                <Label className="text-muted-foreground mb-2 text-[15px]">Password</Label>
+                <PasswordInput
                   value={formData.password}
-                  onChange={e => {
-                    setFormData(prev => ({ ...prev, password: e.target.value }));
-                  }}
-                  placeholder="********"
-                  className="pr-10"
+                  name="password"
+                  onChange={handleChange}
+                  placeholder="*********"
                 />
-                <button
-                  type="button"
-                  className="absolute top-11 right-0 flex cursor-pointer items-center pr-3"
-                  onClick={() => setShowPassword(!showPassword)}
-                >
-                  {showPassword ? (
-                    <EyeOff className="text-base-content/40 h-5 w-5" />
-                  ) : (
-                    <Eye className="text-base-content/40 h-5 w-5" />
-                  )}
-                </button>
                 {errors.password && (
                   <p className="flex items-center text-sm text-red-400">
                     <CircleAlert className="mr-2 h-4 w-4" />
                     {errors.password}
+                  </p>
+                )}
+              </div>
+
+              <div>
+                <Label className="text-muted-foreground mb-2 text-[15px]">Retype Password</Label>
+                <PasswordInput
+                  value={formData.r_password}
+                  name="r_password"
+                  onChange={handleChange}
+                  placeholder="*********"
+                />
+                {errors.r_password && (
+                  <p className="flex items-center text-sm text-red-400">
+                    <CircleAlert className="mr-2 h-4 w-4" />
+                    {errors.r_password}
                   </p>
                 )}
               </div>
@@ -182,9 +205,9 @@ export const SignUp1 = () => {
             </form>
 
             <p className="text-muted-foreground mt-4 text-center text-sm">
-              Dont have an account?
+              Already have an account?
               <span className="ml-1 cursor-pointer text-sm font-extrabold text-black underline decoration-black dark:text-white dark:decoration-white">
-                <Link href="#">Sign up</Link>
+                <Link href="#">Sign in</Link>
               </span>
             </p>
 
