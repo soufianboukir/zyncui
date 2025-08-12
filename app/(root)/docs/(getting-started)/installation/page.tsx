@@ -5,8 +5,8 @@ import { nextJsSnippets, reactJsSnippets } from "@/constants/installation/steps"
 
 export default function IntroductionPage() {
   return (
-    <main className="text-lg">
-      <div className="space-y-10">
+    <main className="mx-auto max-w-4xl px-4 py-4 sm:px-6 sm:py-6 lg:px-8">
+      <div className="space-y-6 sm:space-y-8 lg:space-y-10">
         <section id="prerequisites" className="space-y-4">
           <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
             Prerequisites
