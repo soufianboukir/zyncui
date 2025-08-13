@@ -4,7 +4,7 @@ import DocsLayout from "@/components/docs-layout";
 import { ReactNode } from "react";
 
 const sections = [
-  { id: "login-description", label: "Description" },
+  { id: "description", label: "Description" },
   { id: "installation", label: "Installation" },
   { id: "usage", label: "Usage examples" },
 ];

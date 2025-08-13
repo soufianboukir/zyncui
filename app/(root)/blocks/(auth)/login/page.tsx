@@ -24,7 +24,7 @@ export default function LoginForms() {
     <main className="mx-auto w-full max-w-7xl py-6 text-base sm:px-6 sm:text-lg lg:px-8">
       <div className="space-y-20 sm:space-y-24">
         <section
-          id="login-description"
+          id="description"
           className="prose prose-lg prose-gray dark:prose-invert mx-auto max-w-7xl space-y-5"
         >
           <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100">
@@ -122,7 +122,7 @@ export default function LoginForms() {
               </code>
               .
             </p>
-            <PreviewWithCodeTabs preview={<LoginForm1 />} code={login1Code} onlyPro />
+            <PreviewWithCodeTabs preview={<LoginForm1 />} code={login1Code} onlyPro isFlex />
             <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
               Usage Example
             </h3>
@@ -146,7 +146,7 @@ export default function LoginForms() {
               </code>
               .
             </p>
-            <PreviewWithCodeTabs preview={<LoginForm2 />} code={login2Code} onlyPro />
+            <PreviewWithCodeTabs preview={<LoginForm2 />} code={login2Code} onlyPro isFlex />
             <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
               Usage Example
             </h3>
@@ -170,7 +170,7 @@ export default function LoginForms() {
               </code>
               .
             </p>
-            <PreviewWithCodeTabs preview={<LoginForm3 />} code={login3Code} onlyPro />
+            <PreviewWithCodeTabs preview={<LoginForm3 />} code={login3Code} onlyPro isFlex />
             <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
               Usage Example
             </h3>
@@ -193,7 +193,7 @@ export default function LoginForms() {
               </code>
               .
             </p>
-            <PreviewWithCodeTabs preview={<LoginForm4 />} code={login4Code} onlyPro />
+            <PreviewWithCodeTabs preview={<LoginForm4 />} code={login4Code} onlyPro isFlex />
             <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
               Usage Example
             </h3>
