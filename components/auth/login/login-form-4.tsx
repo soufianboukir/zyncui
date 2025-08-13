@@ -164,7 +164,9 @@ export const LoginForm4 = () => {
                   </p>
                 )}
                 <Label className="m-0 flex justify-end underline">
-                  <span className="cursor-pointer text-[13px] font-bold">Forgot password?</span>
+                  <span className="cursor-pointer text-[13px] font-bold">
+                    <Link href="#">Forgot password?</Link>
+                  </span>
                 </Label>
               </div>
             </div>
