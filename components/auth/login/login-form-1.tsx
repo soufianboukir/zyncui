@@ -73,7 +73,7 @@ export const LoginForm1 = () => {
   }
 
   return (
-    <div className={`flex h-screen flex-col items-center justify-center gap-6`}>
+    <div>
       <Card className="min-w-sm md:min-w-md">
         <CardTitle className="text-center text-[23px] font-extrabold">Welcome Back</CardTitle>
         <CardContent>
@@ -179,7 +179,7 @@ export const LoginForm1 = () => {
           </div>
         </CardContent>
       </Card>
-      <div className="text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
+      <div className="text-muted-foreground *:[a]:hover:text-primary mt-2 text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
         By clicking continue, you agree to our <Link href="#">Terms of Service</Link> and{" "}
         <Link href="#">Privacy Policy</Link>.
       </div>
