@@ -1,5 +1,4 @@
-export const login1Code = `
-"use client";
+export const login1Code = `"use client";
 
 import Image from "next/image";
 import { Button } from "../../ui/button";
@@ -74,7 +73,7 @@ export const LoginForm1 = () => {
   }
 
   return (
-    <div className={\`flex h-screen flex-col items-center justify-center gap-6\`}>
+    <div>
       <Card className="min-w-sm md:min-w-md">
         <CardTitle className="text-center text-[23px] font-extrabold">Welcome Back</CardTitle>
         <CardContent>
@@ -193,16 +192,16 @@ export const login1Example = `import { LoginForm1 } from "@/components/auth/logi
 
 const page = () => {
   return (
-    <div>
+    <div className="flex h-screen flex-col items-center justify-center gap-6">
       <LoginForm1 />
     </div>
   );
 };
 
-export default page;`;
+export default page;
+`;
 
-export const login2Code = `
-"use client";
+export const login2Code = `"use client";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -290,7 +289,7 @@ export const LoginForm2 = () => {
   }
 
   return (
-    <div className="flex h-screen flex-col items-center justify-center gap-6">
+    <div>
       <Card className="flex-row p-0">
         <div className="md:min-w- flex min-w-sm flex-col gap-7 py-6">
           <CardHeader>
@@ -428,28 +427,29 @@ export const LoginForm2 = () => {
         </div>
       </Card>
 
-      <div className="text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
+      <div className="text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4 mt-2">
         By clicking continue, you agree to our <Link href="#">Terms of Service</Link> and{" "}
         <Link href="#">Privacy Policy</Link>.
       </div>
     </div>
   );
 };
+
 `;
 export const login2Example = `import { LoginForm2 } from "@/components/auth/login/login-form-2";
 
 const page = () => {
   return (
-    <div>
+    <div className="flex h-screen flex-col items-center justify-center gap-6">
       <LoginForm2 />
     </div>
   );
 };
 
-export default page;`;
+export default page;
+`;
 
-export const login3Code = `
-"use client";
+export const login3Code = `"use client";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -461,8 +461,6 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { cn } from "@/lib/utils";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 import { useState } from "react";
 import { CircleAlert, Loader } from "lucide-react";
@@ -470,188 +468,138 @@ import z from "zod";
 
 const loginSchema = z.object({
   email: z.string().min(1, { message: "Email is required" }),
-  password: z.string().min(1, { message: "Pasword is required" }),
+  password: z.string().min(1, { message: "Password is required" }),
 });
 
 export const LoginForm3 = () => {
-  const [formData, setFormData] = useState<{ email: string; password: string }>({
-    email: "",
-    password: "",
-  });
+  const [formData, setFormData] = useState({ email: "", password: "" });
+  const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
+  const [loading, setLoading] = useState({ login: false, google: false, github: false });
 
-  const [errors, setErrors] = useState<{ email?: string; password?: string }>({
-    email: "",
-    password: "",
-  });
-
-  const [loading, setLoading] = useState<{ login: boolean; google: boolean; github: boolean }>({
-    login: false,
-    google: false,
-    github: false,
-  });
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const validateFormData = loginSchema.safeParse({
-      email: formData.email,
-      password: formData.password,
-    });
-
-    setErrors({ email: "", password: "" });
-    if (!validateFormData.success) {
-      const { email, password } = validateFormData.error.flatten().fieldErrors;
+    const validation = loginSchema.safeParse(formData);
+    setErrors({});
+    if (!validation.success) {
+      const { email, password } = validation.error.flatten().fieldErrors;
       setErrors({ email: email?.[0], password: password?.[0] });
       return;
     }
 
     setLoading(prev => ({ ...prev, login: true }));
-
     setTimeout(() => {
       setLoading(prev => ({ ...prev, login: false }));
     }, 2000);
-
-    // your backend logic
   };
 
-  async function handleGoogleOAuth() {
+  const handleGoogleOAuth = () => {
     setLoading(prev => ({ ...prev, google: true }));
-
     setTimeout(() => {
       setLoading(prev => ({ ...prev, google: false }));
     }, 3000);
-    // your OAuth logic with google here
-  }
+  };
 
-  async function handleGithubOAuth() {
+  const handleGithubOAuth = () => {
     setLoading(prev => ({ ...prev, github: true }));
     setTimeout(() => {
       setLoading(prev => ({ ...prev, github: false }));
     }, 3000);
-    // your OAuth github with google here
-  }
+  };
 
   return (
-    <div className={cn("flex h-screen flex-col items-center justify-center gap-6")}>
-      <Card className="min-w-sm md:min-w-md">
-        <div className="text-center">
-          <Dialog>
-            <form onSubmit={handleSubmit}>
-              <DialogTrigger asChild>
-                <Button variant="outline" className="cursor-pointer border-0 hover:bg-white">
-                  Sign in
-                </Button>
-              </DialogTrigger>
-              <DialogContent className="sm:max-w-[425px]">
-                <CardHeader className="mb-1 text-center">
-                  <CardTitle className="text-xl">Welcome back</CardTitle>
-                  <CardDescription>Login or create account with Google or Github</CardDescription>
-                </CardHeader>
-                <div className="grid gap-4">
-                  <div className="grid gap-3">
-                    <Label htmlFor="email">Email</Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={e => {
-                        setFormData(prev => ({ ...prev, email: e.target.value }));
-                      }}
-                      placeholder="zuncui@example.com"
-                      className={\`px-3.5 py-3 \${errors.email && "border-red-400 bg-red-500/10"}\`}
-                    />
-                    {errors.email && (
-                      <p className="mt-1 flex items-center text-sm font-medium text-red-400">
-                        <CircleAlert className="mr-2 h-4 w-4" />
-                        {errors.email}
-                      </p>
-                    )}
-                  </div>
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button variant="outline" className="px-6 py-2">Sign in</Button>
+        </DialogTrigger>
 
-                  <div className="grid gap-3">
-                    <Label htmlFor="password">Password</Label>
-                    <Input
-                      id="password"
-                      name="password"
-                      value={formData.password}
-                      onChange={e => {
-                        setFormData(prev => ({ ...prev, password: e.target.value }));
-                      }}
-                      placeholder="********"
-                      className={\`px-3.5 py-3 \${errors.password && "border-red-400 bg-red-500/10"}\`}
-                    />
-                    {errors.password && (
-                      <p className="flex items-center text-sm font-medium text-red-400">
-                        <CircleAlert className="mr-2 h-4 w-4" />
-                        {errors.password}
-                      </p>
-                    )}
-                  </div>
-                </div>
+        <DialogContent className="sm:max-w-[430px]">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="text-center space-y-1">
+              <h2 className="text-xl font-semibold">Welcome back</h2>
+              <p className="text-sm text-muted-foreground">
+                Login or create account with Google or Github
+              </p>
+            </div>
 
-                <CardContent>
-                  <div className="flex flex-col gap-4">
-                    <Button
-                      variant="outline"
-                      className="flex w-full cursor-pointer items-center justify-center gap-2 py-4"
-                      onClick={handleGoogleOAuth}
-                      disabled={loading.google}
-                      type="button"
-                    >
-                      {loading.google ? (
-                        <Loader className="animate-spin" />
-                      ) : (
-                        <>
-                          <Image
-                            src={"/icons/google.webp"}
-                            width={20}
-                            height={20}
-                            alt="google icon"
-                          />{" "}
-                          Continue with google
-                        </>
-                      )}
-                    </Button>
+            <div className="space-y-2">
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
+                value={formData.email}
+                onChange={e => setFormData(prev => ({ ...prev, email: e.target.value }))}
+                placeholder="zuncui@example.com"
+                className={errors.email ? "border-red-400 bg-red-500/10" : ""}
+              />
+              {errors.email && (
+                <p className="flex items-center text-sm text-red-400">
+                  <CircleAlert className="mr-2 h-4 w-4" />
+                  {errors.email}
+                </p>
+              )}
+            </div>
 
-                    <Button
-                      variant="outline"
-                      className="flex w-full cursor-pointer items-center justify-center gap-2 bg-black py-4 text-white hover:bg-black/85 hover:text-white dark:bg-white dark:text-black dark:hover:bg-white/85"
-                      onClick={handleGithubOAuth}
-                      disabled={loading.github}
-                      type="button"
-                    >
-                      {loading.github ? (
-                        <Loader className="animate-spin" />
-                      ) : (
-                        <>
-                          <Image
-                            src={"/icons/github.svg"}
-                            width={20}
-                            height={20}
-                            alt="github icon"
-                            className="invert dark:invert-0"
-                          />{" "}
-                          Continue with github
-                        </>
-                      )}
-                    </Button>
-                  </div>
-                </CardContent>
+            <div className="space-y-2">
+              <Label htmlFor="password">Password</Label>
+              <Input
+                id="password"
+                type="password"
+                value={formData.password}
+                onChange={e => setFormData(prev => ({ ...prev, password: e.target.value }))}
+                placeholder="********"
+                className={errors.password ? "border-red-400 bg-red-500/10" : ""}
+              />
+              {errors.password && (
+                <p className="flex items-center text-sm text-red-400">
+                  <CircleAlert className="mr-2 h-4 w-4" />
+                  {errors.password}
+                </p>
+              )}
+            </div>
 
-                <DialogFooter>
-                  <DialogClose asChild>
-                    <Button variant="outline">Cancel</Button>
-                  </DialogClose>
-                  <Button type="submit" className="cursor-pointer" disabled={loading.login}>
-                    {loading.login ? "Loging in..." : "Login"}
-                  </Button>
-                </DialogFooter>
-              </DialogContent>
-            </form>
-          </Dialog>
-        </div>
-      </Card>
-    </div>
+            <div className="space-y-3">
+              <Button
+                variant="outline"
+                className="flex w-full items-center justify-center gap-2 py-3"
+                onClick={handleGoogleOAuth}
+                disabled={loading.google}
+                type="button"
+              >
+                {loading.google ? <Loader className="animate-spin" /> : (
+                  <>
+                    <Image src={"/icons/google.webp"} width={20} height={20} alt="Google" />
+                    Continue with Google
+                  </>
+                )}
+              </Button>
+
+              <Button
+                variant="outline"
+                className="flex w-full items-center justify-center gap-2 bg-black text-white hover:bg-black/85 dark:bg-white dark:text-black dark:hover:bg-white/85 py-3"
+                onClick={handleGithubOAuth}
+                disabled={loading.github}
+                type="button"
+              >
+                {loading.github ? <Loader className="animate-spin" /> : (
+                  <>
+                    <Image src={"/icons/github.svg"} width={20} height={20} alt="Github" className="invert dark:invert-0" />
+                    Continue with Github
+                  </>
+                )}
+              </Button>
+            </div>
+
+            <DialogFooter className="mt-6">
+              <DialogClose asChild>
+                <Button variant="outline">Cancel</Button>
+              </DialogClose>
+              <Button type="submit" disabled={loading.login}>
+                {loading.login ? "Logging in..." : "Login"}
+              </Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
   );
 };
 `;
@@ -660,16 +608,16 @@ export const login3Example = `import { LoginForm3 } from "@/components/auth/logi
 
 const page = () => {
   return (
-    <div>
+    <div className="flex h-screen items-center justify-center">
       <LoginForm3 />
     </div>
   );
 };
 
-export default page;`;
+export default page;
+`;
 
-export const login4Code = String.raw`
-"use client";
+export const login4Code = `"use client";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -759,9 +707,8 @@ export const LoginForm4 = () => {
   }
 
   return (
-    <div className="flex h-screen flex-col items-center justify-center gap-6">
+    <div>
       <Card className="min-w-sm md:max-w-md">
-        {/**header and logo */}
         <CardHeader className="mb-5 space-y-1 text-center">
           <Image
             src="/icons/placeholder.svg"
@@ -775,7 +722,6 @@ export const LoginForm4 = () => {
         </CardHeader>
 
         <CardContent>
-          {/**form login */}
           <form onSubmit={handleSubmit} className="flex w-full flex-col gap-8 pb-7">
             <div className="flex flex-col gap-1">
               <div className="relative">
@@ -852,7 +798,6 @@ export const LoginForm4 = () => {
             <hr className="w-[30%]" />
           </div>
 
-          {/**btn for github and google and X */}
           <div className="flex justify-center gap-5">
             <Button
               type="button"
@@ -902,8 +847,7 @@ export const LoginForm4 = () => {
         </CardContent>
       </Card>
 
-      {/**footer policy */}
-      <div className="text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
+      <div className="text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4 mt-2">
         By clicking continue, you agree to our <Link href="#">Terms of Service</Link> and{" "}
         <Link href="#">Privacy Policy</Link>.
       </div>
@@ -916,10 +860,11 @@ export const login4Example = `import { LoginForm4 } from "@/components/auth/logi
 
 const page = () => {
   return (
-    <div>
+    <div className="flex h-screen flex-col items-center justify-center gap-6">
       <LoginForm4 />
     </div>
   );
 };
 
-export default page;`;
+export default page;
+`;
