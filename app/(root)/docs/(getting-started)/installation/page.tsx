@@ -5,8 +5,8 @@ import { nextJsSnippets, reactJsSnippets } from "@/constants/installation/steps"
 
 export default function IntroductionPage() {
   return (
-    <main className="font-medium">
-      <div className="space-y-10">
+    <main className="mx-auto max-w-4xl px-4 py-4 sm:px-6 sm:py-6 lg:px-8">
+      <div className="space-y-6 sm:space-y-8 lg:space-y-10">
         <section id="prerequisites" className="space-y-4">
           <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
             Prerequisites
@@ -38,9 +38,8 @@ export default function IntroductionPage() {
             </p>
             <br />
 
-            <div>
+            <div className="flex flex-col gap-6">
               <h1 className="text-2xl font-semibold">Steps</h1>
-              <br />
               <h1 className="text-lg font-medium">1. Create a Next.js Project</h1>
               <span>
                 Use the official Next.js starter with TypeScript (optional, but recommended):
