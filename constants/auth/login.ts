@@ -16,53 +16,67 @@ const loginSchema = z.object({
 });
 
 export const LoginForm1 = () => {
-  const [formData, setFormData] = useState({ email: "", password: "" });
-  const [errors, setErrors] = useState({});
-  const [loading, setLoading] = useState({ login: false, google: false, github: false });
+  const [formData, setFormData] = useState<{ email: string; password: string }>({
+    email: "",
+    password: "",
+  });
 
-  const handleSubmit = async (e) => {
+  const [errors, setErrors] = useState<{ email?: string; password?: string }>({
+    email: "",
+    password: "",
+  });
+
+  const [loading, setLoading] = useState<{ login: boolean; google: boolean; github: boolean }>({
+    login: false,
+    google: false,
+    github: false,
+  });
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const validateFormData = loginSchema.safeParse(formData);
-    setErrors({});
+    const validateFormData = loginSchema.safeParse({
+      email: formData.email,
+      password: formData.password,
+    });
 
+    setErrors({ email: "", password: "" });
     if (!validateFormData.success) {
       const { email, password } = validateFormData.error.flatten().fieldErrors;
       setErrors({ email: email?.[0], password: password?.[0] });
       return;
     }
 
-    setLoading((prev) => ({ ...prev, login: true }));
+    setLoading(prev => ({ ...prev, login: true }));
 
     setTimeout(() => {
-      setLoading((prev) => ({ ...prev, login: false }));
+      setLoading(prev => ({ ...prev, login: false }));
     }, 2000);
 
-    // your backend logic here
+    // your backend logic
   };
 
-  const handleGoogleOAuth = async () => {
-    setLoading((prev) => ({ ...prev, google: true }));
-    setTimeout(() => {
-      setLoading((prev) => ({ ...prev, google: false }));
-    }, 3000);
-    // your Google OAuth logic here
-  };
+  async function handleGoogleOAuth() {
+    setLoading(prev => ({ ...prev, google: true }));
 
-  const handleGithubOAuth = async () => {
-    setLoading((prev) => ({ ...prev, github: true }));
     setTimeout(() => {
-      setLoading((prev) => ({ ...prev, github: false }));
+      setLoading(prev => ({ ...prev, google: false }));
     }, 3000);
-    // your GitHub OAuth logic here
-  };
+    // your OAuth logic with google here
+  }
+
+  async function handleGithubOAuth() {
+    setLoading(prev => ({ ...prev, github: true }));
+    setTimeout(() => {
+      setLoading(prev => ({ ...prev, github: false }));
+    }, 3000);
+    // your OAuth github with google here
+  }
 
   return (
-    <div className="flex h-screen flex-col items-center justify-center gap-6">
+    <div className={\`flex h-screen flex-col items-center justify-center gap-6\`}>
       <Card className="min-w-sm md:min-w-md">
-        <CardTitle className="text-center text-[23px] font-extrabold">
-          Welcome Back
-        </CardTitle>
+        <CardTitle className="text-center text-[23px] font-extrabold">Welcome Back</CardTitle>
         <CardContent>
           <form onSubmit={handleSubmit} className="mb-[15px] flex w-full flex-col gap-4">
             <div>
@@ -70,9 +84,11 @@ export const LoginForm1 = () => {
                 type="email"
                 name="email"
                 value={formData.email}
-                onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))}
+                onChange={e => {
+                  setFormData(prev => ({ ...prev, email: e.target.value }));
+                }}
                 placeholder="zuncui@example.com"
-                className={\`px-3.5 py-3 \${errors.email ? "border-red-400 bg-red-500/10" : ""}\`}
+                className={\`px-3.5 py-3 \${errors.email && "border-red-400 bg-red-500/10"}\`}
               />
               {errors.email && (
                 <p className="mt-1 flex items-center text-sm font-medium text-red-400">
@@ -87,9 +103,11 @@ export const LoginForm1 = () => {
                 type="password"
                 name="password"
                 value={formData.password}
-                onChange={(e) => setFormData((prev) => ({ ...prev, password: e.target.value }))}
+                onChange={e => {
+                  setFormData(prev => ({ ...prev, password: e.target.value }));
+                }}
                 placeholder="********"
-                className={\`px-3.5 py-3 \${errors.password ? "border-red-400 bg-red-500/10" : ""}\`}
+                className={\`px-3.5 py-3 \${errors.password && "border-red-400 bg-red-500/10"}\`}
               />
               {errors.password && (
                 <p className="mt-1 flex items-center text-sm font-medium text-red-400">
@@ -99,18 +117,18 @@ export const LoginForm1 = () => {
               )}
               <p className="text-end text-[#747474] underline decoration-[#747474] dark:text-white">
                 <span className="cursor-pointer text-xs font-bold hover:text-black dark:hover:text-white">
-                  Forgot password
+                  <Link href="#">Forgot password</Link>
                 </span>
               </p>
             </div>
 
             <Button type="submit" disabled={loading.login} className="mt-4 cursor-pointer">
-              {loading.login ? "Logging in..." : "Login"}
+              {loading.login ? "Loging in..." : "Login"}
             </Button>
           </form>
 
           <p className="m-0 text-sm text-[#747474] dark:text-white">
-            Don't have an account?
+            Dont have an account?
             <span className="ml-1 cursor-pointer font-extrabold text-black underline decoration-black dark:text-white dark:decoration-white">
               <Link href="#">Sign up</Link>
             </span>
@@ -126,12 +144,12 @@ export const LoginForm1 = () => {
             >
               {loading.google ? (
                 <>
-                  <Loader className="animate-spin" /> Loading...
+                  <Loader className="animate-spin" /> loading...
                 </>
               ) : (
                 <>
                   <Image src="/icons/google.webp" alt="google icon" width={20} height={20} />
-                  Login with Google
+                  Login with google{" "}
                 </>
               )}
             </Button>
@@ -144,7 +162,7 @@ export const LoginForm1 = () => {
             >
               {loading.github ? (
                 <>
-                  <Loader className="animate-spin" /> Loading...
+                  <Loader className="animate-spin" /> loading...
                 </>
               ) : (
                 <>
@@ -155,18 +173,16 @@ export const LoginForm1 = () => {
                     width={20}
                     height={20}
                   />
-                  Login with GitHub
+                  Login with github
                 </>
               )}
             </Button>
           </div>
         </CardContent>
       </Card>
-
-      <div className="text-muted-foreground text-center text-xs">
-        By clicking continue, you agree to our{" "}
-        <Link href="/terms-of-service">Terms of Service</Link> and{" "}
-        <Link href="/privacy-policy">Privacy Policy</Link>.
+      <div className="text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
+        By clicking continue, you agree to our <Link href="#">Terms of Service</Link> and{" "}
+        <Link href="#">Privacy Policy</Link>.
       </div>
     </div>
   );
@@ -185,7 +201,8 @@ const page = () => {
 
 export default page;`;
 
-export const login2Code = `"use client";
+export const login2Code = `
+"use client";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -253,6 +270,7 @@ export const LoginForm2 = () => {
     setTimeout(() => {
       setLoading(prev => ({ ...prev, google: false }));
     }, 3000);
+    // your OAuth logic with google here
   }
 
   async function handleGithubOAuth() {
@@ -260,6 +278,7 @@ export const LoginForm2 = () => {
     setTimeout(() => {
       setLoading(prev => ({ ...prev, github: false }));
     }, 3000);
+    // your OAuth github with google here
   }
 
   async function handleXOAuth() {
@@ -267,6 +286,7 @@ export const LoginForm2 = () => {
     setTimeout(() => {
       setLoading(prev => ({ ...prev, x: false }));
     }, 3000);
+    // your OAuth x with google here
   }
 
   return (
@@ -307,7 +327,9 @@ export const LoginForm2 = () => {
                 <div className="m-0 flex justify-between p-0">
                   <Label>Password</Label>
                   <Label className="m-0 text-end underline">
-                    <span className="cursor-pointer text-sm font-bold">Forgot password?</span>
+                    <span className="cursor-pointer text-sm font-bold">
+                      <Link href="#">Forgot password?</Link>
+                    </span>
                   </Label>
                 </div>
                 <Input
@@ -407,14 +429,13 @@ export const LoginForm2 = () => {
       </Card>
 
       <div className="text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
-        By clicking continue, you agree to our{" "}
-        <Link href="/terms-of-service">Terms of Service</Link> and{" "}
-        <Link href="/privacy-policy">Privacy Policy</Link>.
+        By clicking continue, you agree to our <Link href="#">Terms of Service</Link> and{" "}
+        <Link href="#">Privacy Policy</Link>.
       </div>
     </div>
   );
-};`;
-
+};
+`;
 export const login2Example = `import { LoginForm2 } from "@/components/auth/login/login-form-2";
 
 const page = () => {
@@ -718,6 +739,7 @@ export const LoginForm4 = () => {
     setTimeout(() => {
       setLoading(prev => ({ ...prev, google: false }));
     }, 3000);
+    // your OAuth logic with google here
   }
 
   async function handleGithubOAuth() {
@@ -725,6 +747,7 @@ export const LoginForm4 = () => {
     setTimeout(() => {
       setLoading(prev => ({ ...prev, github: false }));
     }, 3000);
+    // your OAuth github with google here
   }
 
   async function handleXOAuth() {
@@ -732,11 +755,13 @@ export const LoginForm4 = () => {
     setTimeout(() => {
       setLoading(prev => ({ ...prev, x: false }));
     }, 3000);
+    // your OAuth x with google here
   }
 
   return (
     <div className="flex h-screen flex-col items-center justify-center gap-6">
       <Card className="min-w-sm md:max-w-md">
+        {/**header and logo */}
         <CardHeader className="mb-5 space-y-1 text-center">
           <Image
             src="/icons/placeholder.svg"
@@ -750,6 +775,7 @@ export const LoginForm4 = () => {
         </CardHeader>
 
         <CardContent>
+          {/**form login */}
           <form onSubmit={handleSubmit} className="flex w-full flex-col gap-8 pb-7">
             <div className="flex flex-col gap-1">
               <div className="relative">
@@ -809,7 +835,9 @@ export const LoginForm4 = () => {
                   </p>
                 )}
                 <Label className="m-0 flex justify-end underline">
-                  <span className="cursor-pointer text-[13px] font-bold">Forgot password?</span>
+                  <span className="cursor-pointer text-[13px] font-bold">
+                    <Link href="#">Forgot password?</Link>
+                  </span>
                 </Label>
               </div>
             </div>
@@ -824,6 +852,7 @@ export const LoginForm4 = () => {
             <hr className="w-[30%]" />
           </div>
 
+          {/**btn for github and google and X */}
           <div className="flex justify-center gap-5">
             <Button
               type="button"
@@ -834,7 +863,9 @@ export const LoginForm4 = () => {
               {loading.github ? (
                 <Loader className="animate-spin" />
               ) : (
-                <Image src="/icons/github.svg" alt="github icon" width={20} height={20} />
+                <>
+                  <Image src="/icons/github.svg" alt="github icon" width={20} height={20} />
+                </>
               )}
             </Button>
 
@@ -847,7 +878,9 @@ export const LoginForm4 = () => {
               {loading.google ? (
                 <Loader className="animate-spin" />
               ) : (
-                <Image src="/icons/google.webp" alt="google icon" width={20} height={20} />
+                <>
+                  <Image src="/icons/google.webp" alt="google icon" width={20} height={20} />
+                </>
               )}
             </Button>
 
@@ -860,13 +893,16 @@ export const LoginForm4 = () => {
               {loading.x ? (
                 <Loader className="animate-spin" />
               ) : (
-                <Image src="/icons/x.png" alt="x icon" width={20} height={20} />
+                <>
+                  <Image src="/icons/x.png" alt="x icon" width={20} height={20} />
+                </>
               )}
             </Button>
           </div>
         </CardContent>
       </Card>
 
+      {/**footer policy */}
       <div className="text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
         By clicking continue, you agree to our <Link href="#">Terms of Service</Link> and{" "}
         <Link href="#">Privacy Policy</Link>.
