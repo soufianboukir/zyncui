@@ -32,20 +32,15 @@ export default function HeroSection2() {
   }, [mobileMenuOpen]);
 
   return (
-    <div className="bg-background relative min-h-screen w-full overflow-hidden">
+    <div className="from-background via-background to-muted/40 relative min-h-screen w-full overflow-hidden bg-gradient-to-b">
+      <div className="from-primary/30 absolute -top-40 left-1/2 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-gradient-to-r to-blue-500/30 opacity-60 blur-3xl"></div>
+
       {mobileMenuOpen && (
         <button
           type="button"
           aria-label="Close mobile menu"
-          tabIndex={0}
-          className="absolute inset-0 z-30 bg-black/20 backdrop-blur-sm lg:hidden"
+          className="absolute inset-0 z-30 bg-black/40 backdrop-blur-sm lg:hidden"
           onClick={() => setMobileMenuOpen(false)}
-          onKeyDown={e => {
-            if (e.key === "Enter" || e.key === " ") {
-              setMobileMenuOpen(false);
-            }
-          }}
-          style={{ cursor: "pointer" }}
         />
       )}
 
@@ -65,21 +60,18 @@ export default function HeroSection2() {
             </Link>
           </div>
 
-          <div className="flex-1 overflow-y-auto p-6">
-            <div className="space-y-1">
-              {["Product", "Features", "Marketplace", "Company"].map(item => (
-                <Link
-                  key={item}
-                  href="#"
-                  className="text-muted-foreground hover:text-foreground hover:bg-muted/50 block rounded-lg px-3 py-3 text-base font-medium transition-colors"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {item}
-                </Link>
-              ))}
-            </div>
-
-            <div className="mt-6 border-t pt-6">
+          <div className="flex-1 space-y-4 overflow-y-auto p-6">
+            {["Product", "Features", "Marketplace", "Company"].map(item => (
+              <Link
+                key={item}
+                href="#"
+                className="text-muted-foreground hover:bg-muted/50 hover:text-foreground block rounded-lg px-3 py-3 text-base font-medium transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {item}
+              </Link>
+            ))}
+            <div className="border-t pt-6">
               <Button variant="ghost" asChild className="w-full justify-start">
                 <Link href="#" onClick={() => setMobileMenuOpen(false)}>
                   Log in
@@ -87,18 +79,11 @@ export default function HeroSection2() {
               </Button>
             </div>
           </div>
-
-          <div className="hidden border-t p-6">
-            <Button variant="ghost" asChild className="w-full justify-start">
-              <Link href="#" onClick={() => setMobileMenuOpen(false)}>
-                Log in
-              </Link>
-            </Button>
-          </div>
         </div>
       </div>
-      <header className="relative z-50">
-        <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
+
+      <header className="relative z-20">
+        <nav className="flex items-center justify-between px-6 py-6 lg:px-12" aria-label="Global">
           <div className="flex lg:flex-1">
             <Link href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
@@ -114,11 +99,10 @@ export default function HeroSection2() {
               size="icon"
               onClick={() => setMobileMenuOpen(true)}
             >
-              <span className="sr-only">Open main menu</span>
               <Menu className="h-6 w-6" />
             </Button>
           </div>
-          <div className="hidden lg:flex lg:gap-x-12">
+          <div className="hidden lg:flex lg:gap-x-10">
             {["Product", "Features", "Marketplace", "Company"].map(item => (
               <Link
                 key={item}
@@ -132,80 +116,69 @@ export default function HeroSection2() {
           <div className="hidden lg:ml-8 lg:flex">
             <Button variant="ghost" asChild>
               <Link href="#">
-                Log in <span aria-hidden="true">&rarr;</span>
+                Log in <ArrowRight className="ml-1 h-4 w-4" />
               </Link>
             </Button>
           </div>
         </nav>
       </header>
 
-      <div className="mx-auto max-w-7xl px-6 py-16 md:py-24 lg:px-8">
-        <div className="text-center">
-          <div className="mb-8 inline-flex items-center rounded-full border px-4 py-1.5 text-sm font-medium shadow-sm">
-            <Check className="mr-2 h-4 w-4 text-green-500" />
-            Trusted by thousands of developers
-          </div>
+      <div className="relative z-10 mx-auto max-w-7xl px-6 pt-16 pb-20 text-center md:pt-28 lg:px-8">
+        <div className="border-primary/30 bg-primary/10 text-primary inline-flex items-center rounded-full border px-4 py-1.5 text-sm font-medium shadow-sm backdrop-blur">
+          <Check className="text-primary mr-2 h-4 w-4" />
+          Trusted by 5,000+ developers
+        </div>
 
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-            <span className="block">Build amazing apps</span>
-            <span className="from-primary block bg-gradient-to-r to-blue-600 bg-clip-text text-transparent">
-              faster than ever
-            </span>
-          </h1>
+        <h1 className="mt-8 text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl">
+          <span className="block">Build beautiful apps</span>
+          <span className="from-primary bg-gradient-to-r to-blue-500 bg-clip-text text-transparent">
+            without the hassle
+          </span>
+        </h1>
 
-          <p className="text-muted-foreground mx-auto mt-6 max-w-2xl text-xl">
-            The complete toolkit for modern web development with everything you need in one package.
-          </p>
+        <p className="text-muted-foreground mx-auto mt-6 max-w-2xl text-lg">
+          The complete toolkit for modern web development with ready-to-use components, templates,
+          and utilities — all in one place.
+        </p>
 
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button size="lg" className="px-8">
-              Get started
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+        <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <Button size="lg" className="px-8">
+            Get started
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </Button>
+          <Button variant="outline" size="lg" className="px-8">
+            <Play className="mr-2 h-4 w-4" />
+            Watch demo
+          </Button>
+        </div>
 
-            <Button variant="outline" size="lg" className="px-8">
-              <Play className="mr-2 h-4 w-4" />
-              Watch demo
-            </Button>
-          </div>
+        <div className="mx-auto mt-20 grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-3">
+          {[
+            { title: "Type Safe", description: "Full TypeScript support out of the box" },
+            { title: "Dark Mode", description: "Automatic dark mode detection" },
+            { title: "Accessible", description: "WCAG compliant components" },
+          ].map(feature => (
+            <Card
+              key={feature.title}
+              className="border-muted border bg-white/70 p-6 text-center shadow-lg backdrop-blur-lg dark:bg-black/50"
+            >
+              <div className="bg-primary/10 mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full">
+                <Check className="text-primary h-6 w-6" />
+              </div>
+              <h3 className="text-lg font-semibold">{feature.title}</h3>
+              <p className="text-muted-foreground mt-2 text-sm">{feature.description}</p>
+            </Card>
+          ))}
+        </div>
 
-          <div className="mx-auto mt-16 grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-3">
-            {[
-              {
-                icon: <Check className="text-primary h-5 w-5" />,
-                title: "Type Safe",
-                description: "Full TypeScript support out of the box",
-              },
-              {
-                icon: <Check className="text-primary h-5 w-5" />,
-                title: "Dark Mode",
-                description: "Automatic dark mode detection",
-              },
-              {
-                icon: <Check className="text-primary h-5 w-5" />,
-                title: "Accessible",
-                description: "WCAG compliant components",
-              },
-            ].map(feature => (
-              <Card key={feature.title} className="p-6 text-center">
-                <div className="flex justify-center">
-                  <div className="bg-secondary rounded-full p-3">{feature.icon}</div>
-                </div>
-                <h3 className="mt-4 text-lg font-medium">{feature.title}</h3>
-                <p className="text-muted-foreground mt-2 text-sm">{feature.description}</p>
-              </Card>
+        <div className="mt-20">
+          <p className="text-muted-foreground mb-4 text-sm">Trusted by teams at</p>
+          <div className="flex flex-wrap justify-center gap-8 opacity-80">
+            {["Acme", "Globex", "Soylent", "Initech", "Umbrella"].map(company => (
+              <div key={company} className="font-medium">
+                {company}
+              </div>
             ))}
-          </div>
-
-          <div className="mt-16">
-            <p className="text-muted-foreground mb-4 text-sm">Trusted by teams at</p>
-            <div className="flex flex-wrap justify-center gap-8 opacity-70">
-              {["Acme", "Globex", "Soylent", "Initech", "Umbrella"].map(company => (
-                <div key={company} className="font-medium">
-                  {company}
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </div>
