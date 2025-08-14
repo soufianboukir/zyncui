@@ -114,8 +114,8 @@ export const SignUpForm1 = () => {
   }
 
   return (
-    <div className="flex h-screen flex-col items-center justify-center">
-      <div className="flex">
+    <div className="m-3">
+      <div className="flex max-w-7xl">
         <Card className="min-w-sm rounded-none border-r-0 md:min-w-xl md:px-20">
           {/**header card */}
           <CardHeader className="space-y-5">
@@ -164,8 +164,8 @@ export const SignUpForm1 = () => {
                 )}
               </div>
 
-              <div>
-                <Label className="text-muted-foreground mb-2 text-[15px]">Password</Label>
+              <div className="space-y-2">
+                <Label className="text-muted-foreground text-[15px]">Password</Label>
                 <PasswordInput
                   value={formData.password}
                   name="password"
@@ -180,8 +180,8 @@ export const SignUpForm1 = () => {
                 )}
               </div>
 
-              <div>
-                <Label className="text-muted-foreground mb-2 text-[15px]">Retype Password</Label>
+              <div className="space-y-2">
+                <Label className="text-muted-foreground text-[15px]">Retype Password</Label>
                 <PasswordInput
                   value={formData.r_password}
                   name="r_password"
@@ -294,6 +294,7 @@ export const SignUpForm1 = () => {
     </div>
   );
 };
+
 `;
 
 export const signUp1Example = `import { SignUpForm1 } from "@/components/auth/signUp/sign-up-form-1";
@@ -323,7 +324,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import z from "zod";
-// import { toast } from "sonner";
 
 const signupSchema = z
   .object({
@@ -357,7 +357,6 @@ export const SignUpForm2 = () => {
     }));
   };
 
-  // phone-input doesn't accept the above handle change function that takes the value as e: React.ChangeEvent<HTMLInputElement>
   const handlePhoneChange = (value: string) => {
     setFormData(prev => ({
       ...prev,
@@ -439,207 +438,199 @@ export const SignUpForm2 = () => {
   }
 
   return (
-    <div className="flex h-screen items-center justify-center">
-      <div className="w-[95%] rounded-full md:w-[60%] lg:w-[40%]">
-        <div className="flex justify-center">
-          <Image
-            src={"/icons/placeholder.svg"}
-            width={60}
-            height={60}
-            className="rounded-full"
-            alt={"logo icon"}
-          />
-        </div>
-        <div className="mt-2 flex flex-col gap-6">
-          <Card>
-            <CardHeader className="text-center">
-              {/**header signUp */}
-              <CardTitle className="text-xl">Create your account</CardTitle>
-              <CardDescription>
-                Sign up to attend classes, complete quizzes, and monitor your learning journey
-              </CardDescription>
-              <CardDescription className="text-center text-sm text-gray-600 dark:text-gray-300">
-                Already have an account?{" "}
-                <Link
-                  href="/login"
-                  className="underline underline-offset-4 duration-200 hover:text-blue-500"
-                >
-                  Sign in
-                </Link>
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit}>
-                {/**form for create accout with email */}
-                <div className="grid gap-4">
-                  {error && <div className="mb-2 text-center text-red-600">{error}</div>}
+    <div className="max-w-7xl">
+      <div className="flex justify-center">
+        <Image
+          src={"/icons/placeholder.svg"}
+          width={60}
+          height={60}
+          className="rounded-full"
+          alt={"logo icon"}
+        />
+      </div>
+      <div className="mt-2 flex flex-col gap-6">
+        <Card>
+          <CardHeader className="text-center">
+            {/**header signUp */}
+            <CardTitle className="text-xl">Create your account</CardTitle>
+            <CardDescription>
+              Sign up to attend classes, complete quizzes, and monitor your learning journey
+            </CardDescription>
+            <CardDescription className="text-center text-sm text-gray-600 dark:text-gray-300">
+              Already have an account?{" "}
+              <Link
+                href="/login"
+                className="underline underline-offset-4 duration-200 hover:text-blue-500"
+              >
+                Sign in
+              </Link>
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleSubmit}>
+              {/**form for create accout with email */}
+              <div className="grid gap-4">
+                {error && <div className="mb-2 text-center text-red-600">{error}</div>}
 
-                  <div className="grid gap-6">
-                    <div className="grid grid-cols-2 items-start justify-start gap-2">
-                      <div className="grid gap-1">
-                        <Label htmlFor="name">Full name *</Label>
-                        <Input
-                          type="name"
-                          name="name"
-                          placeholder="eg, Joen doe"
-                          onChange={handleChange}
-                        />
-                        {errors.name && <p className="text-sm text-red-600">{errors.name}</p>}
-                      </div>
-                      <div className="grid gap-1">
-                        <Label htmlFor="email">Phone number *</Label>
-                        <div className="flex gap-1">
-                          <PhoneInput
-                            placeholder="Enter a phone number"
-                            value={formData.phoneNumber}
-                            onChange={handlePhoneChange}
-                            name="phoneNumber"
-                          />
-                        </div>
-                        {errors.phoneNumber && (
-                          <p className="text-sm text-red-600">{errors.phoneNumber}</p>
-                        )}
-                      </div>
+                <div className="grid gap-6">
+                  <div className="grid grid-cols-2 items-start justify-start gap-2">
+                    <div className="grid gap-1">
+                      <Label htmlFor="name">Full name *</Label>
+                      <Input
+                        type="name"
+                        name="name"
+                        placeholder="eg, Joen doe"
+                        onChange={handleChange}
+                      />
+                      {errors.name && <p className="text-sm text-red-600">{errors.name}</p>}
                     </div>
                     <div className="grid gap-1">
-                      <Label htmlFor="email">Email *</Label>
-                      <Input
-                        name="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder="m@example.com"
-                      />
-                      {errors.email && <p className="text-sm text-red-600">{errors.email}</p>}
-                    </div>
-
-                    <div className="grid grid-cols-2 items-start gap-2">
-                      <div className="grid gap-1">
-                        <Label htmlFor="email">Password *</Label>
-                        <PasswordInput
-                          value={formData.password}
-                          name="password"
-                          onChange={handleChange}
-                          placeholder="*********"
+                      <Label htmlFor="email">Phone number *</Label>
+                      <div className="flex gap-1">
+                        <PhoneInput
+                          placeholder="Enter a phone number"
+                          value={formData.phoneNumber}
+                          onChange={handlePhoneChange}
+                          name="phoneNumber"
                         />
-                        {errors.password && (
-                          <p className="text-sm text-red-600">{errors.password}</p>
-                        )}
                       </div>
-                      <div className="grid gap-1">
-                        <Label htmlFor="email">Retype password *</Label>
-                        <PasswordInput
-                          value={formData.r_password}
-                          name="r_password"
-                          onChange={handleChange}
-                          placeholder="*********"
-                        />
-                        {errors.r_password && (
-                          <p className="text-sm text-red-600">{errors.r_password}</p>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="grid gap-3">
-                    <Button
-                      type="submit"
-                      className="w-full cursor-pointer bg-blue-600 hover:bg-blue-700"
-                      disabled={loading.form}
-                    >
-                      {loading.form ? (
-                        <div>
-                          <Loader className="animate-spin" />
-                        </div>
-                      ) : (
-                        "Continue"
+                      {errors.phoneNumber && (
+                        <p className="text-sm text-red-600">{errors.phoneNumber}</p>
                       )}
-                    </Button>
+                    </div>
+                  </div>
+                  <div className="grid gap-1">
+                    <Label htmlFor="email">Email *</Label>
+                    <Input
+                      name="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="m@example.com"
+                    />
+                    {errors.email && <p className="text-sm text-red-600">{errors.email}</p>}
+                  </div>
+
+                  <div className="grid grid-cols-2 items-start gap-2">
+                    <div className="grid gap-1">
+                      <Label htmlFor="email">Password *</Label>
+                      <PasswordInput
+                        value={formData.password}
+                        name="password"
+                        onChange={handleChange}
+                        placeholder="*********"
+                      />
+                      {errors.password && <p className="text-sm text-red-600">{errors.password}</p>}
+                    </div>
+                    <div className="grid gap-1">
+                      <Label htmlFor="email">Retype password *</Label>
+                      <PasswordInput
+                        value={formData.r_password}
+                        name="r_password"
+                        onChange={handleChange}
+                        placeholder="*********"
+                      />
+                      {errors.r_password && (
+                        <p className="text-sm text-red-600">{errors.r_password}</p>
+                      )}
+                    </div>
                   </div>
                 </div>
-                <div className="after:border-border relative my-4 text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
-                  <span className="bg-card text-muted-foreground relative z-10 px-2">
-                    Or sign up with
-                  </span>
-                </div>
-
-                {/**btn for continue with google and X and github */}
-                <div className="flex flex-col gap-3">
+                <div className="grid gap-3">
                   <Button
-                    variant="outline"
-                    className="flex w-full cursor-pointer items-center justify-center gap-2 py-5"
-                    type="button"
-                    onClick={handleGoogleOAuth}
-                    disabled={loading.google}
+                    type="submit"
+                    className="w-full cursor-pointer bg-blue-600 hover:bg-blue-700"
+                    disabled={loading.form}
                   >
-                    {loading.google ? (
-                      <Loader className="animate-spin" />
+                    {loading.form ? (
+                      <div>
+                        <Loader className="animate-spin" />
+                      </div>
                     ) : (
-                      <>
-                        <Image
-                          src={"/icons/google.webp"}
-                          width={25}
-                          height={25}
-                          alt="google icon"
-                        />
-                        Sign up with Google
-                      </>
-                    )}
-                  </Button>
-
-                  <Button
-                    variant="outline"
-                    className="flex w-full cursor-pointer items-center justify-center gap-2 py-5"
-                    type="button"
-                    onClick={handleXOAuth}
-                    disabled={loading.x}
-                  >
-                    {loading.x ? (
-                      <Loader className="animate-spin" />
-                    ) : (
-                      <>
-                        <Image src={"/icons/x.png"} width={25} height={25} alt="X icon" />
-                        Sign up with X
-                      </>
-                    )}
-                  </Button>
-
-                  <Button
-                    // variant="outline"
-                    className="flex w-full cursor-pointer items-center justify-center gap-2 py-5"
-                    type="button"
-                    onClick={handleGithubOAuth}
-                    disabled={loading.github}
-                  >
-                    {loading.github ? (
-                      <Loader className="animate-spin" />
-                    ) : (
-                      <>
-                        <Image
-                          src={"/icons/github.svg"}
-                          width={20}
-                          height={20}
-                          alt="github icon"
-                          className="invert dark:invert-0"
-                        />
-                        Sign up with Github
-                      </>
+                      "Continue"
                     )}
                   </Button>
                 </div>
-              </form>
-            </CardContent>
-          </Card>
+              </div>
+              <div className="after:border-border relative my-4 text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
+                <span className="bg-card text-muted-foreground relative z-10 px-2">
+                  Or sign up with
+                </span>
+              </div>
 
-          {/**footer policy */}
-          <div className="text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
-            By clicking continue, you agree to our <Link href="#">Terms of Service</Link> and{" "}
-            <Link href="#">Privacy Policy</Link>.
-          </div>
+              {/**btn for continue with google and X and github */}
+              <div className="flex flex-col gap-3">
+                <Button
+                  variant="outline"
+                  className="flex w-full cursor-pointer items-center justify-center gap-2 py-5"
+                  type="button"
+                  onClick={handleGoogleOAuth}
+                  disabled={loading.google}
+                >
+                  {loading.google ? (
+                    <Loader className="animate-spin" />
+                  ) : (
+                    <>
+                      <Image src={"/icons/google.webp"} width={25} height={25} alt="google icon" />
+                      Sign up with Google
+                    </>
+                  )}
+                </Button>
+
+                <Button
+                  variant="outline"
+                  className="flex w-full cursor-pointer items-center justify-center gap-2 py-5"
+                  type="button"
+                  onClick={handleXOAuth}
+                  disabled={loading.x}
+                >
+                  {loading.x ? (
+                    <Loader className="animate-spin" />
+                  ) : (
+                    <>
+                      <Image src={"/icons/x.png"} width={25} height={25} alt="X icon" />
+                      Sign up with X
+                    </>
+                  )}
+                </Button>
+
+                <Button
+                  // variant="outline"
+                  className="flex w-full cursor-pointer items-center justify-center gap-2 py-5"
+                  type="button"
+                  onClick={handleGithubOAuth}
+                  disabled={loading.github}
+                >
+                  {loading.github ? (
+                    <Loader className="animate-spin" />
+                  ) : (
+                    <>
+                      <Image
+                        src={"/icons/github.svg"}
+                        width={20}
+                        height={20}
+                        alt="github icon"
+                        className="invert dark:invert-0"
+                      />
+                      Sign up with Github
+                    </>
+                  )}
+                </Button>
+              </div>
+            </form>
+          </CardContent>
+        </Card>
+
+        {/**footer policy */}
+        <div className="text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
+          By clicking continue, you agree to our <Link href="#">Terms of Service</Link> and{" "}
+          <Link href="#">Privacy Policy</Link>.
         </div>
       </div>
     </div>
   );
 };
+
 `;
 
 export const signUp2Example = `import { SignUpForm2 } from "@/components/auth/signUp/sign-up-form-2";

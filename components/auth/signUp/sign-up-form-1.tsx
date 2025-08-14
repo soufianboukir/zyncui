@@ -164,8 +164,8 @@ export const SignUpForm1 = () => {
                 )}
               </div>
 
-              <div>
-                <Label className="text-muted-foreground mb-2 text-[15px]">Password</Label>
+              <div className="space-y-2">
+                <Label className="text-muted-foreground text-[15px]">Password</Label>
                 <PasswordInput
                   value={formData.password}
                   name="password"
@@ -180,7 +180,7 @@ export const SignUpForm1 = () => {
                 )}
               </div>
 
-              <div>
+              <div className="space-y-2">
                 <Label className="text-muted-foreground mb-2 text-[15px]">Retype Password</Label>
                 <PasswordInput
                   value={formData.r_password}
