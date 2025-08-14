@@ -24,7 +24,7 @@ export default function LoginForms() {
     <main className="mx-auto w-full max-w-7xl py-6 text-base sm:px-6 sm:text-lg lg:px-8">
       <div className="space-y-20 sm:space-y-24">
         <section
-          id="login-description"
+          id="description"
           className="prose prose-lg prose-gray dark:prose-invert mx-auto max-w-7xl space-y-5"
         >
           <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100">
