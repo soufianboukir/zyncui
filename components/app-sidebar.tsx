@@ -48,7 +48,7 @@ const data = {
       items: [
         {
           title: "Hero",
-          url: "#",
+          url: "/blocks/hero",
         },
         {
           title: "NavBar",

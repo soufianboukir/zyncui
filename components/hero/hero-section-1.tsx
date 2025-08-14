@@ -36,16 +36,21 @@ export default function HeroSection1() {
       return () => document.removeEventListener("mousedown", handleClickOutside);
     }
   }, [mobileMenuOpen]);
+
   return (
-    <div className="relative isolate min-h-screen overflow-hidden bg-white dark:bg-black">
+    <div className="relative isolate min-h-screen w-full overflow-hidden bg-white dark:bg-black">
       {mobileMenuOpen && (
         <div
           className="absolute inset-0 z-40 bg-black/20 lg:hidden dark:bg-black/40"
           onClick={() => setMobileMenuOpen(false)}
         />
       )}
-      <header className="relative z-50 w-full">
-        <nav className="relative flex items-center justify-between p-6 lg:px-8" aria-label="Global">
+
+      <header className="relative w-full">
+        <nav
+          className="relative mx-auto flex w-full max-w-screen-xl items-center justify-between p-6 lg:px-8"
+          aria-label="Global"
+        >
           <div className="flex lg:flex-1">
             <Link href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
@@ -71,6 +76,7 @@ export default function HeroSection1() {
               )}
             </Button>
           </div>
+
           <div className="hidden lg:flex lg:gap-x-12">
             {navigation.map(item => (
               <Link
@@ -82,10 +88,11 @@ export default function HeroSection1() {
               </Link>
             ))}
           </div>
+
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <Link
               href="#"
-              className="text-sm leading-6 font-semibold text-gray-900 transition-colors hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
+              className="cursor-pointer text-sm leading-6 font-semibold text-gray-900 transition-colors hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
             >
               Log in <span aria-hidden="true">&rarr;</span>
             </Link>
@@ -135,7 +142,8 @@ export default function HeroSection1() {
           </div>
         </div>
       </header>
-      <div className="relative isolate px-6 lg:px-8">
+
+      <div className="relative isolate w-full">
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
           aria-hidden="true"
@@ -148,7 +156,8 @@ export default function HeroSection1() {
             }}
           />
         </div>
-        <div className="mx-auto max-w-2xl py-16 sm:py-24 lg:py-32">
+
+        <div className="mx-auto w-full max-w-screen-xl px-6 py-16 sm:px-8 sm:py-24 lg:py-32">
           <div className="hidden sm:mb-8 sm:flex sm:justify-center">
             <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-300 transition-colors hover:ring-gray-400 dark:text-gray-400 dark:ring-gray-700 dark:hover:ring-gray-600">
               Announcing our next round of funding.{" "}
@@ -161,8 +170,9 @@ export default function HeroSection1() {
               </Link>
             </div>
           </div>
+
           <div className="text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl lg:text-7xl dark:text-white">
+            <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-6xl lg:text-6xl dark:text-white">
               <span className="text-balance">
                 Data to enrich your{" "}
                 <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent dark:from-white dark:to-gray-400">
@@ -170,7 +180,7 @@ export default function HeroSection1() {
                 </span>
               </span>
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-gray-600 dark:text-gray-400">
+            <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-gray-600 dark:text-gray-400">
               Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat
               commodo. Elit sunt amet fugiat veniam occaecat.
             </p>
@@ -190,6 +200,8 @@ export default function HeroSection1() {
             </div>
           </div>
         </div>
+
+        {/* BOTTOM GRADIENT */}
         <div
           className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
           aria-hidden="true"
