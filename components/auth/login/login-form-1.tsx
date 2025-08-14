@@ -73,7 +73,7 @@ export const LoginForm1 = () => {
   }
 
   return (
-    <div className={`flex h-screen flex-col items-center justify-center gap-6`}>
+    <div>
       <Card className="min-w-sm md:min-w-md">
         <CardTitle className="text-center text-[23px] font-extrabold">Welcome Back</CardTitle>
         <CardContent>
@@ -116,7 +116,7 @@ export const LoginForm1 = () => {
               )}
               <p className="text-end text-[#747474] underline decoration-[#747474] dark:text-white">
                 <span className="cursor-pointer text-xs font-bold hover:text-black dark:hover:text-white">
-                  Forgot password
+                  <Link href="#">Forgot password</Link>
                 </span>
               </p>
             </div>
@@ -179,10 +179,9 @@ export const LoginForm1 = () => {
           </div>
         </CardContent>
       </Card>
-      <div className="text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
-        By clicking continue, you agree to our{" "}
-        <Link href="/terms-of-service">Terms of Service</Link> and{" "}
-        <Link href="/privacy-policy">Privacy Policy</Link>.
+      <div className="text-muted-foreground *:[a]:hover:text-primary mt-2 text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
+        By clicking continue, you agree to our <Link href="#">Terms of Service</Link> and{" "}
+        <Link href="#">Privacy Policy</Link>.
       </div>
     </div>
   );

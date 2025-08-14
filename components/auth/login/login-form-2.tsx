@@ -86,7 +86,7 @@ export const LoginForm2 = () => {
   }
 
   return (
-    <div className="flex h-screen flex-col items-center justify-center gap-6">
+    <div>
       <Card className="flex-row p-0">
         <div className="md:min-w- flex min-w-sm flex-col gap-7 py-6">
           <CardHeader>
@@ -123,7 +123,9 @@ export const LoginForm2 = () => {
                 <div className="m-0 flex justify-between p-0">
                   <Label>Password</Label>
                   <Label className="m-0 text-end underline">
-                    <span className="cursor-pointer text-sm font-bold">Forgot password?</span>
+                    <span className="cursor-pointer text-sm font-bold">
+                      <Link href="#">Forgot password?</Link>
+                    </span>
                   </Label>
                 </div>
                 <Input
@@ -222,10 +224,9 @@ export const LoginForm2 = () => {
         </div>
       </Card>
 
-      <div className="text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
-        By clicking continue, you agree to our{" "}
-        <Link href="/terms-of-service">Terms of Service</Link> and{" "}
-        <Link href="/privacy-policy">Privacy Policy</Link>.
+      <div className="text-muted-foreground *:[a]:hover:text-primary mt-2 text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
+        By clicking continue, you agree to our <Link href="#">Terms of Service</Link> and{" "}
+        <Link href="#">Privacy Policy</Link>.
       </div>
     </div>
   );
