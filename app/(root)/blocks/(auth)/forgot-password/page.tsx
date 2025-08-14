@@ -106,7 +106,6 @@ export default function ForgotPasswordPage() {
               preview={<ForgotPasswordForm />}
               code={forgotPasswordCode}
               onlyPro
-              isFlex
             />
             <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
               Usage Example

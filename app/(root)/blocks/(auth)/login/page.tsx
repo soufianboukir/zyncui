@@ -122,7 +122,7 @@ export default function LoginForms() {
               </code>
               .
             </p>
-            <PreviewWithCodeTabs preview={<LoginForm1 />} code={login1Code} onlyPro isFlex />
+            <PreviewWithCodeTabs preview={<LoginForm1 />} code={login1Code} onlyPro />
             <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
               Usage Example
             </h3>
@@ -146,7 +146,7 @@ export default function LoginForms() {
               </code>
               .
             </p>
-            <PreviewWithCodeTabs preview={<LoginForm2 />} code={login2Code} onlyPro isFlex />
+            <PreviewWithCodeTabs preview={<LoginForm2 />} code={login2Code} onlyPro />
             <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
               Usage Example
             </h3>
@@ -170,7 +170,7 @@ export default function LoginForms() {
               </code>
               .
             </p>
-            <PreviewWithCodeTabs preview={<LoginForm3 />} code={login3Code} onlyPro isFlex />
+            <PreviewWithCodeTabs preview={<LoginForm3 />} code={login3Code} onlyPro />
             <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
               Usage Example
             </h3>
@@ -193,7 +193,7 @@ export default function LoginForms() {
               </code>
               .
             </p>
-            <PreviewWithCodeTabs preview={<LoginForm4 />} code={login4Code} onlyPro isFlex />
+            <PreviewWithCodeTabs preview={<LoginForm4 />} code={login4Code} onlyPro />
             <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
               Usage Example
             </h3>

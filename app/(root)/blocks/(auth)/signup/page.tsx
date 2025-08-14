@@ -139,7 +139,6 @@ const page = () => {
                 <PreviewWithCodeTabs
                   preview={item.macket.preview}
                   code={item.macket.code}
-                  isFlex={false}
                   onlyPro
                 />
                 <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">

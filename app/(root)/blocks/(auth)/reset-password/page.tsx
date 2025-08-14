@@ -131,12 +131,7 @@ export default function PasswordResetPage() {
               </code>
               .
             </p>
-            <PreviewWithCodeTabs
-              preview={<ResetPasswordForm />}
-              code={resetPasswordCode}
-              onlyPro
-              isFlex
-            />
+            <PreviewWithCodeTabs preview={<ResetPasswordForm />} code={resetPasswordCode} onlyPro />
             <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
               Usage Example
             </h3>
