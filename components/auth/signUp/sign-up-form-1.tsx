@@ -1,50 +1,60 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogFooter,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { PasswordInput } from "@/components/ui/password-input";
-import { CircleAlert, Loader } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
+import { CircleAlert, Loader } from "lucide-react";
 import z from "zod";
+import { PhoneInput } from "@/components/ui/phone-input";
+import { PasswordInput } from "@/components/ui/password-input";
 
-const loginSchema = z.object({
-  fullname: z.string().min(1, { message: "Full name is required" }),
-  email: z.string().min(1, { message: "Email is required" }),
-  password: z
-    .string()
-    .min(1, { message: "Password is required" })
-    .min(8, { message: "Password must be at least 8 characters long" }),
-  r_password: z.string().min(6, "Please retype your password"),
-});
+const signupSchema = z
+  .object({
+    name: z.string().min(1, "Full name is required"),
+    phoneNumber: z.string().min(1, "Phone number is required"),
+    email: z.string().email("Invalid email"),
+    password: z.string().min(6, "Password must be at least 6 characters"),
+    r_password: z.string().min(6, "Please retype your password"),
+  })
+  .refine(data => data.password === data.r_password, {
+    message: "Passwords do not match",
+    path: ["r_password"],
+  });
 
 export const SignUpForm1 = () => {
-  const [formData, setFormData] = useState<{
-    fullname: string;
-    email: string;
-    password: string;
-    r_password: string;
-  }>({
-    fullname: "",
+  const [error, setError] = useState<string>("");
+  const [errors, setErrors] = useState<Partial<Record<keyof typeof formData, string>>>({});
+  const [formData, setFormData] = useState({
+    name: "",
+    phoneNumber: "",
     email: "",
     password: "",
     r_password: "",
   });
 
-  const [errors, setErrors] = useState<{
-    fullname?: string;
-    email?: string;
-    password?: string;
-    r_password?: string;
-  }>({
-    fullname: "",
-    email: "",
-    password: "",
-    r_password: "",
-  });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handlePhoneChange = (value: string) => {
+    setFormData(prev => ({
+      ...prev,
+      phoneNumber: value,
+    }));
+  };
 
   const [loading, setLoading] = useState<{
     form: boolean;
@@ -56,44 +66,41 @@ export const SignUpForm1 = () => {
     github: false,
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const validateFormData = loginSchema.safeParse({
-      fullname: formData.fullname,
-      email: formData.email,
-      password: formData.password,
-      r_password: formData.r_password,
-    });
+    setErrors({});
+    setError("");
+    const result = signupSchema.safeParse(formData);
 
-    setErrors({ fullname: "", email: "", password: "", r_password: "" });
-    if (!validateFormData.success) {
-      const { fullname, email, password, r_password } =
-        validateFormData.error.flatten().fieldErrors;
+    if (!result.success) {
+      const fieldErrors = result.error.flatten().fieldErrors;
       setErrors({
-        fullname: fullname?.[0],
-        email: email?.[0],
-        password: password?.[0],
-        r_password: r_password?.[0],
+        name: fieldErrors.name?.[0],
+        phoneNumber: fieldErrors.phoneNumber?.[0],
+        email: fieldErrors.email?.[0],
+        password: fieldErrors.password?.[0],
+        r_password: fieldErrors.r_password?.[0],
       });
       return;
     }
-
     setLoading(prev => ({ ...prev, form: true }));
 
-    setTimeout(() => {
-      setLoading(prev => ({ ...prev, form: false }));
-    }, 2000);
+    try {
+      setTimeout(() => {
+        setLoading(prev => ({ ...prev, form: false }));
 
-    // your backend logic
+        // toast.success("Registred successfully");
+      }, 1500);
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("An unexpected error occurred");
+      }
+    } finally {
+      // setLoading(prev => ({ ...prev, form: true }));
+    }
   };
 
   async function handleGoogleOAuth() {
@@ -114,183 +121,156 @@ export const SignUpForm1 = () => {
   }
 
   return (
-    <div className="m-3">
-      <div className="flex max-w-7xl">
-        <Card className="min-w-sm rounded-none border-r-0 md:min-w-xl md:px-20">
-          {/**header card */}
-          <CardHeader className="space-y-5">
-            <CardTitle className="text-[30px] font-extrabold">Create Account</CardTitle>
-            <CardDescription className="text-xl dark:text-white">
-              Get started with your account
-            </CardDescription>
-          </CardHeader>
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button variant="outline" className="px-6 py-2">
+          Sign up
+        </Button>
+      </DialogTrigger>
 
-          <CardContent>
-            {/**form for create accounte */}
-            <form onSubmit={handleSubmit} className="space-y-7">
-              <div className="space-y-2">
-                <Label className="text-muted-foreground text-[15px]">Full name</Label>
-                <Input
-                  type="text"
-                  id="fullname"
-                  name="fullname"
-                  value={formData.fullname}
-                  onChange={handleChange}
-                  placeholder="John doe"
-                />
-                {errors.fullname && (
-                  <p className="flex items-center text-sm text-red-400">
-                    <CircleAlert className="mr-2 h-4 w-4" />
-                    {errors.fullname}
-                  </p>
-                )}
-              </div>
-
-              <div className="space-y-2">
-                <Label className="text-muted-foreground text-[15px]">Email address</Label>
-                <Input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="m@example.com"
-                />
-                {errors.email && (
-                  <p className="flex items-center text-sm text-red-400">
-                    <CircleAlert className="mr-2 h-4 w-4" />
-                    {errors.email}
-                  </p>
-                )}
-              </div>
-
-              <div>
-                <Label className="text-muted-foreground mb-2 text-[15px]">Password</Label>
-                <PasswordInput
-                  value={formData.password}
-                  name="password"
-                  onChange={handleChange}
-                  placeholder="*********"
-                />
-                {errors.password && (
-                  <p className="flex items-center text-sm text-red-400">
-                    <CircleAlert className="mr-2 h-4 w-4" />
-                    {errors.password}
-                  </p>
-                )}
-              </div>
-
-              <div>
-                <Label className="text-muted-foreground mb-2 text-[15px]">Retype Password</Label>
-                <PasswordInput
-                  value={formData.r_password}
-                  name="r_password"
-                  onChange={handleChange}
-                  placeholder="*********"
-                />
-                {errors.r_password && (
-                  <p className="flex items-center text-sm text-red-400">
-                    <CircleAlert className="mr-2 h-4 w-4" />
-                    {errors.r_password}
-                  </p>
-                )}
-              </div>
-              <Button
-                type="submit"
-                className="w-full cursor-pointer rounded-4xl"
-                disabled={loading.form}
-              >
-                {loading.form ? <Loader className="animate-spin" /> : "Sign Up"}
-              </Button>
-            </form>
-
-            <p className="text-muted-foreground mt-4 text-center text-sm">
-              Already have an account?
-              <span className="ml-1 cursor-pointer text-sm font-extrabold text-black underline decoration-black dark:text-white dark:decoration-white">
-                <Link href="#">Sign in</Link>
-              </span>
-            </p>
-
-            {/**btn continue with google and github */}
-            <div className="flex items-center justify-center py-10">
-              <hr className="w-[30%]" />
-              <Label className="mx-2 text-sm">Or continue with</Label>
-              <hr className="w-[30%]" />
-            </div>
-
-            <div className="mt-5 flex w-full flex-col justify-start gap-4">
-              <Button
-                type="button"
-                variant="outline"
-                className="flex w-full cursor-pointer items-center justify-center gap-2 py-4"
-                onClick={handleGoogleOAuth}
-                disabled={loading.google}
-              >
-                {loading.google ? (
-                  <>
-                    <Loader className="animate-spin" /> loading...
-                  </>
-                ) : (
-                  <>
-                    <Image src="/icons/google.webp" alt="google icon" width={20} height={20} />
-                    Login with google{" "}
-                  </>
-                )}
-              </Button>
-
-              <Button
-                type="button"
-                className="flex w-full cursor-pointer items-center justify-center gap-2 py-4"
-                onClick={handleGithubOAuth}
-                disabled={loading.github}
-              >
-                {loading.github ? (
-                  <>
-                    <Loader className="animate-spin" /> loading...
-                  </>
-                ) : (
-                  <>
-                    <Image
-                      className="invert dark:invert-0"
-                      src="/icons/github.svg"
-                      alt="github icon"
-                      width={20}
-                      height={20}
-                    />
-                    Login with github
-                  </>
-                )}
-              </Button>
-            </div>
-          </CardContent>
-
-          {/**footer policy */}
-          <div className="text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
-            By clicking continue, you agree to our <Link href="#">Terms of Service</Link> and{" "}
-            <Link href="#">Privacy Policy</Link>.
-          </div>
-        </Card>
-
-        {/* Right side */}
-        <div className="bg-card hidden items-center justify-center border border-l-0 p-12 lg:flex">
-          <div className="max-w-md text-center">
-            <div className="mb-8 grid grid-cols-3 gap-3">
-              {[...Array(9)].map((_, i) => (
-                <div
-                  key={i}
-                  className={`bg-primary/10 aspect-square rounded-2xl ${
-                    i % 2 === 0 ? "animate-pulse" : ""
-                  }`}
-                />
-              ))}
-            </div>
-            <h2 className="mb-4 text-2xl font-bold">Join our community</h2>
-            <p className="text-base-content/60">
-              Connect with friends, share moments, and stay in touch with your loved ones.
+      <DialogContent className="sm:max-w-[430px]">
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="space-y-1 text-center">
+            <h2 className="text-xl font-semibold">Welcome back</h2>
+            <p className="text-muted-foreground text-sm">
+              Sign up or create account with Google or Github
             </p>
           </div>
-        </div>
-      </div>
-    </div>
+
+          {error && <div className="mb-2 text-center text-red-600">{error}</div>}
+
+          <div className="grid gap-1">
+            <Label htmlFor="name">Full name *</Label>
+            <Input type="name" name="name" placeholder="eg, Joen doe" onChange={handleChange} />
+            {errors.name && (
+              <p className="flex items-center text-sm text-red-400">
+                <CircleAlert className="mr-2 h-4 w-4" />
+                {errors.name}
+              </p>
+            )}
+          </div>
+
+          <div className="grid gap-1">
+            <Label htmlFor="email">Phone number *</Label>
+            <div className="flex gap-1">
+              <PhoneInput
+                placeholder="Enter a phone number"
+                value={formData.phoneNumber}
+                onChange={handlePhoneChange}
+                name="phoneNumber"
+              />
+            </div>
+            {errors.phoneNumber && (
+              <p className="flex items-center text-sm text-red-400">
+                <CircleAlert className="mr-2 h-4 w-4" />
+                {errors.phoneNumber}
+              </p>
+            )}
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="email">Email</Label>
+            <Input
+              id="email"
+              type="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="zuncui@example.com"
+              name="email"
+              className={errors.email ? "border-red-400 bg-red-500/10" : ""}
+            />
+            {errors.email && (
+              <p className="flex items-center text-sm text-red-400">
+                <CircleAlert className="mr-2 h-4 w-4" />
+                {errors.email}
+              </p>
+            )}
+          </div>
+
+          <div className="grid gap-1">
+            <Label htmlFor="email">Password *</Label>
+            <PasswordInput
+              value={formData.password}
+              name="password"
+              onChange={handleChange}
+              placeholder="*********"
+            />
+            {errors.password && (
+              <p className="flex items-center text-sm text-red-400">
+                <CircleAlert className="mr-2 h-4 w-4" />
+                {errors.password}
+              </p>
+            )}
+          </div>
+
+          <div className="grid gap-1">
+            <Label htmlFor="email">Retype password *</Label>
+            <PasswordInput
+              value={formData.r_password}
+              name="r_password"
+              onChange={handleChange}
+              placeholder="*********"
+            />
+            {errors.r_password && (
+              <p className="flex items-center text-sm text-red-400">
+                <CircleAlert className="mr-2 h-4 w-4" />
+                {errors.r_password}
+              </p>
+            )}
+          </div>
+
+          <div className="space-y-3">
+            <Button
+              variant="outline"
+              className="flex w-full items-center justify-center gap-2 py-3"
+              onClick={handleGoogleOAuth}
+              disabled={loading.google}
+              type="button"
+            >
+              {loading.google ? (
+                <Loader className="animate-spin" />
+              ) : (
+                <>
+                  <Image src={"/icons/google.webp"} width={20} height={20} alt="Google" />
+                  Continue with Google
+                </>
+              )}
+            </Button>
+
+            <Button
+              variant="outline"
+              className="flex w-full items-center justify-center gap-2 bg-black py-3 text-white hover:bg-black/85 dark:bg-white dark:text-black dark:hover:bg-white/85"
+              onClick={handleGithubOAuth}
+              disabled={loading.github}
+              type="button"
+            >
+              {loading.github ? (
+                <Loader className="animate-spin" />
+              ) : (
+                <>
+                  <Image
+                    src={"/icons/github.svg"}
+                    width={20}
+                    height={20}
+                    alt="Github"
+                    className="invert dark:invert-0"
+                  />
+                  Continue with Github
+                </>
+              )}
+            </Button>
+          </div>
+
+          <DialogFooter className="mt-6">
+            <DialogClose asChild>
+              <Button variant="outline">Cancel</Button>
+            </DialogClose>
+            <Button type="submit" disabled={loading.form}>
+              {loading.form ? <Loader className="animate-spin" /> : "Sign up"}
+            </Button>
+          </DialogFooter>
+        </form>
+      </DialogContent>
+    </Dialog>
   );
 };

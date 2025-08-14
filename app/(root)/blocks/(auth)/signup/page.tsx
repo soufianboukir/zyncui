@@ -2,20 +2,30 @@
 
 import { SignUpForm1 } from "@/components/auth/signUp/sign-up-form-1";
 import { SignUpForm2 } from "@/components/auth/signUp/sign-up-form-2";
+import { SignUpForm3 } from "@/components/auth/signUp/sign-up-form-3";
+import { SignUpForm4 } from "@/components/auth/signUp/sign-up-form-4";
 import CodeBlock from "@/components/code-block";
 import { PreviewWithCodeTabs } from "@/components/preview-with-code-tabs";
 import { Badge } from "@/components/ui/badge";
-import { signUp1Code, signUp1Example, signUp2Code, signUp2Example } from "@/constants/auth/sign-up";
+import { passwordInputCode } from "@/constants/auth/reset-password";
+import {
+  signUp1Code,
+  signUp1Example,
+  signUp2Code,
+  signUp2Example,
+  signUp3Code,
+  signUp3Example,
+  signUp4Code,
+  signUp4Example,
+} from "@/constants/auth/sign-up";
 import Link from "next/link";
 
 const data = [
   {
     id: 1,
-    title: "Sign up Form 1 - Split Screen with Illustration",
-    description: `his variant enhances the sign-up experience by combining the registration
-                  form with eye-catching illustrations or animations. It creates a welcoming and visually appealing environment that encourages
-                  users to complete the onboarding process. Ideal for platforms focused on brand identity and first impressions,
-                  it helps build trust and engagement from the very first interaction.`,
+    title: "Sign up Form 1 - Centered with Social Sign up Options",
+    description: `A centered layout that includes options for social authentication such as Google, Facebook, or Twitter sign-in buttons.
+                  This form fits applications needing multiple sign-in methods to improve user convenience.`,
     pathFile: {
       title: "This command performs the following:",
       path: "@/components/auth/signUp/sign-up-form-1.tsx",
@@ -25,16 +35,43 @@ const data = [
   },
   {
     id: 2,
-    title: "Sign up Form 2 - Dynamic page",
-    description: `This variant features a clean and minimal sign-up form focused on simplicity and usability.
-                  With no distracting visuals or animations, it offers a straightforward experience that allows users to register quickly and efficiently.
-                  Ideal for professional or content-focused platforms where clarity and speed are prioritized over visual embellishment.`,
+    title: "Sign up Form 2 - Simple page",
+    description: `A streamlined, no-frills sign-up page designed for maximum clarity and ease of use.
+                  Free from decorative elements and unnecessary distractions, this layout prioritizes quick access and user efficiency.
+                  Perfect for platforms where user onboarding needs to be fast, intuitive, and professional.`,
     pathFile: {
       title: "This command performs the following:",
       path: "@/components/auth/signUp/sign-up-form-2.tsx",
     },
     macket: { preview: <SignUpForm2 />, code: signUp2Code },
     example: signUp2Example,
+  },
+  {
+    id: 3,
+    title: "Sign up Form 3 - Dynamic page",
+    description: `This variant features a clean and minimal sign-up form focused on simplicity and usability.
+                  With no distracting visuals or animations, it offers a straightforward experience that allows users to register quickly and efficiently.
+                  Ideal for professional or content-focused platforms where clarity and speed are prioritized over visual embellishment.`,
+    pathFile: {
+      title: "This command performs the following:",
+      path: "@/components/auth/signUp/sign-up-form-3.tsx",
+    },
+    macket: { preview: <SignUpForm3 />, code: signUp3Code },
+    example: signUp3Example,
+  },
+  {
+    id: 4,
+    title: "Sign up Form 3 - Split Screen with Illustration",
+    description: `This variant enhances the sign-up experience by combining the registration
+                  form with eye-catching illustrations or animations. It creates a welcoming and visually appealing environment that encourages
+                  users to complete the onboarding process. Ideal for platforms focused on brand identity and first impressions,
+                  it helps build trust and engagement from the very first interaction.`,
+    pathFile: {
+      title: "This command performs the following:",
+      path: "@/components/auth/signUp/sign-up-form-4.tsx",
+    },
+    macket: { preview: <SignUpForm4 />, code: signUp4Code },
+    example: signUp4Example,
   },
 ];
 
@@ -117,11 +154,32 @@ const page = () => {
               </ul>
             </p>
           </div>
+          <div>
+            <h3 className="text-xl font-semibold sm:text-2xl">
+              3. Create a file and Copy past this code into it{" "}
+              <code>
+                <Badge variant="secondary">@/components/ui/password-input.tsx</Badge>
+              </code>
+            </h3>
+            <CodeBlock code={passwordInputCode} copy language="tsx" />
+            <p className="mt-2">
+              This will:
+              <ul className="mt-1 ml-5 list-inside list-disc space-y-1">
+                <li>
+                  Install required dependencies and update your <code>package.json</code>.
+                </li>
+                <li>
+                  Add UI components like <code>Button</code>, <code>Input</code>, and{" "}
+                  <code>Card</code> to your <code>components/ui</code> directory.
+                </li>
+              </ul>
+            </p>
+          </div>
         </section>
 
         <section
           id="usage"
-          className="prose prose-lg prose-gray dark:prose-invert mx-auto max-w-7xl space-y-5"
+          className="prose prose-lg prose-gray dark:prose-invert mx-auto max-w-7xl space-y-16"
         >
           {/**Sign up forms */}
           {data &&
