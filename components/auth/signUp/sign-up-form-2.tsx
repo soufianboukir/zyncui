@@ -11,7 +11,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import z from "zod";
-// import { toast } from "sonner";
 
 const signupSchema = z
   .object({
@@ -45,7 +44,6 @@ export const SignUpForm2 = () => {
     }));
   };
 
-  // phone-input doesn't accept the above handle change function that takes the value as e: React.ChangeEvent<HTMLInputElement>
   const handlePhoneChange = (value: string) => {
     setFormData(prev => ({
       ...prev,
@@ -127,8 +125,7 @@ export const SignUpForm2 = () => {
   }
 
   return (
-    <div className="flex h-screen items-center justify-center">
-      <div className="w-[95%] rounded-full md:w-[60%] lg:w-[40%]">
+      <div className="max-w-7xl">
         <div className="flex justify-center">
           <Image
             src={"/icons/placeholder.svg"}
@@ -325,6 +322,5 @@ export const SignUpForm2 = () => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
