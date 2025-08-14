@@ -114,8 +114,8 @@ export const SignUpForm1 = () => {
   }
 
   return (
-    <div className="flex h-screen flex-col items-center justify-center">
-      <div className="flex">
+    <div className="m-3">
+      <div className="flex max-w-7xl">
         <Card className="min-w-sm rounded-none border-r-0 md:min-w-xl md:px-20">
           {/**header card */}
           <CardHeader className="space-y-5">

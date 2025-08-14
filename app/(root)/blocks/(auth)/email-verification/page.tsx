@@ -115,7 +115,6 @@ export default function EmailVerificationPage() {
               preview={<EmailVerificationForm />}
               code={emailVerificationCode}
               onlyPro
-              isFlex
             />
             <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
               Usage Example
