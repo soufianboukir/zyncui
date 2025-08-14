@@ -1,10 +1,9 @@
-import { SignUpForm2 } from "@/components/auth/signUp/sign-up-form-4";
-import React from "react";
+import { SignUpForm3 } from "@/components/auth/signUp/sign-up-form-3";
 
 const page = () => {
   return (
     <div className="flex h-screen items-center justify-center">
-      <SignUpForm2 />
+      <SignUpForm3 />
     </div>
   );
 };
