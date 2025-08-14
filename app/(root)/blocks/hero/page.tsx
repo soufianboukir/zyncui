@@ -116,7 +116,7 @@ export default function HeroForms() {
               </code>
               .
             </p>
-            <PreviewWithCodeTabs preview={<HeroSection1 />} code={Hero1Code} onlyPro />
+            <PreviewWithCodeTabs preview={<HeroSection1 />} code={Hero1Code} onlyPro isFlex />
             <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
               Usage Example
             </h3>
@@ -139,7 +139,7 @@ export default function HeroForms() {
               </code>
               .
             </p>
-            <PreviewWithCodeTabs preview={<HeroSection2 />} code={Hero2Code} onlyPro />
+            <PreviewWithCodeTabs preview={<HeroSection2 />} code={Hero2Code} onlyPro isFlex />
             <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
               Key Features
             </h3>

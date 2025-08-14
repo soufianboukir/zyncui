@@ -16,7 +16,7 @@ export default function PasswordResetPage() {
     <main className="mx-auto w-full max-w-7xl py-6 text-base sm:px-6 sm:text-lg lg:px-8">
       <div className="space-y-20 sm:space-y-24">
         <section
-          id="password-reset-description"
+          id="description"
           className="prose prose-lg prose-gray dark:prose-invert mx-auto max-w-7xl space-y-5"
         >
           <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100">
@@ -131,7 +131,12 @@ export default function PasswordResetPage() {
               </code>
               .
             </p>
-            <PreviewWithCodeTabs preview={<ResetPasswordForm />} code={resetPasswordCode} onlyPro />
+            <PreviewWithCodeTabs
+              preview={<ResetPasswordForm />}
+              code={resetPasswordCode}
+              onlyPro
+              isFlex
+            />
             <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
               Usage Example
             </h3>
