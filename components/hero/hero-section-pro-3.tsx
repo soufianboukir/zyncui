@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { Users, Globe, Star, ArrowUpRight, ChevronDown, Zap, Target, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -167,49 +168,50 @@ export default function HeroSection3() {
             >
               <div className="relative">
                 {/* Hero Image Container */}
-                <div className="relative overflow-hidden rounded-2xl border border-slate-600 bg-slate-700/50 shadow-2xl backdrop-blur-xl dark:border-slate-700 dark:bg-slate-900/50">
-                  <img
-                    src="/hero-img/r.jpg"
-                    alt="Digital Analytics Dashboard"
-                    className="h-96 w-full object-cover opacity-90 dark:opacity-80"
-                  />
+                <Image
+                  src="/hero-img/r.jpg"
+                  alt="Digital Analytics Dashboard"
+                  width={800}
+                  height={384}
+                  className="h-full w-full rounded-2xl object-cover opacity-90 dark:opacity-80"
+                  priority
+                />
 
-                  {/* Overlay gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-800/60 via-transparent to-slate-800/20 dark:from-slate-900/70 dark:via-transparent dark:to-slate-900/30"></div>
+                {/* Overlay gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-800/60 via-transparent to-slate-800/20 dark:from-slate-900/70 dark:via-transparent dark:to-slate-900/30"></div>
 
-                  {/* Content overlay */}
-                  <div className="absolute right-6 bottom-6 left-6">
-                    <div className="rounded-lg border border-slate-600/50 bg-slate-700/80 p-4 backdrop-blur-md dark:border-slate-700/50 dark:bg-slate-900/80">
-                      <h3 className="mb-2 text-lg font-semibold text-slate-100 dark:text-slate-200">
-                        Real-time Analytics
-                      </h3>
-                      <p className="text-sm text-slate-300 dark:text-slate-400">
-                        Monitor your digital transformation in real-time with advanced insights and
-                        predictive analytics.
-                      </p>
-                    </div>
+                {/* Content overlay */}
+                <div className="absolute right-6 bottom-6 left-6">
+                  <div className="rounded-lg border border-slate-600/50 bg-slate-700/80 p-4 backdrop-blur-md dark:border-slate-700/50 dark:bg-slate-900/80">
+                    <h3 className="mb-2 text-lg font-semibold text-slate-100 dark:text-slate-200">
+                      Real-time Analytics
+                    </h3>
+                    <p className="text-sm text-slate-300 dark:text-slate-400">
+                      Monitor your digital transformation in real-time with advanced insights and
+                      predictive analytics.
+                    </p>
                   </div>
                 </div>
+              </div>
 
-                {/* Floating Elements */}
-                <div className="absolute -top-6 -right-6 flex h-24 w-24 animate-bounce items-center justify-center rounded-full border border-slate-500 bg-gradient-to-r from-slate-600 to-slate-700 shadow-xl dark:border-slate-600 dark:from-slate-700 dark:to-slate-800">
-                  <Star className="h-8 w-8 text-slate-200 dark:text-slate-300" />
-                </div>
+              {/* Floating Elements */}
+              <div className="absolute -top-6 -right-6 flex h-24 w-24 animate-bounce items-center justify-center rounded-full border border-slate-500 bg-gradient-to-r from-slate-600 to-slate-700 shadow-xl dark:border-slate-600 dark:from-slate-700 dark:to-slate-800">
+                <Star className="h-8 w-8 text-slate-200 dark:text-slate-300" />
+              </div>
 
-                <div className="absolute -bottom-4 -left-4 flex h-16 w-16 animate-pulse items-center justify-center rounded-lg border border-slate-500 bg-gradient-to-r from-slate-700 to-slate-600 shadow-xl dark:border-slate-600 dark:from-slate-800 dark:to-slate-700">
-                  <Zap className="h-6 w-6 text-slate-200 dark:text-slate-300" />
-                </div>
+              <div className="absolute -bottom-4 -left-4 flex h-16 w-16 animate-pulse items-center justify-center rounded-lg border border-slate-500 bg-gradient-to-r from-slate-700 to-slate-600 shadow-xl dark:border-slate-600 dark:from-slate-800 dark:to-slate-700">
+                <Zap className="h-6 w-6 text-slate-200 dark:text-slate-300" />
               </div>
             </div>
           </div>
+        </div>
 
-          {/* Scroll Indicator */}
-          <div
-            className={`flex transform justify-center pt-16 transition-all delay-1300 duration-1000 ${mounted ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}
-          >
-            <div className="animate-bounce">
-              <ChevronDown className="h-8 w-8 text-slate-500 dark:text-slate-500" />
-            </div>
+        {/* Scroll Indicator */}
+        <div
+          className={`flex transform justify-center pt-16 transition-all delay-1300 duration-1000 ${mounted ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}
+        >
+          <div className="animate-bounce">
+            <ChevronDown className="h-8 w-8 text-slate-500 dark:text-slate-500" />
           </div>
         </div>
       </div>
