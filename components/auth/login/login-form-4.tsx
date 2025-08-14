@@ -88,9 +88,8 @@ export const LoginForm4 = () => {
   }
 
   return (
-    <div className="flex h-screen flex-col items-center justify-center gap-6">
+    <div>
       <Card className="min-w-sm md:max-w-md">
-        {/**header and logo */}
         <CardHeader className="mb-5 space-y-1 text-center">
           <Image
             src="/icons/placeholder.svg"
@@ -104,7 +103,6 @@ export const LoginForm4 = () => {
         </CardHeader>
 
         <CardContent>
-          {/**form login */}
           <form onSubmit={handleSubmit} className="flex w-full flex-col gap-8 pb-7">
             <div className="flex flex-col gap-1">
               <div className="relative">
@@ -181,7 +179,6 @@ export const LoginForm4 = () => {
             <hr className="w-[30%]" />
           </div>
 
-          {/**btn for github and google and X */}
           <div className="flex justify-center gap-5">
             <Button
               type="button"
@@ -231,8 +228,7 @@ export const LoginForm4 = () => {
         </CardContent>
       </Card>
 
-      {/**footer policy */}
-      <div className="text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
+      <div className="text-muted-foreground *:[a]:hover:text-primary mt-2 text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
         By clicking continue, you agree to our <Link href="#">Terms of Service</Link> and{" "}
         <Link href="#">Privacy Policy</Link>.
       </div>

@@ -48,7 +48,7 @@ const data = {
       items: [
         {
           title: "Hero",
-          url: "#",
+          url: "/blocks/hero",
         },
         {
           title: "NavBar",
@@ -71,6 +71,18 @@ const data = {
         {
           title: "sign up forms",
           url: "/blocks/signup",
+        },
+        {
+          title: "forgot-password form",
+          url: "/blocks/forgot-password",
+        },
+        {
+          title: "reset-password form",
+          url: "/blocks/reset-password",
+        },
+        {
+          title: "email verification form",
+          url: "/blocks/email-verification",
         },
       ],
     },
