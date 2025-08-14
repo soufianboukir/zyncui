@@ -5,9 +5,20 @@ import Link from "next/link";
 import { PreviewWithCodeTabs } from "@/components/preview-with-code-tabs";
 import { Badge } from "@/components/ui/badge";
 
-import { Hero1Code, hero1Example, Hero2Code, hero2Example } from "@/constants/hero/hero";
+import {
+  Hero1Code,
+  hero1Example,
+  Hero2Code,
+  hero2Example,
+  Hero3Code,
+  hero3Example,
+  Hero4Code,
+  hero4Example,
+} from "@/constants/hero/hero";
 import HeroSection1 from "@/components/hero/hero-section-1";
 import HeroSection2 from "@/components/hero/hero-section-2";
+import HeroSection3 from "@/components/hero/hero-section-pro-3";
+import HeroSection4 from "@/components/hero/hero-section-pro-4";
 
 export default function HeroForms() {
   return (
@@ -155,6 +166,82 @@ export default function HeroForms() {
               Usage Example
             </h3>
             <CodeBlock code={hero2Example} language="tsx" copy />
+          </div>
+          <div className="space-y-6">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
+              Hero Section 3 – Futuristic Dark/Light Mode with Animated Metrics
+            </h2>
+            <p>
+              A visually striking, dark-mode-compatible hero section featuring animated backgrounds,
+              floating gradient shapes, a responsive navigation bar, dynamic metrics, and an
+              interactive product preview card. Designed for maximum impact with smooth entrance
+              animations, gradient headlines, and strong call-to-action buttons.
+            </p>
+            <p>
+              To integrate, copy the component code into{" "}
+              <code>
+                <Badge variant="secondary">@/components/hero/hero-section-with-dark-mode.tsx</Badge>
+              </code>
+              .
+            </p>
+            <PreviewWithCodeTabs preview={<HeroSection3 />} code={Hero3Code} onlyPro />
+
+            <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
+              Key Features
+            </h3>
+            <ul>
+              <li>Fully responsive with mobile drawer navigation</li>
+              <li>Dark and light mode styling with smooth transitions</li>
+              <li>Animated background grid and floating gradient orbs</li>
+              <li>Gradient headline for bold visual impact</li>
+              <li>Rotating performance metrics with highlight effects</li>
+              <li>Dual CTA buttons (primary + secondary)</li>
+              <li>Interactive product dashboard card with floating elements</li>
+              <li>Subtle entrance animations for all sections</li>
+            </ul>
+
+            <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
+              Usage Example
+            </h3>
+            <CodeBlock code={hero3Example} language="tsx" copy />
+          </div>
+          <div className="space-y-6">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
+              Hero Section 4 – AI-Powered Analytics with Animated Slideshow
+            </h2>
+            <p>
+              A visually dynamic, AI-focused hero section featuring a full-width diagonal background
+              pattern, animated floating elements, an interactive image slideshow with selector
+              dots, and a floating analytics card. Includes a bold gradient headline, responsive
+              layout, feature checklist, and call-to-action buttons for maximum engagement.
+            </p>
+            <p>
+              To integrate, copy the component code into{" "}
+              <code>
+                <Badge variant="secondary">@/components/hero/hero-section-4.tsx</Badge>
+              </code>
+              .
+            </p>
+            <PreviewWithCodeTabs preview={<HeroSection4 />} code={Hero4Code} onlyPro />
+
+            <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
+              Key Features
+            </h3>
+            <ul>
+              <li>Diagonal gradient background pattern with dark mode support</li>
+              <li>Animated floating orbs for visual depth</li>
+              <li>Automatic and manual image slideshow with smooth transitions</li>
+              <li>Gradient headline for strong visual impact</li>
+              <li>Feature checklist with icon indicators</li>
+              <li>Dual call-to-action buttons (primary + outline)</li>
+              <li>Floating analytics card with KPI display</li>
+              <li>Fully responsive and mobile-friendly</li>
+            </ul>
+
+            <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
+              Usage Example
+            </h3>
+            <CodeBlock code={hero4Example} language="tsx" copy />
           </div>
         </section>
       </div>
