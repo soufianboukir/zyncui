@@ -99,7 +99,7 @@ export default function HeroForms() {
           id="hero-usage"
           className="prose prose-lg prose-gray dark:prose-invert mx-auto max-w-5xl space-y-16"
         >
-          {/* Hero Form 1 */}
+          {/* Hero Form  */}
           <div className="space-y-6">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
               Hero Section 1 - Centered Call-to-Action
@@ -124,12 +124,13 @@ export default function HeroForms() {
           </div>
           <div className="space-y-6">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
-              Hero Section 2 - Centered Call-to-Action
+              Hero Section 2 - Modern Centered Layout with Features
             </h2>
             <p>
-              A clean and impactful centered hero section optimized for maximum conversion. This
-              hero is ideal when focusing user attention on a primary call-to-action and key
-              messaging.
+              A modern, feature-rich hero section with centered content, feature highlights, and
+              trust indicators. This hero includes a responsive navigation, prominent headline with
+              gradient text, call-to-action buttons, feature cards, and company logos for social
+              proof.
             </p>
             <p>
               To integrate, copy the component code into{" "}
@@ -139,6 +140,17 @@ export default function HeroForms() {
               .
             </p>
             <PreviewWithCodeTabs preview={<HeroSection2 />} code={Hero2Code} onlyPro />
+            <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
+              Key Features
+            </h3>
+            <ul>
+              <li>Responsive mobile navigation with drawer menu</li>
+              <li>Gradient headline for visual impact</li>
+              <li>Dual call-to-action buttons (primary + secondary)</li>
+              <li>Feature highlights with icon cards</li>
+              <li>Trust indicators and social proof elements</li>
+              <li>Dark mode compatible</li>
+            </ul>
             <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
               Usage Example
             </h3>

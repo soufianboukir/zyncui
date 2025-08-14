@@ -33,7 +33,6 @@ export default function HeroSection2() {
 
   return (
     <div className="bg-background relative min-h-screen w-full overflow-hidden">
-    
       {mobileMenuOpen && (
         <button
           type="button"
@@ -50,7 +49,6 @@ export default function HeroSection2() {
         />
       )}
 
- 
       <div
         id="mobile-menu"
         className={`bg-background absolute top-0 right-0 z-40 h-full w-80 max-w-[85%] transform border-l shadow-xl transition-transform duration-300 ease-in-out lg:hidden ${
