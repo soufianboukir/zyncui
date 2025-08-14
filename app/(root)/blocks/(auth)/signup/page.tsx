@@ -10,6 +10,7 @@ import Link from "next/link";
 
 const data = [
   {
+    id: 1,
     title: "Sign up Form 1 - Split Screen with Illustration",
     description: `his variant enhances the sign-up experience by combining the registration
                   form with eye-catching illustrations or animations. It creates a welcoming and visually appealing environment that encourages
@@ -23,6 +24,7 @@ const data = [
     example: signUp1Example,
   },
   {
+    id: 2,
     title: "Sign up Form 2 - Dynamic page",
     description: `This variant features a clean and minimal sign-up form focused on simplicity and usability.
                   With no distracting visuals or animations, it offers a straightforward experience that allows users to register quickly and efficiently.
@@ -124,7 +126,7 @@ const page = () => {
           {/**Sign up forms */}
           {data &&
             data.map(item => (
-              <div key={item.macket.code} className="space-y-6">
+              <div key={item.id} className="space-y-6">
                 <h2 className="text-xl font-semibold sm:text-2xl">{item.title}</h2>
                 <p>{item.description}</p>
                 <p>
