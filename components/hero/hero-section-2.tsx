@@ -2,11 +2,11 @@
 
 import { ArrowRight, Play, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+import Image from "next/image";
 
 export default function HeroSection() {
   return (
-    <div className="from-background via-background to-muted/40 relative min-h-screen w-full overflow-hidden bg-gradient-to-b">
+    <div className="from-background via-background to-muted/40 relative mx-auto min-h-screen w-full overflow-hidden bg-gradient-to-b">
       <div className="from-primary/30 absolute -top-40 left-1/2 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-gradient-to-r to-blue-500/30 opacity-60 blur-3xl"></div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 pt-16 pb-20 text-center md:pt-28 lg:px-8">
@@ -38,23 +38,14 @@ export default function HeroSection() {
           </Button>
         </div>
 
-        <div className="mx-auto mt-20 grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-3">
-          {[
-            { title: "Type Safe", description: "Full TypeScript support out of the box" },
-            { title: "Dark Mode", description: "Automatic dark mode detection" },
-            { title: "Accessible", description: "WCAG compliant components" },
-          ].map(feature => (
-            <Card
-              key={feature.title}
-              className="border-muted border bg-white/70 p-6 text-center shadow-lg backdrop-blur-lg dark:bg-black/50"
-            >
-              <div className="bg-primary/10 mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full">
-                <Check className="text-primary h-6 w-6" />
-              </div>
-              <h3 className="text-lg font-semibold">{feature.title}</h3>
-              <p className="text-muted-foreground mt-2 text-sm">{feature.description}</p>
-            </Card>
-          ))}
+        <div className="mx-auto mt-5 max-w-4xl overflow-hidden rounded-xl shadow-lg">
+          <Image
+            width={300}
+            height={600}
+            src="https://images.unsplash.com/photo-1659479749984-d48333116052?q=80&w=2532&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Beautiful illustration"
+            className="h-auto w-full object-cover"
+          />
         </div>
 
         <div className="mt-20">
