@@ -103,10 +103,7 @@ export default function HeroForms() {
           </div>
         </section>
 
-        <section
-          id="hero-usage"
-          className="prose prose-lg prose-gray dark:prose-invert space-y-16"
-        >
+        <section id="hero-usage" className="prose prose-lg prose-gray dark:prose-invert space-y-16">
           {/* Hero Form  */}
           <div className="space-y-6">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
@@ -182,20 +179,6 @@ export default function HeroForms() {
               .
             </p>
             <PreviewWithCodeTabs preview={<HeroSection3 />} code={Hero3Code} onlyPro />
-
-            <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
-              Key Features
-            </h3>
-            <ul>
-              <li>Fully responsive with mobile drawer navigation</li>
-              <li>Dark and light mode styling with smooth transitions</li>
-              <li>Animated background grid and floating gradient orbs</li>
-              <li>Gradient headline for bold visual impact</li>
-              <li>Rotating performance metrics with highlight effects</li>
-              <li>Dual CTA buttons (primary + secondary)</li>
-              <li>Interactive product dashboard card with floating elements</li>
-              <li>Subtle entrance animations for all sections</li>
-            </ul>
 
             <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
               Usage Example

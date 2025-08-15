@@ -55,7 +55,7 @@ export default function LoginForms() {
 
         <section
           id="installation"
-          className="prose prose-lg prose-gray dark:prose-invert mx-auto max-w-6xl space-y-8"
+          className="prose prose-lg prose-gray dark:prose-invert mx-auto space-y-8"
         >
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
             Installation
@@ -103,7 +103,7 @@ export default function LoginForms() {
 
         <section
           id="usage"
-          className="prose prose-lg prose-gray dark:prose-invert mx-auto max-w-5xl space-y-16"
+          className="prose prose-lg prose-gray dark:prose-invert mx-auto space-y-16"
         >
           {/* Login Form 1 */}
           <div className="space-y-6">
@@ -129,7 +129,6 @@ export default function LoginForms() {
             <CodeBlock code={login1Example} language="tsx" copy />
           </div>
 
-          {/* Login Form 2 */}
           <div className="space-y-6">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
               Login Form 2 - Split Screen with Illustration
@@ -153,7 +152,6 @@ export default function LoginForms() {
             <CodeBlock code={login2Example} language="tsx" copy />
           </div>
 
-          {/* Login Form 3 */}
           <div className="space-y-6">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
               Login Form 3 - Centered with Social Login Options
@@ -177,7 +175,6 @@ export default function LoginForms() {
             <CodeBlock code={login3Example} language="tsx" copy />
           </div>
 
-          {/* Login Form 4 */}
           <div className="space-y-6">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
               Login Form 4 - Compact Inline Form

@@ -37,7 +37,7 @@ export default function EmailVerificationPage() {
 
         <section
           id="installation"
-          className="prose prose-lg prose-gray dark:prose-invert mx-auto max-w-6xl space-y-8"
+          className="prose prose-lg prose-gray dark:prose-invert mx-auto space-y-8"
         >
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
             Installation
@@ -93,7 +93,7 @@ export default function EmailVerificationPage() {
 
         <section
           id="usage"
-          className="prose prose-lg prose-gray dark:prose-invert mx-auto max-w-5xl space-y-16"
+          className="prose prose-lg prose-gray dark:prose-invert mx-auto space-y-16"
         >
           <div className="space-y-6">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100">

@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default function HeroSection() {
   return (
-    <div className="from-background via-background to-muted/40 relative min-h-screen w-full overflow-hidden bg-gradient-to-b mx-auto">
+    <div className="from-background via-background to-muted/40 relative mx-auto min-h-screen w-full overflow-hidden bg-gradient-to-b">
       <div className="from-primary/30 absolute -top-40 left-1/2 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-gradient-to-r to-blue-500/30 opacity-60 blur-3xl"></div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 pt-16 pb-20 text-center md:pt-28 lg:px-8">
@@ -38,18 +38,15 @@ export default function HeroSection() {
           </Button>
         </div>
 
-        <div className="mx-auto max-w-4xl overflow-hidden rounded-xl shadow-lg mt-5">
+        <div className="mx-auto mt-5 max-w-4xl overflow-hidden rounded-xl shadow-lg">
           <Image
-          width={300}
-          height={600}
+            width={300}
+            height={600}
             src="https://images.unsplash.com/photo-1659479749984-d48333116052?q=80&w=2532&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="Beautiful illustration"
-            className="w-full h-auto object-cover"
+            className="h-auto w-full object-cover"
           />
         </div>
-
-
-
 
         <div className="mt-20">
           <p className="text-muted-foreground mb-4 text-sm">Trusted by teams at</p>

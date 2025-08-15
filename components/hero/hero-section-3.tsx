@@ -4,38 +4,31 @@ import Image from "next/image";
 
 const HeroSection3 = () => {
   return (
-    <section className="w-full mx-auto flex flex-col lg:flex-row justify-between items-center gap-10 lg:gap-16 py-12 lg:py-20 dark:bg-black px-[5%]">
-      <div className="w-full lg:w-1/2 flex flex-col">
-        <h1 className="text-4xl sm:text-5xl lg:text-7xl font-semibold leading-tight">
+    <section className="mx-auto flex w-full flex-col items-center justify-between gap-10 px-[5%] py-12 lg:flex-row lg:gap-16 lg:py-20 dark:bg-black">
+      <div className="flex w-full flex-col lg:w-1/2">
+        <h1 className="text-4xl leading-tight font-semibold sm:text-5xl lg:text-7xl">
           Put people first
         </h1>
 
-        <p className="mt-4 text-lg sm:text-xl lg:text-2xl leading-relaxed">
-          The lantern flickered softly against the damp brick wall, casting
-          shadows that danced like restless spirits. A faint scent of rain
-          lingered in the air.
+        <p className="mt-4 text-lg leading-relaxed sm:text-xl lg:text-2xl">
+          The lantern flickered softly against the damp brick wall, casting shadows that danced like
+          restless spirits. A faint scent of rain lingered in the air.
         </p>
 
-        <div className="mt-6 flex flex-col sm:flex-row gap-3">
+        <div className="mt-6 flex flex-col gap-3 sm:flex-row">
           <Input type="text" className="h-11 flex-1" placeholder="Enter your email" />
-          <Button className="h-11 px-6 cursor-pointer">Book a demo</Button>
+          <Button className="h-11 cursor-pointer px-6">Book a demo</Button>
         </div>
 
-        <div className="mt-10 flex flex-wrap gap-8 items-center">
+        <div className="mt-10 flex flex-wrap items-center gap-8">
           <div>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold mb-1">
-              75.2%
-            </h1>
-            <p className="text-base sm:text-lg font-medium">
-              Average daily activity
-            </p>
+            <h1 className="mb-1 text-3xl font-semibold sm:text-4xl lg:text-5xl">75.2%</h1>
+            <p className="text-base font-medium sm:text-lg">Average daily activity</p>
           </div>
-          <div className="hidden sm:block border border-gray-300 h-16" />
+          <div className="hidden h-16 border border-gray-300 sm:block" />
           <div>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold mb-1">
-              ~ 20k
-            </h1>
-            <p className="text-base sm:text-lg font-medium">Active users</p>
+            <h1 className="mb-1 text-3xl font-semibold sm:text-4xl lg:text-5xl">~ 20k</h1>
+            <p className="text-base font-medium sm:text-lg">Active users</p>
           </div>
         </div>
 
@@ -53,16 +46,14 @@ const HeroSection3 = () => {
             ))}
           </div>
 
-          <p className="text-base sm:text-lg font-medium">
+          <p className="text-base font-medium sm:text-lg">
             Trusted by <span className="font-bold">1000+</span> happy users
           </p>
         </div>
 
         <div className="mt-10">
-          <h2 className="text-xl sm:text-2xl font-semibold mb-2">
-            Why choose us?
-          </h2>
-          <ul className="list-disc list-inside text-base sm:text-lg space-y-1">
+          <h2 className="mb-2 text-xl font-semibold sm:text-2xl">Why choose us?</h2>
+          <ul className="list-inside list-disc space-y-1 text-base sm:text-lg">
             <li>Seamless onboarding process</li>
             <li>24/7 customer support</li>
             <li>Powerful analytics & insights</li>
@@ -70,13 +61,13 @@ const HeroSection3 = () => {
         </div>
       </div>
 
-      <div className="w-full lg:w-[45%] flex justify-center">
+      <div className="flex w-full justify-center lg:w-[45%]">
         <Image
           src="/hero-images/hero-section-3.png"
           alt="Hero Illustration"
           width={800}
           height={600}
-          className="object-contain bg-transparent dark:invert max-w-full h-auto"
+          className="h-auto max-w-full bg-transparent object-contain dark:invert"
         />
       </div>
     </section>
