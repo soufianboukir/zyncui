@@ -73,7 +73,8 @@ export const LoginForm1 = () => {
   }
 
   return (
-    <div>
+    <div
+      className="flex h-full w-full items-center justify-center bg-white dark:bg-black p-4">
       <Card className="min-w-sm md:min-w-md">
         <CardTitle className="text-center text-[23px] font-extrabold">Welcome Back</CardTitle>
         <CardContent>
@@ -127,8 +128,8 @@ export const LoginForm1 = () => {
           </form>
 
           <p className="m-0 text-sm text-[#747474] dark:text-white">
-            Dont have an account?
-            <span className="ml-1 cursor-pointer font-extrabold text-black underline decoration-black dark:text-white dark:decoration-white">
+            <span>Dont have an account?</span>&nbsp;
+            <span className="cursor-pointer font-extrabold text-black underline decoration-black dark:text-white dark:decoration-white">
               <Link href="#">Sign up</Link>
             </span>
           </p>
@@ -178,14 +179,18 @@ export const LoginForm1 = () => {
             </Button>
           </div>
         </CardContent>
+        <div className="w-full  flex justify-center">
+          <div className=" m-3 text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
+            By clicking continue, you agree to our <Link href="#">Terms of Service</Link> and{" "}
+            <Link href="#">Privacy Policy</Link>.
+          </div>
+        </div>
       </Card>
-      <div className="text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
-        By clicking continue, you agree to our <Link href="#">Terms of Service</Link> and{" "}
-        <Link href="#">Privacy Policy</Link>.
-      </div>
+    
     </div>
   );
 };
+
 `;
 
 export const login1Example = `import { LoginForm1 } from "@/components/auth/login/login-form-1";
@@ -289,7 +294,8 @@ export const LoginForm2 = () => {
   }
 
   return (
-    <div>
+    <div
+    className="flex h-full w-full items-center justify-center bg-white dark:bg-black p-4">
       <Card className="flex-row p-0">
         <div className="md:min-w- flex min-w-sm flex-col gap-7 py-6">
           <CardHeader>
@@ -370,9 +376,7 @@ export const LoginForm2 = () => {
                 {loading.github ? (
                   <Loader className="animate-spin" />
                 ) : (
-                  <>
-                    <Image src="/icons/github.svg" alt="github icon" width={20} height={20} />
-                  </>
+                  <Image src="/icons/github.svg" alt="github icon" width={20} height={20} />
                 )}
               </Button>
 
@@ -385,9 +389,7 @@ export const LoginForm2 = () => {
                 {loading.google ? (
                   <Loader className="animate-spin" />
                 ) : (
-                  <>
-                    <Image src="/icons/google.webp" alt="google icon" width={20} height={20} />
-                  </>
+                  <Image src="/icons/google.webp" alt="google icon" width={20} height={20} />
                 )}
               </Button>
 
@@ -400,20 +402,24 @@ export const LoginForm2 = () => {
                 {loading.x ? (
                   <Loader className="animate-spin" />
                 ) : (
-                  <>
-                    <Image src="/icons/x.png" alt="x icon" width={20} height={20} />
-                  </>
+                  <Image src="/icons/x.png" alt="x icon" width={20} height={20} />
                 )}
               </Button>
             </div>
 
             <p className="mt-4 text-center text-sm">
-              Dont have an account?
+              <span>Dont have an account? </span>
               <span className="ml-1 cursor-pointer text-sm font-extrabold text-black underline decoration-black dark:text-white dark:decoration-white">
                 <Link href="#">Sign up</Link>
               </span>
             </p>
           </CardContent>
+          <div className="w-full  flex justify-center">
+          <div className="m-3 text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
+            By clicking continue, you agree to our <Link href="#">Terms of Service</Link> and{" "}
+            <Link href="#">Privacy Policy</Link>.
+          </div>
+        </div>
         </div>
 
         <div className="bg-muted relative hidden rounded-r-xl md:block md:min-w-md">
@@ -425,15 +431,14 @@ export const LoginForm2 = () => {
             height={100}
           />
         </div>
+        
       </Card>
 
-      <div className="text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4 mt-2">
-        By clicking continue, you agree to our <Link href="#">Terms of Service</Link> and{" "}
-        <Link href="#">Privacy Policy</Link>.
-      </div>
+      
     </div>
   );
 };
+
 
 `;
 export const login2Example = `import { LoginForm2 } from "@/components/auth/login/login-form-2";
@@ -509,9 +514,13 @@ export const LoginForm3 = () => {
 
   return (
       <Dialog>
-        <DialogTrigger asChild>
-          <Button variant="outline" className="px-6 py-2">Sign in</Button>
-        </DialogTrigger>
+        <div className="flex justify-center ">
+   <DialogTrigger asChild>
+        <Button variant="outline" className="px-6 py-2">
+          Sign in
+        </Button>
+      </DialogTrigger>
+      </div>
 
         <DialogContent className="sm:max-w-[430px]">
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -707,7 +716,8 @@ export const LoginForm4 = () => {
   }
 
   return (
-    <div>
+    <div
+    className="flex justify-center">
       <Card className="min-w-sm md:max-w-md">
         <CardHeader className="mb-5 space-y-1 text-center">
           <Image
@@ -808,9 +818,9 @@ export const LoginForm4 = () => {
               {loading.github ? (
                 <Loader className="animate-spin" />
               ) : (
-                <>
+               
                   <Image src="/icons/github.svg" alt="github icon" width={20} height={20} />
-                </>
+                
               )}
             </Button>
 
@@ -823,9 +833,9 @@ export const LoginForm4 = () => {
               {loading.google ? (
                 <Loader className="animate-spin" />
               ) : (
-                <>
+               
                   <Image src="/icons/google.webp" alt="google icon" width={20} height={20} />
-                </>
+                
               )}
             </Button>
 
@@ -838,19 +848,20 @@ export const LoginForm4 = () => {
               {loading.x ? (
                 <Loader className="animate-spin" />
               ) : (
-                <>
+               
                   <Image src="/icons/x.png" alt="x icon" width={20} height={20} />
-                </>
+                
               )}
             </Button>
           </div>
         </CardContent>
-      </Card>
-
-      <div className="text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4 mt-2">
+          <div className=" m-3 text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4 mt-2">
         By clicking continue, you agree to our <Link href="#">Terms of Service</Link> and{" "}
         <Link href="#">Privacy Policy</Link>.
       </div>
+      </Card>
+
+    
     </div>
   );
 };

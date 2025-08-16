@@ -122,12 +122,13 @@ export const SignUpForm1 = () => {
 
   return (
     <Dialog>
-      <DialogTrigger asChild>
-        <Button variant="outline" className="px-6 py-2">
-          Sign up
-        </Button>
-      </DialogTrigger>
-
+      <div className="flex justify-center">
+        <DialogTrigger asChild>
+          <Button variant="outline" className="px-6 py-2">
+            Sign up
+          </Button>
+        </DialogTrigger>
+      </div>
       <DialogContent className="sm:max-w-[430px]">
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-1 text-center">

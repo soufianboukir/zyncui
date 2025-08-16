@@ -58,11 +58,13 @@ export const LoginForm3 = () => {
 
   return (
     <Dialog>
-      <DialogTrigger asChild>
-        <Button variant="outline" className="px-6 py-2">
-          Sign in
-        </Button>
-      </DialogTrigger>
+      <div className="flex justify-center">
+        <DialogTrigger asChild>
+          <Button variant="outline" className="px-6 py-2">
+            Sign in
+          </Button>
+        </DialogTrigger>
+      </div>
 
       <DialogContent className="sm:max-w-[430px]">
         <form onSubmit={handleSubmit} className="space-y-6">

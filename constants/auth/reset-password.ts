@@ -70,6 +70,8 @@ const ResetPasswordForm = () => {
     }, 3000);
   };
   return (
+   <div
+    className="flex h-full w-full items-center justify-center bg-white dark:bg-black p-4">
         <Card className="w-full max-w-md">
             <CardHeader className="text-center">
                 <CardTitle className="text-xl">Reset password</CardTitle>
@@ -131,6 +133,7 @@ const ResetPasswordForm = () => {
                 </form>
             </CardContent>
         </Card>
+        </div>
   );
 };
 

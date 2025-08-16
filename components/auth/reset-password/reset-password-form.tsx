@@ -69,70 +69,72 @@ const ResetPasswordForm = () => {
     }, 3000);
   };
   return (
-    <Card className="w-full max-w-md">
-      <CardHeader className="text-center">
-        <CardTitle className="text-xl">Reset password</CardTitle>
-        <CardDescription>Create a new password for your account</CardDescription>
-        {error && <div className="mb-2 text-center text-red-600">{error}</div>}
-      </CardHeader>
-      <CardContent>
-        <form onSubmit={handleSubmit}>
-          <div className="grid gap-4">
-            <div className="grid gap-6">
-              <div className="grid gap-2">
-                <Label htmlFor="password">Password</Label>
-                <PasswordInput
-                  name="password"
-                  placeholder="********"
-                  value={formData.password}
-                  onChange={handleChange}
-                />
-                {errors.password && (
-                  <div className="flex items-center gap-2 text-sm text-red-500">
-                    <AlertCircle className="h-4 w-4" />
-                    {errors.password}
-                  </div>
-                )}
-              </div>
-              <div className="grid gap-2">
-                <Label htmlFor="r_password">Retype password</Label>
-                <PasswordInput
-                  name="r_password"
-                  placeholder="********"
-                  value={formData.r_password}
-                  onChange={handleChange}
-                />
-                {errors.r_password && (
-                  <div className="flex items-center gap-2 text-sm text-red-500">
-                    <AlertCircle className="h-4 w-4" />
-                    {errors.r_password}
-                  </div>
-                )}
-                {isReseted && (
-                  <div className="text-sm text-green-600">
-                    Password has been reseted successfully
-                  </div>
-                )}
-              </div>
-              <Button type="submit" className="w-full cursor-pointer" disabled={loading}>
-                {loading ? (
-                  <div>
-                    <Loader className="h-8 w-8 animate-spin" />
-                  </div>
-                ) : (
-                  "Update password"
-                )}
-              </Button>
-              <div className="flex justify-end gap-3 text-sm">
-                <Link href={""} className="duration-200 hover:underline">
-                  Back to login
-                </Link>
+    <div className="flex h-full w-full items-center justify-center bg-white p-4 dark:bg-black">
+      <Card className="w-full max-w-md">
+        <CardHeader className="text-center">
+          <CardTitle className="text-xl">Reset password</CardTitle>
+          <CardDescription>Create a new password for your account</CardDescription>
+          {error && <div className="mb-2 text-center text-red-600">{error}</div>}
+        </CardHeader>
+        <CardContent>
+          <form onSubmit={handleSubmit}>
+            <div className="grid gap-4">
+              <div className="grid gap-6">
+                <div className="grid gap-2">
+                  <Label htmlFor="password">Password</Label>
+                  <PasswordInput
+                    name="password"
+                    placeholder="********"
+                    value={formData.password}
+                    onChange={handleChange}
+                  />
+                  {errors.password && (
+                    <div className="flex items-center gap-2 text-sm text-red-500">
+                      <AlertCircle className="h-4 w-4" />
+                      {errors.password}
+                    </div>
+                  )}
+                </div>
+                <div className="grid gap-2">
+                  <Label htmlFor="r_password">Retype password</Label>
+                  <PasswordInput
+                    name="r_password"
+                    placeholder="********"
+                    value={formData.r_password}
+                    onChange={handleChange}
+                  />
+                  {errors.r_password && (
+                    <div className="flex items-center gap-2 text-sm text-red-500">
+                      <AlertCircle className="h-4 w-4" />
+                      {errors.r_password}
+                    </div>
+                  )}
+                  {isReseted && (
+                    <div className="text-sm text-green-600">
+                      Password has been reseted successfully
+                    </div>
+                  )}
+                </div>
+                <Button type="submit" className="w-full cursor-pointer" disabled={loading}>
+                  {loading ? (
+                    <div>
+                      <Loader className="h-8 w-8 animate-spin" />
+                    </div>
+                  ) : (
+                    "Update password"
+                  )}
+                </Button>
+                <div className="flex justify-end gap-3 text-sm">
+                  <Link href={""} className="duration-200 hover:underline">
+                    Back to login
+                  </Link>
+                </div>
               </div>
             </div>
-          </div>
-        </form>
-      </CardContent>
-    </Card>
+          </form>
+        </CardContent>
+      </Card>
+    </div>
   );
 };
 

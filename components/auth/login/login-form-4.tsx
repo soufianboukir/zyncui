@@ -88,7 +88,7 @@ export const LoginForm4 = () => {
   }
 
   return (
-    <div>
+    <div className="flex h-full w-full items-center justify-center bg-white p-4 dark:bg-black">
       <Card className="min-w-sm md:max-w-md">
         <CardHeader className="mb-5 space-y-1 text-center">
           <Image
@@ -189,9 +189,7 @@ export const LoginForm4 = () => {
               {loading.github ? (
                 <Loader className="animate-spin" />
               ) : (
-                <>
-                  <Image src="/icons/github.svg" alt="github icon" width={20} height={20} />
-                </>
+                <Image src="/icons/github.svg" alt="github icon" width={20} height={20} />
               )}
             </Button>
 
@@ -204,9 +202,7 @@ export const LoginForm4 = () => {
               {loading.google ? (
                 <Loader className="animate-spin" />
               ) : (
-                <>
-                  <Image src="/icons/google.webp" alt="google icon" width={20} height={20} />
-                </>
+                <Image src="/icons/google.webp" alt="google icon" width={20} height={20} />
               )}
             </Button>
 
@@ -219,19 +215,16 @@ export const LoginForm4 = () => {
               {loading.x ? (
                 <Loader className="animate-spin" />
               ) : (
-                <>
-                  <Image src="/icons/x.png" alt="x icon" width={20} height={20} />
-                </>
+                <Image src="/icons/x.png" alt="x icon" width={20} height={20} />
               )}
             </Button>
           </div>
         </CardContent>
+        <div className="text-muted-foreground *:[a]:hover:text-primary m-3 mt-2 text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
+          By clicking continue, you agree to our <Link href="#">Terms of Service</Link> and{" "}
+          <Link href="#">Privacy Policy</Link>.
+        </div>
       </Card>
-
-      <div className="text-muted-foreground *:[a]:hover:text-primary mt-2 text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
-        By clicking continue, you agree to our <Link href="#">Terms of Service</Link> and{" "}
-        <Link href="#">Privacy Policy</Link>.
-      </div>
     </div>
   );
 };
