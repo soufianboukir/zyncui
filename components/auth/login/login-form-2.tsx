@@ -86,7 +86,7 @@ export const LoginForm2 = () => {
   }
 
   return (
-    <div>
+    <div className="flex h-full w-full items-center justify-center bg-white p-4 dark:bg-black">
       <Card className="flex-row p-0">
         <div className="md:min-w- flex min-w-sm flex-col gap-7 py-6">
           <CardHeader>
@@ -167,9 +167,7 @@ export const LoginForm2 = () => {
                 {loading.github ? (
                   <Loader className="animate-spin" />
                 ) : (
-                  <>
-                    <Image src="/icons/github.svg" alt="github icon" width={20} height={20} />
-                  </>
+                  <Image src="/icons/github.svg" alt="github icon" width={20} height={20} />
                 )}
               </Button>
 
@@ -182,9 +180,7 @@ export const LoginForm2 = () => {
                 {loading.google ? (
                   <Loader className="animate-spin" />
                 ) : (
-                  <>
-                    <Image src="/icons/google.webp" alt="google icon" width={20} height={20} />
-                  </>
+                  <Image src="/icons/google.webp" alt="google icon" width={20} height={20} />
                 )}
               </Button>
 
@@ -197,20 +193,24 @@ export const LoginForm2 = () => {
                 {loading.x ? (
                   <Loader className="animate-spin" />
                 ) : (
-                  <>
-                    <Image src="/icons/x.png" alt="x icon" width={20} height={20} />
-                  </>
+                  <Image src="/icons/x.png" alt="x icon" width={20} height={20} />
                 )}
               </Button>
             </div>
 
             <p className="mt-4 text-center text-sm">
-              Dont have an account?
+              <span>Dont have an account? </span>
               <span className="ml-1 cursor-pointer text-sm font-extrabold text-black underline decoration-black dark:text-white dark:decoration-white">
                 <Link href="#">Sign up</Link>
               </span>
             </p>
           </CardContent>
+          <div className="m-4 flex w-full justify-center">
+            <div className="text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
+              By clicking continue, you agree to our <Link href="#">Terms of Service</Link> and{" "}
+              <Link href="#">Privacy Policy</Link>.
+            </div>
+          </div>
         </div>
 
         <div className="bg-muted relative hidden rounded-r-xl md:block md:min-w-md">
@@ -223,11 +223,6 @@ export const LoginForm2 = () => {
           />
         </div>
       </Card>
-
-      <div className="text-muted-foreground *:[a]:hover:text-primary mt-2 text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
-        By clicking continue, you agree to our <Link href="#">Terms of Service</Link> and{" "}
-        <Link href="#">Privacy Policy</Link>.
-      </div>
     </div>
   );
 };

@@ -52,7 +52,7 @@ const data = {
         },
         {
           title: "NavBar",
-          url: "#",
+          url: "/blocks/navbar",
         },
       ],
     },

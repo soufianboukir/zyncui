@@ -73,7 +73,7 @@ export const LoginForm1 = () => {
   }
 
   return (
-    <div>
+    <div className="flex h-full w-full items-center justify-center bg-white p-4 dark:bg-black">
       <Card className="min-w-sm md:min-w-md">
         <CardTitle className="text-center text-[23px] font-extrabold">Welcome Back</CardTitle>
         <CardContent>
@@ -127,8 +127,8 @@ export const LoginForm1 = () => {
           </form>
 
           <p className="m-0 text-sm text-[#747474] dark:text-white">
-            Dont have an account?
-            <span className="ml-1 cursor-pointer font-extrabold text-black underline decoration-black dark:text-white dark:decoration-white">
+            <span>Dont have an account?</span>&nbsp;
+            <span className="cursor-pointer font-extrabold text-black underline decoration-black dark:text-white dark:decoration-white">
               <Link href="#">Sign up</Link>
             </span>
           </p>
@@ -178,11 +178,13 @@ export const LoginForm1 = () => {
             </Button>
           </div>
         </CardContent>
+        <div className="flex w-full justify-center">
+          <div className="text-muted-foreground *:[a]:hover:text-primary m-3 text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
+            By clicking continue, you agree to our <Link href="#">Terms of Service</Link> and{" "}
+            <Link href="#">Privacy Policy</Link>.
+          </div>
+        </div>
       </Card>
-      <div className="text-muted-foreground *:[a]:hover:text-primary mt-2 text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
-        By clicking continue, you agree to our <Link href="#">Terms of Service</Link> and{" "}
-        <Link href="#">Privacy Policy</Link>.
-      </div>
     </div>
   );
 };

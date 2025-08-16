@@ -53,7 +53,8 @@ export function EmailVerificationForm({
   }
 
   return (
-        <div className="flex w-full max-w-md flex-col gap-6">
+         <div
+    className="flex h-full w-full items-center justify-center bg-white dark:bg-black p-4">
             <div className={cn("flex flex-col gap-6", className)} {...props}>
                 <Card>
                     <CardHeader className="text-center">

@@ -114,8 +114,8 @@ export const SignUpForm4 = () => {
   }
 
   return (
-    <div className="m-3">
-      <div className="flex max-w-7xl">
+    <div className="flex h-full w-full items-center justify-center bg-white p-4 dark:bg-black">
+      <div className="flex w-full">
         <Card className="min-w-sm rounded-none border-r-0 md:min-w-xl md:px-20">
           {/**header card */}
           <CardHeader className="space-y-5">

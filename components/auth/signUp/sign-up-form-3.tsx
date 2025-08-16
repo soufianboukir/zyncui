@@ -125,17 +125,17 @@ export const SignUpForm3 = () => {
   }
 
   return (
-    <div className="max-w-7xl">
-      <div className="flex justify-center">
-        <Image
-          src={"/icons/placeholder.svg"}
-          width={60}
-          height={60}
-          className="rounded-full"
-          alt={"logo icon"}
-        />
-      </div>
+    <div className="flex h-full w-full items-center justify-center bg-white p-4 dark:bg-black">
       <div className="mt-2 flex flex-col gap-6">
+        <div className="flex justify-center">
+          <Image
+            src={"/icons/placeholder.svg"}
+            width={60}
+            height={60}
+            className="rounded-full"
+            alt={"logo icon"}
+          />
+        </div>
         <Card>
           <CardHeader className="text-center">
             {/**header signUp */}

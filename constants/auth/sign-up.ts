@@ -122,11 +122,14 @@ export const SignUpForm1 = () => {
 
   return (
     <Dialog>
+               <div className="flex justify-center ">
       <DialogTrigger asChild>
+        
         <Button variant="outline" className="px-6 py-2">
           Sign up
         </Button>
       </DialogTrigger>
+</div>
 
       <DialogContent className="sm:max-w-[430px]">
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -408,7 +411,8 @@ export const SignUpForm2 = () => {
   }
 
   return (
-    <div className="max-w-7xl">
+     <div
+      className="flex h-full w-full items-center justify-center bg-white dark:bg-black p-4">
       <div className="mt-2 flex flex-col gap-6">
         <Card>
           <CardHeader className="text-center">
@@ -725,17 +729,19 @@ export const SignUpForm3 = () => {
   }
 
   return (
-    <div className="max-w-7xl">
-      <div className="flex justify-center">
-        <Image
-          src={"/icons/placeholder.svg"}
-          width={60}
-          height={60}
-          className="rounded-full"
-          alt={"logo icon"}
-        />
-      </div>
-      <div className="mt-2 flex flex-col gap-6">
+    <div
+         className="flex h-full w-full items-center justify-center bg-white dark:bg-black p-4">
+        
+         <div className="mt-2 flex flex-col gap-6">
+            <div className="flex justify-center">
+           <Image
+             src={"/icons/placeholder.svg"}
+             width={60}
+             height={60}
+             className="rounded-full"
+             alt={"logo icon"}
+           />
+         </div>
         <Card>
           <CardHeader className="text-center">
             {/**header signUp */}
@@ -1048,8 +1054,9 @@ export const SignUpForm4 = () => {
   }
 
   return (
-    <div className="m-3">
-      <div className="flex max-w-7xl">
+      <div 
+        className="flex h-full w-full items-center justify-center bg-white dark:bg-black p-4">
+      <div className="flex w-full">
         <Card className="min-w-sm rounded-none border-r-0 md:min-w-xl md:px-20">
           {/**header card */}
           <CardHeader className="space-y-5">
