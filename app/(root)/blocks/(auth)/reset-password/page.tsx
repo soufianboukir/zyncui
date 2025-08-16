@@ -1,15 +1,21 @@
-"use client";
-
 import CodeBlock from "@/components/code-block";
 import Link from "next/link";
 import { PreviewWithCodeTabs } from "@/components/preview-with-code-tabs";
 import { Badge } from "@/components/ui/badge";
 import ResetPasswordForm from "@/components/auth/reset-password/reset-password-form";
-import {
-  passwordInputCode,
-  resetPasswordCode,
-  resetPasswordExample,
-} from "@/constants/auth/reset-password";
+import { resetPasswordExample } from "@/constants/auth/reset-password";
+
+import fs from "fs";
+import path from "path";
+
+const resetPasswordCodePath = path.join(
+  process.cwd(),
+  "/components/auth/reset-password/reset-password-form.tsx",
+);
+const resetPasswordCode = fs.readFileSync(resetPasswordCodePath, "utf-8");
+
+const passwordInputCodePath = path.join(process.cwd(), "/components/ui/password-input.tsx");
+const passwordInputCode = fs.readFileSync(passwordInputCodePath, "utf-8");
 
 export default function PasswordResetPage() {
   return (

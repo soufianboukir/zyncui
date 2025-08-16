@@ -73,7 +73,7 @@ export const LoginForm1 = () => {
   }
 
   return (
-    <div className="flex h-full w-full items-center justify-center bg-white p-4 dark:bg-black">
+    <div className="flex h-full w-full items-center justify-center p-4">
       <Card className="min-w-sm md:min-w-md">
         <CardTitle className="text-center text-[23px] font-extrabold">Welcome Back</CardTitle>
         <CardContent>

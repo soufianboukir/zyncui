@@ -86,7 +86,7 @@ export const LoginForm2 = () => {
   }
 
   return (
-    <div className="flex h-full w-full items-center justify-center bg-white p-4 dark:bg-black">
+    <div className="flex h-full w-full items-center justify-center p-4">
       <Card className="flex-row p-0">
         <div className="md:min-w- flex min-w-sm flex-col gap-7 py-6">
           <CardHeader>
