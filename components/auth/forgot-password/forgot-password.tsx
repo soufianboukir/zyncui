@@ -29,7 +29,7 @@ const ForgotPasswordForm = () => {
     }, 3000);
   };
   return (
-    <div className="flex h-full w-full items-center justify-center bg-white p-4 dark:bg-black">
+    <div className="flex h-full w-full items-center justify-center p-4">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
           <CardTitle className="text-xl font-semibold">Forgot password</CardTitle>

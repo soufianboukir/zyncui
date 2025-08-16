@@ -114,7 +114,7 @@ export const SignUpForm4 = () => {
   }
 
   return (
-    <div className="flex h-full w-full items-center justify-center bg-white p-4 dark:bg-black">
+    <div className="flex h-full w-full items-center justify-center p-4">
       <div className="flex w-full">
         <Card className="min-w-sm rounded-none border-r-0 md:min-w-xl md:px-20">
           {/**header card */}
@@ -273,7 +273,7 @@ export const SignUpForm4 = () => {
 
         {/* Right side */}
         <div className="bg-card hidden items-center justify-center border border-l-0 p-12 lg:flex">
-          <div className="max-w-md text-center">
+          <div className="max-w-xl text-center">
             <div className="mb-8 grid grid-cols-3 gap-3">
               {[...Array(9)].map((_, i) => (
                 <div

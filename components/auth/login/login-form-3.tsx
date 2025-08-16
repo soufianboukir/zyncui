@@ -60,7 +60,7 @@ export const LoginForm3 = () => {
     <Dialog>
       <div className="flex justify-center">
         <DialogTrigger asChild>
-          <Button variant="outline" className="px-6 py-2">
+          <Button variant="outline" className="cursor-pointer px-6 py-2">
             Sign in
           </Button>
         </DialogTrigger>
@@ -113,7 +113,7 @@ export const LoginForm3 = () => {
           <div className="space-y-3">
             <Button
               variant="outline"
-              className="flex w-full items-center justify-center gap-2 py-3"
+              className="flex w-full cursor-pointer items-center justify-center gap-2 py-3"
               onClick={handleGoogleOAuth}
               disabled={loading.google}
               type="button"
@@ -130,7 +130,7 @@ export const LoginForm3 = () => {
 
             <Button
               variant="outline"
-              className="flex w-full items-center justify-center gap-2 bg-black py-3 text-white hover:bg-black/85 dark:bg-white dark:text-black dark:hover:bg-white/85"
+              className="flex w-full cursor-pointer items-center justify-center gap-2 bg-black py-3 text-white hover:bg-black/85 dark:bg-white dark:text-black dark:hover:bg-white/85"
               onClick={handleGithubOAuth}
               disabled={loading.github}
               type="button"
@@ -154,9 +154,11 @@ export const LoginForm3 = () => {
 
           <DialogFooter className="mt-6">
             <DialogClose asChild>
-              <Button variant="outline">Cancel</Button>
+              <Button variant="outline" className="cursor-pointer">
+                Cancel
+              </Button>
             </DialogClose>
-            <Button type="submit" disabled={loading.login}>
+            <Button type="submit" disabled={loading.login} className="cursor-pointer">
               {loading.login ? "Logging in..." : "Login"}
             </Button>
           </DialogFooter>

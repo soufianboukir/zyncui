@@ -1,81 +1,70 @@
-"use client";
-
 import { SignUpForm1 } from "@/components/auth/signUp/sign-up-form-1";
 import { SignUpForm2 } from "@/components/auth/signUp/sign-up-form-2";
 import { SignUpForm3 } from "@/components/auth/signUp/sign-up-form-3";
 import { SignUpForm4 } from "@/components/auth/signUp/sign-up-form-4";
+
 import CodeBlock from "@/components/code-block";
 import { PreviewWithCodeTabs } from "@/components/preview-with-code-tabs";
 import { Badge } from "@/components/ui/badge";
-import { passwordInputCode } from "@/constants/auth/reset-password";
-import {
-  signUp1Code,
-  signUp1Example,
-  signUp2Code,
-  signUp2Example,
-  signUp3Code,
-  signUp3Example,
-  signUp4Code,
-  signUp4Example,
-} from "@/constants/auth/sign-up";
 import Link from "next/link";
 
-const data = [
+import fs from "fs";
+import path from "path";
+
+import {
+  signUp1Example,
+  signUp2Example,
+  signUp3Example,
+  signUp4Example,
+} from "@/constants/auth/sign-up";
+
+const formsConfig = [
   {
     id: 1,
     title: "Sign up Form 1 - Centered with Social Sign up Options",
-    description: `A centered layout that includes options for social authentication such as Google, Facebook, or Twitter sign-in buttons.
-                  This form fits applications needing multiple sign-in methods to improve user convenience.`,
-    pathFile: {
-      title: "This command performs the following:",
-      path: "@/components/auth/signUp/sign-up-form-1.tsx",
-    },
-    macket: { preview: <SignUpForm1 />, code: signUp1Code },
+    description:
+      "A centered layout that includes options for social authentication such as Google, Facebook, or Twitter sign-in buttons.",
+    file: "sign-up-form-1.tsx",
+    component: <SignUpForm1 />,
     example: signUp1Example,
   },
   {
     id: 2,
-    title: "Sign up Form 2 - Simple page",
-    description: `A streamlined, no-frills sign-up page designed for maximum clarity and ease of use.
-                  Free from decorative elements and unnecessary distractions, this layout prioritizes quick access and user efficiency.
-                  Perfect for platforms where user onboarding needs to be fast, intuitive, and professional.`,
-    pathFile: {
-      title: "This command performs the following:",
-      path: "@/components/auth/signUp/sign-up-form-2.tsx",
-    },
-    macket: { preview: <SignUpForm2 />, code: signUp2Code },
+    title: "Sign up Form 2 - Simple Page",
+    description:
+      "A streamlined, no-frills sign-up page designed for maximum clarity and ease of use.",
+    file: "sign-up-form-2.tsx",
+    component: <SignUpForm2 />,
     example: signUp2Example,
   },
   {
     id: 3,
-    title: "Sign up Form 3 - Dynamic page",
-    description: `This variant features a clean and minimal sign-up form focused on simplicity and usability.
-                  With no distracting visuals or animations, it offers a straightforward experience that allows users to register quickly and efficiently.
-                  Ideal for professional or content-focused platforms where clarity and speed are prioritized over visual embellishment.`,
-    pathFile: {
-      title: "This command performs the following:",
-      path: "@/components/auth/signUp/sign-up-form-3.tsx",
-    },
-    macket: { preview: <SignUpForm3 />, code: signUp3Code },
+    title: "Sign up Form 3 - Dynamic Page",
+    description:
+      "A minimal sign-up form focused on simplicity and usability, ideal for professional platforms.",
+    file: "sign-up-form-3.tsx",
+    component: <SignUpForm3 />,
     example: signUp3Example,
   },
   {
     id: 4,
-    title: "Sign up Form 3 - Split Screen with Illustration",
-    description: `This variant enhances the sign-up experience by combining the registration
-                  form with eye-catching illustrations or animations. It creates a welcoming and visually appealing environment that encourages
-                  users to complete the onboarding process. Ideal for platforms focused on brand identity and first impressions,
-                  it helps build trust and engagement from the very first interaction.`,
-    pathFile: {
-      title: "This command performs the following:",
-      path: "@/components/auth/signUp/sign-up-form-4.tsx",
-    },
-    macket: { preview: <SignUpForm4 />, code: signUp4Code },
+    title: "Sign up Form 4 - Split Screen with Illustration",
+    description:
+      "Enhances the sign-up experience by combining the registration form with eye-catching illustrations.",
+    file: "sign-up-form-4.tsx",
+    component: <SignUpForm4 />,
     example: signUp4Example,
   },
 ];
 
-const page = () => {
+// Dynamically read the code files
+const formsWithCode = formsConfig.map(form => {
+  const filePath = path.join(process.cwd(), `components/auth/signUp/${form.file}`);
+  const code = fs.readFileSync(filePath, "utf-8");
+  return { ...form, code };
+});
+
+export default function SignUpForms() {
   return (
     <main className="mx-auto w-full max-w-7xl py-6 text-base sm:px-6 sm:text-lg lg:px-8">
       <div className="space-y-20 sm:space-y-24">
@@ -89,17 +78,19 @@ const page = () => {
 
           <p>
             A sleek and fully responsive sign-up form component built with{" "}
-            <span className="font-semibold text-blue-600 dark:text-blue-400"> React</span> and
+            <span className="font-semibold text-blue-600 dark:text-blue-400">React</span> and{" "}
             <span className="font-semibold text-teal-600 dark:text-teal-400">Tailwind CSS</span>.
             This library offers multiple layout variations to accommodate diverse user registration
             flows and design requirements.
           </p>
+
           <p>
             Each variant is crafted with a focus on{" "}
-            <span className="font-semibold"> clarity, accessibility, and user-friendly</span>
+            <span className="font-semibold">clarity, accessibility, and user-friendly</span>{" "}
             interaction across all devices. Features include built-in form validation, customizable
             input fields, password confirmation support, and optional terms & conditions checkboxes.
           </p>
+
           <p>
             Designed following modern UI/UX best practices, these components offer seamless
             integration, consistency, and flexibility—whether you need a simple registration form or
@@ -109,106 +100,59 @@ const page = () => {
         </section>
 
         <section
-          id="installation"
+          id="description"
           className="prose prose-lg prose-gray dark:prose-invert mx-auto max-w-7xl space-y-5"
         >
-          <h2 className="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100">
-            Installation
-          </h2>
-
-          <div>
-            <h3 className="text-xl font-semibold sm:text-2xl">1. Set up your project</h3>
-            <p>
-              Before installing the sign up components, ensure your development environment is
-              properly configured. Refer to the{" "}
-              <Link
-                href={"/docs/installation"}
-                className="font-semibold text-blue-600 underline dark:text-blue-400"
-              >
-                official installation guide
-              </Link>{" "}
-              for detailed instructions on setting up React, Tailwind CSS, and required
-              dependencies.
-            </p>
-          </div>
-
-          <div>
-            <h3 className="text-xl font-semibold sm:text-2xl">
-              2. Install components and dependencies
-            </h3>
-            <CodeBlock
-              code={`npx shadcn@latest add button input card\nnpm install zod`}
-              copy
-              language="shell"
-            />
-            <p className="mt-2">
-              This command performs the following:
-              <ul className="mt-1 ml-5 list-inside list-disc space-y-1">
-                <li>
-                  Installs required dependencies and updates your <code>package.json</code>.
-                </li>
-                <li>
-                  Adds UI components such as <code>Button</code>, <code>Input</code>, and{" "}
-                  <code>Card</code> to your <code>components/ui</code> directory.
-                </li>
-              </ul>
-            </p>
-          </div>
-          <div>
-            <h3 className="text-xl font-semibold sm:text-2xl">
-              3. Create a file and Copy past this code into it{" "}
-              <code>
-                <Badge variant="secondary">@/components/ui/password-input.tsx</Badge>
-              </code>
-            </h3>
-            <CodeBlock code={passwordInputCode} copy language="tsx" />
-            <p className="mt-2">
-              This will:
-              <ul className="mt-1 ml-5 list-inside list-disc space-y-1">
-                <li>
-                  Install required dependencies and update your <code>package.json</code>.
-                </li>
-                <li>
-                  Add UI components like <code>Button</code>, <code>Input</code>, and{" "}
-                  <code>Card</code> to your <code>components/ui</code> directory.
-                </li>
-              </ul>
-            </p>
-          </div>
+          <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100">
+            Sign up Component Library
+          </h1>
+          <p>
+            A sleek and fully responsive sign-up form component built with{" "}
+            <Link
+              className="font-semibold text-blue-600 dark:text-blue-400"
+              href={"https://react.dev"}
+            >
+              React
+            </Link>{" "}
+            and{" "}
+            <Link
+              className="font-semibold text-teal-600 dark:text-teal-400"
+              href={"https://tailwindcss.com"}
+            >
+              Tailwind CSS
+            </Link>
+            . This library offers multiple layout variations to accommodate diverse user
+            registration flows.
+          </p>
         </section>
 
+        {/* Forms */}
         <section
           id="usage"
-          className="prose prose-lg prose-gray dark:prose-invert mx-auto max-w-7xl space-y-16"
+          className="prose prose-lg prose-gray dark:prose-invert mx-auto space-y-16"
         >
-          {/**Sign up forms */}
-          {data &&
-            data.map(item => (
-              <div key={item.id} className="space-y-6">
-                <h2 className="text-xl font-semibold sm:text-2xl">{item.title}</h2>
-                <p>{item.description}</p>
-                <p>
-                  {item.pathFile.title}
-                  <code>
-                    <Badge variant="secondary">{item.pathFile.path}</Badge>
-                  </code>
-                  .
-                </p>
-                <PreviewWithCodeTabs
-                  preview={item.macket.preview}
-                  code={item.macket.code}
-                  onlyPro
-                />
-                <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
-                  Usage Example
-                </h3>
-                <CodeBlock code={item.example} language="tsx" copy />
-              </div>
-            ))}
+          {formsWithCode.map(form => (
+            <div key={form.id} className="space-y-6">
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
+                {form.title}
+              </h2>
+              <p>{form.description}</p>
+              <p>
+                Copy the component code into{" "}
+                <code>
+                  <Badge variant="secondary">@/components/auth/signUp/{form.file}</Badge>
+                </code>
+                .
+              </p>
+              <PreviewWithCodeTabs preview={form.component} code={form.code} onlyPro />
+              <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
+                Usage Example
+              </h3>
+              <CodeBlock code={form.example} language="tsx" copy />
+            </div>
+          ))}
         </section>
       </div>
     </main>
   );
-};
-
-export default page;
+}

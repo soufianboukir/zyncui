@@ -48,7 +48,7 @@ export const PreviewWithCodeTabs: React.FC<PreviewWithCodeTabsProps> = ({
       </div>
 
       <TabsContent value="preview" className="bg-muted/30 mt-2 overflow-hidden rounded-lg border">
-        <div className="h-full max-h-[600px] min-h-[400px] w-full overflow-auto">
+        <div className="h-full max-h-[600px] min-h-[200px] w-full overflow-auto">
           <div className="">
             <div className="relative z-10">{preview}</div>
           </div>

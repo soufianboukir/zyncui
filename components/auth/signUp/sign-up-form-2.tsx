@@ -117,7 +117,7 @@ export const SignUpForm2 = () => {
   }
 
   return (
-    <div className="flex h-full w-full items-center justify-center bg-white p-4 dark:bg-black">
+    <div className="flex h-full w-full items-center justify-center p-4">
       <div className="mt-2 flex flex-col gap-6">
         <Card>
           <CardHeader className="text-center">

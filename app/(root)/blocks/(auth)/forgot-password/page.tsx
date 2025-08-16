@@ -1,11 +1,18 @@
-"use client";
-
 import CodeBlock from "@/components/code-block";
 import Link from "next/link";
 import { PreviewWithCodeTabs } from "@/components/preview-with-code-tabs";
 import { Badge } from "@/components/ui/badge";
 import ForgotPasswordForm from "@/components/auth/forgot-password/forgot-password";
-import { forgotPasswordCode, forgotPasswordExample } from "@/constants/auth/forgot-password";
+import { forgotPasswordExample } from "@/constants/auth/forgot-password";
+
+import fs from "fs";
+import path from "path";
+
+const forgotPasswordCodePath = path.join(
+  process.cwd(),
+  "/components/auth/forgot-password/forgot-password.tsx",
+);
+const forgotPasswordCode = fs.readFileSync(forgotPasswordCodePath, "utf-8");
 
 export default function ForgotPasswordPage() {
   return (

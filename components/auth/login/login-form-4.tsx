@@ -88,7 +88,7 @@ export const LoginForm4 = () => {
   }
 
   return (
-    <div className="flex h-full w-full items-center justify-center bg-white p-4 dark:bg-black">
+    <div className="flex h-full w-full items-center justify-center p-4">
       <Card className="min-w-sm md:max-w-md">
         <CardHeader className="mb-5 space-y-1 text-center">
           <Image
