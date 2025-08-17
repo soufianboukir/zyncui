@@ -4,15 +4,12 @@ import { PreviewWithCodeTabs } from "@/components/preview-with-code-tabs";
 import { Badge } from "@/components/ui/badge";
 import { navbar1Example } from "@/constants/navbar/navbar";
 import Link from "next/link";
- import fs from "fs"
- import path from "path"
+import fs from "fs";
+import path from "path";
 
- const Navbar1CodePath = path.join(
-  process.cwd(),
-  "/components/Navbar/navbar-compennets-1.tsx"
- );
- const Navbar1Code = fs.readFileSync(Navbar1CodePath, "utf-8");
- 
+const Navbar1CodePath = path.join(process.cwd(), "/components/Navbar/navbar-compennets-1.tsx");
+const Navbar1Code = fs.readFileSync(Navbar1CodePath, "utf-8");
+
 export default function NavBarForms() {
   return (
     <main>
@@ -113,7 +110,10 @@ export default function NavBarForms() {
             </p>
             <p>
               To use this navbar, copy the component code into{" "}
-              <code><Badge variant="secondary">@/components/navbar/navbar-1.tsx</Badge></code>.
+              <code>
+                <Badge variant="secondary">@/components/navbar/navbar-1.tsx</Badge>
+              </code>
+              .
             </p>
             <PreviewWithCodeTabs preview={<NavBar1 />} code={Navbar1Code} onlyPro />
             <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
@@ -121,7 +121,6 @@ export default function NavBarForms() {
             </h3>
             <CodeBlock code={navbar1Example} language="tsx" copy />
           </div>
-          
         </section>
       </div>
     </main>
