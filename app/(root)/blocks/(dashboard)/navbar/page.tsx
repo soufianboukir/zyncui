@@ -12,8 +12,8 @@ const Navbar1Code = fs.readFileSync(Navbar1CodePath, "utf-8");
 
 export default function NavBarForms() {
   return (
-    <main>
-      <div>
+    <main className="mx-auto w-full max-w-7xl py-6 text-base sm:px-6 sm:text-lg lg:px-8">
+      <div className="space-y-20 sm:space-y-24">
         <section
           id="navbar-description"
           className="prose prose-lg prose-gray dark:prose-invert mx-auto max-w-7xl space-y-5"
