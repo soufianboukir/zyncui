@@ -1,3 +1,4 @@
+export const navbar1Example = `
 import NavBar1 from "@/components/Navbar/navbar-compennets-1";
 
 const page = () => {
@@ -9,3 +10,4 @@ const page = () => {
 };
 
 export default page;
+`;
