@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-export default function Header() {
+export default function NavBar1() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -31,53 +31,52 @@ export default function Header() {
   }, [mobileMenuOpen]);
 
   return (
-    <div>
-      <header className="relative z-20 flex overflow-hidden">
-        {mobileMenuOpen && (
-          <button
-            type="button"
-            aria-label="Close mobile menu"
-            className="absolute inset-0 z-30 bg-black/40 backdrop-blur-sm lg:hidden"
-            onClick={() => setMobileMenuOpen(false)}
-            tabIndex={0}
-          />
-        )}
+    <div className="h-full w-full">
+      {mobileMenuOpen && (
+        <button
+          type="button"
+          aria-label="Close mobile menu"
+          className="absolute inset-0 z-30 bg-black/40 backdrop-blur-sm lg:hidden"
+          onClick={() => setMobileMenuOpen(false)}
+          tabIndex={0}
+        />
+      )}
 
-        <div
-          id="mobile-menu"
-          className={`bg-background absolute top-0 right-0 z-40 h-full w-80 max-w-[85%] transform border-l shadow-xl transition-transform duration-300 ease-in-out lg:hidden ${
-            mobileMenuOpen ? "translate-x-0" : "translate-x-full"
-          }`}
-        >
-          <div className="flex h-full flex-col">
-            <div className="flex items-center justify-between border-b p-6">
-              <Link href="#" className="-m-1.5 p-1.5">
-                <span className="text-xl font-semibold text-black dark:text-white">zyncUI</span>
+      <div
+        id="mobile-menu"
+        className={`bg-background absolute top-0 right-0 z-40 h-full w-80 max-w-[85%] transform border-l shadow-xl transition-transform duration-300 ease-in-out lg:hidden ${
+          mobileMenuOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <div className="flex h-full flex-col">
+          <div className="flex items-center justify-between border-b p-6">
+            <Link href="#" className="-m-1.5 p-1.5">
+              <span className="text-xl font-semibold text-black dark:text-white">zyncUI</span>
+            </Link>
+          </div>
+
+          <div className="flex-1 space-y-4 overflow-y-auto p-6">
+            {["Product", "Features", "Marketplace", "Company"].map(item => (
+              <Link
+                key={item}
+                href="#"
+                className="text-muted-foreground hover:bg-muted/50 hover:text-foreground block rounded-lg px-3 py-3 text-base font-medium transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {item}
               </Link>
-            </div>
-
-            <div className="flex-1 space-y-4 overflow-y-auto p-6">
-              {["Product", "Features", "Marketplace", "Company"].map(item => (
-                <Link
-                  key={item}
-                  href="#"
-                  className="text-muted-foreground hover:bg-muted/50 hover:text-foreground block rounded-lg px-3 py-3 text-base font-medium transition-colors"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {item}
+            ))}
+            <div className="border-t pt-6">
+              <Button variant="ghost" asChild className="w-full justify-start">
+                <Link href="#" onClick={() => setMobileMenuOpen(false)}>
+                  Log in
                 </Link>
-              ))}
-              <div className="border-t pt-6">
-                <Button variant="ghost" asChild className="w-full justify-start">
-                  <Link href="#" onClick={() => setMobileMenuOpen(false)}>
-                    Log in
-                  </Link>
-                </Button>
-              </div>
+              </Button>
             </div>
           </div>
         </div>
-
+      </div>
+      <header className="relative flex overflow-hidden">
         <nav
           className="flex w-full items-center justify-between gap-4 p-4 lg:px-12"
           aria-label="Global"
@@ -120,6 +119,12 @@ export default function Header() {
           </div>
         </nav>
       </header>
+      <section className="flex flex-col items-center justify-center gap-8 p-4 lg:flex-row lg:gap-16 lg:px-12">
+        <div className="relative flex h-screen w-full animate-pulse flex-col items-center justify-center rounded-2xl bg-gray-300 p-4 dark:bg-gray-600"></div>
+      </section>
+      <section className="flex flex-col items-center justify-center gap-8 p-4 lg:flex-row lg:gap-16 lg:px-12">
+        <div className="relative flex h-screen w-full animate-pulse flex-col items-center justify-center rounded-2xl bg-gray-300 p-4 dark:bg-gray-600"></div>
+      </section>
     </div>
   );
 }
