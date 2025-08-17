@@ -27,16 +27,6 @@ Perfect for developers who want to **move fast**, maintain design consistency, a
 
 ---
 
-## 🔧 Technologies Used
-
-- **Next.js** – Component-based architecture
-- **TypeScript** – Type safety and better DX
-- **Tailwind CSS** – Utility-first styling
-- **Next.js** – Used for documentation (MDX-powered)
-- **MDX** – Live documentation with real components
-
----
-
 ## 🚀 Features
 
 - ✅ **Pre-built UI sections** – Auth, hero, pricing, dashboard, and more
@@ -79,31 +69,11 @@ Visit the `/docs` route or run the dev server to explore the components interact
 
 ---
 
-## 🤝 Contributing
-
-We welcome PRs, feedback, and issues!
-
-> Before contributing:
-
-- Follow our component structure and naming convention
-- Keep props typed and consistent
-- Ensure Tailwind classes are responsive and accessible
-- Write a corresponding MDX documentation page
-
----
-
-## 📜 License
-
-This project is open-source under the [MIT License](LICENSE).
-
----
-
 ## 🧠 Inspiration
 
 Inspired by:
 
 - [shadcn/ui](https://ui.shadcn.com/)
-- [Chakra UI](https://chakra-ui.com/)
 - [Tailwind UI](https://tailwindui.com/)
 - [Radix UI](https://www.radix-ui.com/)
 
