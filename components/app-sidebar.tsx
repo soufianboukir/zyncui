@@ -54,6 +54,10 @@ const data = {
           title: "NavBar",
           url: "/blocks/navbar",
         },
+        {
+          title: "Features",
+          url: "/blocks/features",
+        },
       ],
     },
     {
