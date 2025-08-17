@@ -1,23 +1,28 @@
-"use client";
-
 import CodeBlock from "@/components/code-block";
 import Link from "next/link";
 import { LoginForm1 } from "@/components/auth/login/login-form-1";
-import {
-  login1Code,
-  login1Example,
-  login2Code,
-  login2Example,
-  login3Code,
-  login3Example,
-  login4Code,
-  login4Example,
-} from "@/constants/auth/login";
+import { login1Example, login2Example, login3Example, login4Example } from "@/constants/auth/login";
+
 import { PreviewWithCodeTabs } from "@/components/preview-with-code-tabs";
 import { Badge } from "@/components/ui/badge";
 import { LoginForm2 } from "@/components/auth/login/login-form-2";
 import { LoginForm3 } from "@/components/auth/login/login-form-3";
 import { LoginForm4 } from "@/components/auth/login/login-form-4";
+
+import fs from "fs";
+import path from "path";
+
+const login1CodePath = path.join(process.cwd(), "components/auth/login/login-form-1.tsx");
+const login1Code = fs.readFileSync(login1CodePath, "utf-8");
+
+const login2CodePath = path.join(process.cwd(), "components/auth/login/login-form-2.tsx");
+const login2Code = fs.readFileSync(login2CodePath, "utf-8");
+
+const login3CodePath = path.join(process.cwd(), "components/auth/login/login-form-3.tsx");
+const login3Code = fs.readFileSync(login3CodePath, "utf-8");
+
+const login4CodePath = path.join(process.cwd(), "components/auth/login/login-form-4.tsx");
+const login4Code = fs.readFileSync(login4CodePath, "utf-8");
 
 export default function LoginForms() {
   return (
@@ -32,9 +37,21 @@ export default function LoginForms() {
           </h1>
           <p>
             A sleek and fully responsive login form component built with{" "}
-            <span className="font-semibold text-blue-600 dark:text-blue-400">React</span> and{" "}
-            <span className="font-semibold text-teal-600 dark:text-teal-400">Tailwind CSS</span>.
-            This library provides multiple layout variations to suit different authentication needs.
+            <Link
+              className="font-semibold text-blue-600 dark:text-blue-400"
+              href={"https://react.dev"}
+            >
+              React
+            </Link>{" "}
+            and{" "}
+            <Link
+              className="font-semibold text-teal-600 dark:text-teal-400"
+              href={"https://tailwindcss.com"}
+            >
+              Tailwind CSS
+            </Link>
+            . This library provides multiple layout variations to suit different authentication
+            needs.
           </p>
           <p>
             Each variant emphasizes{" "}

@@ -1,15 +1,21 @@
-"use client";
-
 import CodeBlock from "@/components/code-block";
 import Link from "next/link";
 import { PreviewWithCodeTabs } from "@/components/preview-with-code-tabs";
 import { Badge } from "@/components/ui/badge";
 import { EmailVerificationForm } from "@/components/auth/email-verifecation/email-verification-form";
-import {
-  emailVerificationCode,
-  emailVerificationExample,
-  otpInputCode,
-} from "@/constants/auth/email-verification";
+import { emailVerificationExample } from "@/constants/auth/email-verification";
+
+import fs from "fs";
+import path from "path";
+
+const emailVerificationCodePath = path.join(
+  process.cwd(),
+  "/components/auth/email-verifecation/email-verification-form.tsx",
+);
+const emailVerificationCode = fs.readFileSync(emailVerificationCodePath, "utf-8");
+
+const otpInputCodePath = path.join(process.cwd(), "/components/ui/input-otp.tsx");
+const otpInputCode = fs.readFileSync(otpInputCodePath, "utf-8");
 
 export default function EmailVerificationPage() {
   return (
