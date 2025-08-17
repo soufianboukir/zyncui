@@ -43,7 +43,7 @@ export function EmailVerificationForm({ className, ...props }: React.ComponentPr
   }
 
   return (
-    <div className="flex h-full w-full items-center justify-center bg-white p-4 dark:bg-black">
+    <div className="flex min-h-screen w-full items-center justify-center bg-white p-4 dark:bg-black">
       <div className={cn("flex flex-col gap-6", className)} {...props}>
         <Card>
           <CardHeader className="text-center">

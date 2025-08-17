@@ -1,4 +1,4 @@
-"use client";
+export const navbar1Code = `"use client";
 
 import { Menu, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -44,9 +44,9 @@ export default function NavBar1() {
 
       <div
         id="mobile-menu"
-        className={`bg-background absolute top-0 right-0 z-40 h-full w-80 max-w-[85%] transform border-l shadow-xl transition-transform duration-300 ease-in-out lg:hidden ${
+        className={\`bg-background absolute top-0 right-0 z-40 h-full w-80 max-w-[85%] transform border-l shadow-xl transition-transform duration-300 ease-in-out lg:hidden \${
           mobileMenuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
+        }\`}
       >
         <div className="flex h-full flex-col">
           <div className="flex items-center justify-between border-b p-6">
@@ -119,12 +119,21 @@ export default function NavBar1() {
           </div>
         </nav>
       </header>
-      <section className="flex flex-col items-center justify-center gap-8 p-4 lg:flex-row lg:gap-16 lg:px-12">
-        <div className="relative flex h-screen w-full animate-pulse flex-col items-center justify-center rounded-2xl bg-gray-300 p-4 dark:bg-gray-600"></div>
-      </section>
-      <section className="flex flex-col items-center justify-center gap-8 p-4 lg:flex-row lg:gap-16 lg:px-12">
-        <div className="relative flex h-screen w-full animate-pulse flex-col items-center justify-center rounded-2xl bg-gray-300 p-4 dark:bg-gray-600"></div>
-      </section>
+     
     </div>
   );
 }
+`;
+export const navbar1Example = `
+import NavBar1 from "@/components/Navbar/navbar-compennets-1";
+
+const page = () => {
+  return (
+    <div className="flex h-screen flex-col items-center justify-center gap-6">
+      <NavBar1 />
+    </div>
+  );
+};
+
+export default page;
+`;

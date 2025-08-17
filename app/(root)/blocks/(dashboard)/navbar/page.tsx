@@ -1,7 +1,8 @@
 import CodeBlock from "@/components/code-block";
-import Header from "@/components/Navbar/navbar-compennets-1";
+import NavBar1 from "@/components/Navbar/navbar-compennets-1";
 import { PreviewWithCodeTabs } from "@/components/preview-with-code-tabs";
 import { Badge } from "@/components/ui/badge";
+import { navbar1Code, navbar1Example } from "@/constants/navbar/navbar";
 import Link from "next/link";
 
 export default function NavBarForms() {
@@ -109,11 +110,11 @@ export default function NavBarForms() {
               </code>
               .
             </p>
-            <PreviewWithCodeTabs preview={<Header />} code={""} onlyPro />
+            <PreviewWithCodeTabs preview={<NavBar1 />} code={navbar1Code} onlyPro />
             <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
               Usage Example
             </h3>
-            <CodeBlock code={""} language="tsx" copy />
+            <CodeBlock code={navbar1Example} language="tsx" copy />
           </div>
         </section>
       </div>
