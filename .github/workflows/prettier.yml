@@ -1,6 +1,5 @@
 name: Prettier Check
 
-# Trigger on all branches for push and PR
 on:
   push:
     branches: ["**"]

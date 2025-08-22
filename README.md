@@ -95,7 +95,6 @@ The project is structured for scalability and clean code separation, following M
 - `GET /dashboard/orders` → List all orders
 - `GET /dashboard/products/low-stock` → Get products with low stock
 
-
 ➡️ Full list available in [docs/endpoints.md](./src/docs/endpoints.md)
 
 ---
@@ -104,8 +103,8 @@ The project is structured for scalability and clean code separation, following M
 
 ```bash
 # Clone repo
-git clone https://github.com/your-username/ecommerce-backend.git
-cd ecommerce-backend
+git clone https://github.com/soufianboukir/mercurio-api.git
+cd mercurio-api
 
 # Install dependencies
 npm install
@@ -114,6 +113,6 @@ npm install
 cp .env.example .env
 
 # Run server
-npm run dev
+npm start
 
 ```
