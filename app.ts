@@ -6,8 +6,6 @@ const app = express();
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
-app.use("/verify", (req, res) => {
-  res.send("Veirified");
-});
+// app.use("/api/products", )
 
 export default app;

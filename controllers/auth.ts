@@ -1,6 +1,7 @@
 import type { Request, Response } from "express";
 import { supabase } from "../config/supabase.ts";
 import config from "../config/config.ts";
+import type authRequest from "../interfaces/authRequest.ts";
 
 export async function register(req: Request, res: Response) {
   const { email, password, name } = req.body;
@@ -65,6 +66,38 @@ export async function profile(req: Request, res: Response) {
 
   res.json({ user, profile });
 }
+
+
+export async function updateProfile(req: authRequest, res: Response) {
+  try {
+    const { full_name } = req.body;
+
+    if (!full_name) {
+      return res.status(400).json({ error: "full_name is required" });
+    }
+
+    const userId = req.user?.id;
+    if (!userId) {
+      return res.status(401).json({ error: "Unauthorized" });
+    }
+
+    const { data, error } = await supabase.auth.admin.updateUserById(userId, {
+      user_metadata: { full_name },
+    });
+
+    if (error) {
+      return res.status(400).json({ error: error.message });
+    }
+
+    return res.json({
+      message: "Profile updated successfully",
+      user: data.user,
+    });
+  } catch {
+    return res.status(500).json({ error: "Internal server error" });
+  }
+}
+
 
 export async function forgotPassword(req: Request, res: Response) {
   const { email } = req.body;
