@@ -39,21 +39,21 @@ export async function login(req: Request, res: Response) {
   res.json({ session: data.session, user: data.user });
 }
 
-
-
-
-export async function logout(req: Request,res: Response) {
+export async function logout(req: Request, res: Response) {
   const { error } = await supabase.auth.signOut();
   if (error) return res.status(400).json({ error: error.message });
   res.json({ message: "Logged out successfully" });
 }
 
-
 export async function profile(req: Request, res: Response) {
   const token = req.headers.authorization?.replace("Bearer ", "");
 
-  const { data: { user }, error: userError } = await supabase.auth.getUser(token);
-  if (userError || !user) return res.status(401).json({ error: userError?.message || "Unauthorized" });
+  const {
+    data: { user },
+    error: userError,
+  } = await supabase.auth.getUser(token);
+  if (userError || !user)
+    return res.status(401).json({ error: userError?.message || "Unauthorized" });
 
   const { data: profile, error: profileError } = await supabase
     .from("profiles")
@@ -66,8 +66,6 @@ export async function profile(req: Request, res: Response) {
   res.json({ user, profile });
 }
 
-
-
 export async function forgotPassword(req: Request, res: Response) {
   const { email } = req.body;
 
@@ -76,20 +74,17 @@ export async function forgotPassword(req: Request, res: Response) {
   });
 
   if (error) return res.status(400).json({ error: error.message });
-  res.json({ message: "Password reset email sent" });
+  res.json({ message: "If an account with this email exists, you will receive a reset link." });
 }
 
-
-
-
 export async function resetPassword(req: Request, res: Response) {
-  const { access_token, newPassword } = req.body;
+  const { newPassword } = req.body;
 
   const { error } = await supabase.auth.updateUser(
     { password: newPassword },
-    { accessToken: access_token }
+    // { accessToken: access_token }
   );
-    
+
   if (error) return res.status(400).json({ error: error.message });
   res.json({ message: "Password updated successfully" });
 }
