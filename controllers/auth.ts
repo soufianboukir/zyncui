@@ -67,7 +67,6 @@ export async function profile(req: Request, res: Response) {
   res.json({ user, profile });
 }
 
-
 export async function updateProfile(req: authRequest, res: Response) {
   try {
     const { full_name } = req.body;
@@ -81,22 +80,25 @@ export async function updateProfile(req: authRequest, res: Response) {
       return res.status(401).json({ error: "Unauthorized" });
     }
 
-    const { data, error } = await supabase.auth.admin.updateUserById(userId, {
-      user_metadata: { full_name },
-    });
+    const { data: profileData, error: profileError } = await supabase
+      .from("profiles")
+      .update({ full_name })
+      .eq("user_id", userId)
+      .select();
 
-    if (error) {
-      return res.status(400).json({ error: error.message });
+    if (profileError) {
+      return res.status(400).json({ error: profileError.message });
     }
 
     return res.json({
       message: "Profile updated successfully",
-      user: data.user,
+      profile: profileData[0],
     });
   } catch {
     return res.status(500).json({ error: "Internal server error" });
   }
 }
+
 
 
 export async function forgotPassword(req: Request, res: Response) {

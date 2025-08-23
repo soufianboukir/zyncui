@@ -26,15 +26,21 @@ The project is structured for scalability and clean code separation, following M
 
 # E-Commerce Backend API Endpoints
 
+
+## BASE-URL
+
+- `http://127.0.0.1:5000/api`
+
+
 ## Auth
 
-- `POST /auth/register` → Register a new user
+- `POST /auth/signup` → Register a new user
 - `POST /auth/login` → Login & get token
 - `POST /auth/logout` → Logout user
 - `GET /auth/profile` → Get logged-in user profile
-- `PUT /auth/profile` → Update logged-in user profile
-- `PUT /auth/change-password` → Change password
-- `POST /auth/reset-password` → Request password reset
+- `PUT /auth/profile` → Update logged-in user profile (requires auth)
+- `POST /auth/forgot-password` → Request password reset (reset password link via email)
+- `PUT /auth/forgot-password` → Change password (requiers access token from URL)
 
 ## Users (Admin only)
 

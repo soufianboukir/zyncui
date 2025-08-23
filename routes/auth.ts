@@ -16,9 +16,9 @@ router.post("/signup", register);
 router.post("/login", login);
 router.post("/logout", logout);
 router.get("/profile", profile);
+router.put("/profile", isAuth, updateProfile);
 router.post("/forgot-password", forgotPassword);
-router.post("/reset-password", resetPassword);
-router.put("/update-profile", isAuth, updateProfile);
+router.put("/reset-password", resetPassword);
 
 
 export default router;

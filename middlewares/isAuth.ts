@@ -14,10 +14,6 @@ export async function isAuth(req: authRequest, res: Response, next: NextFunction
     error,
   } = await supabase.auth.getUser(token);
 
-  console.log(token);
-  
-  
-
   if (error || !user) return res.status(401).json({ error: "Invalid token" });
 
   req.user = user;
