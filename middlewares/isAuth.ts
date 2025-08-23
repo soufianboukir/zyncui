@@ -23,3 +23,6 @@ export async function isAuth(req: authRequest, res: Response, next: NextFunction
   req.user = user;
   next();
 }
+
+
+
