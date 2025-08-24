@@ -1,12 +1,8 @@
-import { User } from "@supabase/supabase-js";
-import { supabase } from "../config/supabase";
-import type { NextFunction, Request, Response } from "express";
+import { supabase } from "../config/supabase.ts";
+import type { NextFunction, Response } from "express";
+import type authRequest from "../interfaces/authRequest.ts";
 
-interface authRequest extends Request {
-  user: User;
-}
-
-export async function requireAuth(req: authRequest, res: Response, next: NextFunction) {
+export async function isAuth(req: authRequest, res: Response, next: NextFunction) {
   const token = req.headers.authorization?.replace("Bearer ", "");
 
   if (!token) return res.status(401).json({ error: "No token provided" });

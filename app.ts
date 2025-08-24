@@ -1,13 +1,14 @@
 import express from "express";
 import authRoutes from "./routes/auth.ts";
+import path from "path";
 
 const app = express();
-
 app.use(express.json());
 
-app.use("/api/auth", authRoutes);
-app.use("/verify", (req, res) => {
-  res.send("Veirified");
+app.get("/docs", (req, res) => {
+  res.sendFile(path.join(process.cwd(), "public/docs/index.html"));
 });
+
+app.use("/api/auth", authRoutes);
 
 export default app;
