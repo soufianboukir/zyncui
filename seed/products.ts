@@ -14,9 +14,7 @@ interface Product {
 export async function seedProducts(count = 20): Promise<Product[]> {
   const products: Product[] = [];
 
-  const { data: categories, error: catError } = await supabase
-    .from("categories")
-    .select("id");
+  const { data: categories, error: catError } = await supabase.from("categories").select("id");
 
   if (catError) {
     console.error("Error fetching categories:", catError.message);

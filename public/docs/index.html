@@ -1,28 +1,39 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-  <title>API Documentation</title>
-  <style>
-    body { font-family: sans-serif; padding: 2rem; }
-    h1 { color: #333; }
-    pre { background: #f4f4f4; padding: 1rem; }
-  </style>
-</head>
-<body>
-  <h1>Mercurio API Documentation</h1>
-  
-  <h2>POST /api/auth/login</h2>
-  <p>Body:</p>
-  <pre>{
+  <head>
+    <title>API Documentation</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 2rem;
+      }
+      h1 {
+        color: #333;
+      }
+      pre {
+        background: #f4f4f4;
+        padding: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Mercurio API Documentation</h1>
+
+    <h2>POST /api/auth/login</h2>
+    <p>Body:</p>
+    <pre>
+{
   "email": "user@example.com",
   "password": "123456"
-}</pre>
+}</pre
+    >
 
-  <p>Response:</p>
-  <pre>{
+    <p>Response:</p>
+    <pre>
+{
   "access_token": "...",
   "user": { "id": "...", "email": "..." }
-}</pre>
-
-</body>
+}</pre
+    >
+  </body>
 </html>

@@ -20,5 +20,4 @@ router.put("/profile", isAuth, updateProfile);
 router.post("/forgot-password", forgotPassword);
 router.put("/reset-password", resetPassword);
 
-
 export default router;

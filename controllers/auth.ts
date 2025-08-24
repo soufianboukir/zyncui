@@ -99,8 +99,6 @@ export async function updateProfile(req: authRequest, res: Response) {
   }
 }
 
-
-
 export async function forgotPassword(req: Request, res: Response) {
   const { email } = req.body;
 

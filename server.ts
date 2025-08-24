@@ -5,9 +5,6 @@ app.listen(config.port, () => {
   console.log(`Server running on port ${config.port}`);
 });
 
-
-
-
 // this configuration is commented until I deploy it within vercel
 
 // import express from "express";

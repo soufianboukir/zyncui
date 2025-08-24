@@ -26,11 +26,9 @@ The project is structured for scalability and clean code separation, following M
 
 # E-Commerce Backend API Endpoints
 
-
 ## BASE-URL
 
 - `http://127.0.0.1:5000/api`
-
 
 ## Auth
 
