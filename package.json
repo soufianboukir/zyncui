@@ -19,12 +19,14 @@
     "@supabase/supabase-js": "^2.56.0",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
+    "faker": "^6.6.6",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.17.2",
     "nodemon": "^3.1.10"
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",
+    "@faker-js/faker": "^9.9.0",
     "@types/bcryptjs": "^2.4.6",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
