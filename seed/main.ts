@@ -7,7 +7,7 @@ import { seedUsersAndProfiles } from "./users-profiles.ts";
 
 async function main() {
   console.log("Seeding users and profiles...");
-  await seedUsersAndProfiles(2);
+  await seedUsersAndProfiles(20);
 
   console.log("Seeding categories");
   await seedCategories(10);

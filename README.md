@@ -38,13 +38,12 @@ The project is structured for scalability and clean code separation, following M
 - `GET /auth/profile` → Get logged-in user profile
 - `PUT /auth/profile` → Update logged-in user profile (requires auth)
 - `POST /auth/forgot-password` → Request password reset (reset password link via email)
-- `PUT /auth/forgot-password` → Change password (requiers access token from URL)
+- `PUT /auth/reset-password` → Change password (requiers access token from URL)
 
 ## Users (Admin only)
 
-- `GET /users` → List all users
+- `GET /users/all` → List all users paginate (10 per page)
 - `GET /users/:id` → Get user details
-- `PUT /users/:id` → Update user info
 - `DELETE /users/:id` → Delete user
 
 ## Products
