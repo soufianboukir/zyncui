@@ -8,6 +8,7 @@ interface Product {
   category_id: string;
   price: number;
   stock: number;
+  image: string;
   created_at: Date;
 }
 
@@ -34,9 +35,11 @@ export async function seedProducts(count = 20): Promise<Product[]> {
     const stock = faker.number.int({ min: 1, max: 100 });
     const created_at = new Date();
 
+    const image = faker.image.urlLoremFlickr({ category: "product" });
+
     const { data, error } = await supabase
       .from("products")
-      .insert([{ name, description, category_id, price, stock, created_at }])
+      .insert([{ name, description, category_id, price, stock, image, created_at }])
       .select();
 
     if (error) {
@@ -54,6 +57,7 @@ export async function seedProducts(count = 20): Promise<Product[]> {
       category_id: product.category_id,
       price: product.price,
       stock: product.stock,
+      image: product.image,
       created_at: product.created_at,
     });
   }
